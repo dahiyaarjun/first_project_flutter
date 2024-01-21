@@ -40,7 +40,7 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
         body:Container(
-          height: 1000,
+          height: 100,
           width: 200,
             child:Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
