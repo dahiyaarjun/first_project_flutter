@@ -41,7 +41,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
         body:Container(
           height: 100,
-          width: 200,
+          width: 10,
             child:Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.center,
