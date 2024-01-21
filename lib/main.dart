@@ -48,7 +48,7 @@ class _MyHomePageState extends State<MyHomePage> {
             children: [
               Text('Wallpaper'),
               Text('preview'),
-              // Image.asset('assets/images/peakpx 3.jpg')
+              Image.asset('assets/images/peakpx 3.jpg')
             ]
           ),
         ),
