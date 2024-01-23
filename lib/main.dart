@@ -1,4 +1,5 @@
 import 'package:first_project_flutter/login.dart';
+import 'package:first_project_flutter/practice.dart';
 import 'package:first_project_flutter/register.dart';
 import 'package:flutter/material.dart';
 
@@ -8,7 +9,8 @@ void main() {
     initialRoute: 'login',
     routes: {
       'login': (context)=>UserLogin(),
-      'register': (context)=>UserRegister()
+      'register': (context)=>UserRegister(),
+      'practice': (context)=>Practice()
     },
   ));
 }

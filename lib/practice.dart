@@ -1,4 +1,3 @@
-import 'dart:html';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -14,13 +13,18 @@ class _PracticeState extends State<Practice> {
   @override
   Widget build(BuildContext context) {
     return Container(
-          Center(
-        child: Container(
-      color: Color.fromARGB(255, 172, 138, 39),
-      width: 500,
-      child: Text('sdfghj'),
-    ));
-    );
+            decoration: const BoxDecoration(
+            // image: DecorationImage(image: AssetImage('assets/images/peakpx 3.jpg'), fit: BoxFit.cover)
+            ),
+            
+            child:Center(
+              child: Container(
+                color: Color.fromARGB(255, 172, 138, 39),
+                width: 500,
+                child: Text('sdfghj'),
+              )
+            ),
+          );
   }
 }
 
