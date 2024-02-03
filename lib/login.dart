@@ -1,3 +1,4 @@
+import "package:first_project_flutter/backend/laravel.dart";
 import "package:flutter/material.dart";
 
 class UserLogin extends StatefulWidget {
@@ -8,6 +9,7 @@ class UserLogin extends StatefulWidget {
 }
 
 class _UserLoginState extends State<UserLogin> {
+  apiResponse data=apiResponse();
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -20,8 +22,14 @@ class _UserLoginState extends State<UserLogin> {
           children: [
             Container(
               padding: EdgeInsets.only(left: 22,top: 100),
-              child: Text('Welcome\nTo Demo App',
-                style: TextStyle(color: Colors.blue,fontSize: 33),
+              // child: Text('Welcome\nTo Demo App',
+              child: FutureBuilder<List>(
+                future: data.getResponse('dahiyaarjun343@gmail.com','@Arjun343'), 
+                builder: (context,snapshot){
+                  print(snapshot);
+                }
+              // ),
+                // style: TextStyle(color: Colors.blue,fontSize: 33),
               ),
             ),
             SingleChildScrollView(
