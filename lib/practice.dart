@@ -12,19 +12,56 @@ class Practice extends StatefulWidget {
 class _PracticeState extends State<Practice> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-            decoration: const BoxDecoration(
+    return Scaffold(
+           // decoration: const BoxDecoration(
             // image: DecorationImage(image: AssetImage('assets/images/peakpx 3.jpg'), fit: BoxFit.cover)
-            ),
+           // ),
             
-            child:Center(
+           body: Center(
               child: Container(
-                color: Color.fromARGB(255, 172, 138, 39),
+                
                 width: 500,
-                child: Text('sdfghj'),
-              )
-            ),
-          );
+                height: 500,
+                color: Colors.black,
+                // ElevatedButton(onPressed: (){
+                //             Navigator.pushNamed(context, 'register');
+                //           }, child: Text('SIGNUP')
+                // ),
+                )
+                // child:Row(
+                // mainAxisAlignment: MainAxisAlignment.end,
+                // crossAxisAlignment: CrossAxisAlignment.end,
+                //  children:[Column(
+                 //mainAxisAlignment: MainAxisAlignment.end,
+                 //crossAxisAlignment: ,
+                 
+                  
+                  //children:[
+                  // [Image.asset('assets/images/Screenshot 2023-11-03 215652.png'),
+                //  Text('Jaat',style: TextStyle(fontSize: 50,color:Colors.red)),
+                //  child:InkWell(onTap:() {
+                //   print('dfghj');
+                //   },
+                //   child:Container(
+                  
+                //   color: Colors.blue,height:200,width:200
+                  
+                  
+                //   ),
+                //   ),
+
+                //  ElevatedButton(onPressed: (){
+                            
+                //           }, child: Text('practice')
+                //           )]
+                //  )]
+              ),
+              
+               
+              
+            
+          
+    );
   }
 }
 

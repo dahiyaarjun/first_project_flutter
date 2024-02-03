@@ -15,7 +15,7 @@ class _UserLoginState extends State<UserLogin> {
         image: DecorationImage(image: AssetImage('assets/images/peakpx 3.jpg'), fit: BoxFit.cover)
       ),
       child: Scaffold(
-        // backgroundColor: Colors.transparent,
+         backgroundColor: Colors.transparent,
         body: Stack(
           children: [
             Container(

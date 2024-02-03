@@ -10,7 +10,8 @@ void main() {
     routes: {
       'login': (context)=>UserLogin(),
       'register': (context)=>UserRegister(),
-      'practice': (context)=>Practice()
+      'practice': (context)=>Practice(),
+      
     },
   ));
 }
