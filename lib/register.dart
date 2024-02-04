@@ -12,31 +12,31 @@ class _UserRegisterState extends State<UserRegister> {
   Widget build(BuildContext context) {
     return Scaffold(
        body:Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children:[ 
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             //crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           
-          Container(
-            width: 200,
-            height: 150,
-            color: Colors.amber,
-            child: Text('Register Page',style: TextStyle(color: Colors.black,fontSize:50)),
           
-          ),
+           Text('Register Page',style: TextStyle(color: Colors.black,fontSize:50)),
+          
+          
         ],
           ),
        Row(
-        children: [
-          Container(
-            color: Colors.black,
-          child:Text('Welcome\nTo Demo App',style: TextStyle(color:Colors.blue,fontSize: 50)),
-          )
-          ],
+        mainAxisAlignment: MainAxisAlignment.start,
 
-        ),
+        children: [
+          
+            
+          Text('Welcome\nTo Demo App',style: TextStyle(color:Colors.blue,fontSize: 50)),
+          
+         ],
+       ),
+
+        
         
         Row(
           children: [
@@ -45,6 +45,7 @@ class _UserRegisterState extends State<UserRegister> {
                 hintText: 'Email',
                 fillColor: Colors.yellow,
                 filled: true,
+                focusedBorder: OutlineInputBorder(borderSide:BorderSide(color: Colors.blue) ),
 
               border:OutlineInputBorder(borderRadius: BorderRadius.circular(10))
             )
@@ -52,6 +53,26 @@ class _UserRegisterState extends State<UserRegister> {
           ],
         
         ),
+        Row(
+          children: [
+            TextField(
+              decoration: InputDecoration(
+                hintText: 'Password',
+                fillColor: Colors.yellow,
+                filled: true,
+                focusedBorder: OutlineInputBorder(borderSide:BorderSide(color: Colors.blue) ),
+
+              border:OutlineInputBorder(borderRadius: BorderRadius.circular(10))
+            )
+            )
+          ],
+        
+        ),
+        Row(
+          children: [
+            ElevatedButton(onPressed:() {}, child: Text('Register')),
+
+        ],)
         ],
 
        ),
