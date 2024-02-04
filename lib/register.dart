@@ -8,6 +8,7 @@ class UserRegister extends StatefulWidget {
 }
 
 class _UserRegisterState extends State<UserRegister> {
+  bool b=true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,8 +19,15 @@ class _UserRegisterState extends State<UserRegister> {
              mainAxisAlignment: MainAxisAlignment.center,
             //crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Text('Register Page',
-                  style: TextStyle(color: Colors.black, fontSize: 30,backgroundColor: Colors.yellowAccent)),
+              
+             Container(
+                color: Colors.green,
+                width: 500,
+                height: 50,
+              child:Text('Register Page',
+                  style: TextStyle(color: Colors.black, fontSize: 30)),
+              
+              ),
             ],
           ),
           const SizedBox(height: 50,),
@@ -40,31 +48,47 @@ class _UserRegisterState extends State<UserRegister> {
                       filled: true,
                       prefixIcon: Icon(Icons.email,color: Colors.redAccent),
                       focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: const Color.fromARGB(255, 243, 89, 33)),borderRadius: BorderRadius.circular(50)),
+                          borderSide: BorderSide(color:  Colors.blue),borderRadius: BorderRadius.circular(50)),
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(20)))),
                         const SizedBox(height: 20),  
               TextField(
-                obscureText: true,
+                obscureText: b,
                 obscuringCharacter: "*",
                   decoration: InputDecoration(
                     
                       hintText: 'Password',
                       prefixIcon: Icon(Icons.password,color: Colors.redAccent),
+                     suffixIcon: GestureDetector(
+            
+            onTap: () {
+               // Update the state i.e. toogle the state of passwordVisible variable
+               setState(() {
+                   b = !b;
+               });
+             },
+             child: Icon((b?Icons.visibility_off:Icons.visibility)
+            )),
+            
+
                       fillColor: Colors.yellow,
                       filled: true,
                       focusedBorder: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.blue),borderRadius: BorderRadius.circular(50)),
                       border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20)))),
+                          borderRadius: BorderRadius.circular(20)))
+                          ),
 
                 const SizedBox(height: 20),
                           TextField(
                 obscureText: true,
                 obscuringCharacter: "*",
                   decoration: InputDecoration(
-                    prefixIcon: Icon(Icons.password,color: Colors.redAccent),
-                   // suffixIcon: IconButton(icon: Icon()),
+                    //suffixIcon: IconButton(onPressed: (){},icon: Icon),
+                    
+             
+            prefixIcon: Icon(Icons.password,color: Colors.redAccent),
+                   
                       hintText: 'Confirm Password',
                       
                       fillColor: Colors.yellow,
@@ -75,7 +99,7 @@ class _UserRegisterState extends State<UserRegister> {
                           borderRadius: BorderRadius.circular(20)))),
 
               const SizedBox(height: 40),
-              ElevatedButton(onPressed: () {}, child: Text('Register',style: TextStyle(color: Colors.green)),
+              ElevatedButton(onPressed: () {}, child: Text('Register',style: TextStyle(color: Colors.green),selectionColor: Colors.black),
               )
         ],
       ),
