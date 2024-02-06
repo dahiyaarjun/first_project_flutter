@@ -100,7 +100,12 @@ class _UserRegisterState extends State<UserRegister> {
 
               const SizedBox(height: 40),
               ElevatedButton(onPressed: () {}, child: Text('Register',style: TextStyle(color: Colors.green),selectionColor: Colors.black),
-              )
+              ), 
+              const SizedBox(height: 20),
+              ElevatedButton(onPressed: (){
+                            Navigator.pushNamed(context, 'login');
+                          }, child: Text('SIGNUP')
+                          ),
         ],
       ),
     );
