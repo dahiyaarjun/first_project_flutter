@@ -9,27 +9,49 @@ class UserRegister extends StatefulWidget {
 
 class _UserRegisterState extends State<UserRegister> {
   bool b=true;
+  //dynamic confirmPass=false;
+  ValueNotifier<bool> confirmPass = ValueNotifier<bool>(false);
+  
+  
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      
+    //  appBar: AppBar(
+    //     title: const Text('GeeksforGeeks'),
+    //     elevation: 2,
+    //   ), 
+          appBar: AppBar(
+            centerTitle: true,
+        title: const Text("Register Page"),
+        backgroundColor: Colors.greenAccent[400],
+        elevation: 50.0,
+        //actions: <Widget>[
+          // IconButton(
+          //   icon: const Icon(Icons.comment),
+          //   //tooltip: 'Comment Icon',
+          //   onPressed: () {},
+          // ), //IconButton
+          // IconButton(
+          //   icon: const Icon(Icons.settings),
+          //   tooltip: 'Setting Icon',
+          //   onPressed: () {},
+          // ), //IconButton
+       // ], //<Widget>[]
+        
+        // leading: IconButton(
+        //   icon: const Icon(Icons.menu),
+        //   tooltip: 'Menu Icon',
+        //   onPressed: () {},
+        // ),
+        // systemOverlayStyle: SystemUiOverlayStyle.light,
+      ), 
+      
       body: Column(
         // mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Row(
-             mainAxisAlignment: MainAxisAlignment.center,
-            //crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              
-             Container(
-                color: Colors.green,
-                width: 500,
-                height: 50,
-              child:Text('Register Page',
-                  style: TextStyle(color: Colors.black, fontSize: 30)),
-              
-              ),
-            ],
-          ),
+          
           const SizedBox(height: 50,),
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -40,6 +62,8 @@ class _UserRegisterState extends State<UserRegister> {
           ),
             const SizedBox(height: 30),
               TextField(
+                
+                
                   decoration: InputDecoration(
                     
                       hintText: 'Email',
@@ -48,9 +72,15 @@ class _UserRegisterState extends State<UserRegister> {
                       filled: true,
                       prefixIcon: Icon(Icons.email,color: Colors.redAccent),
                       focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color:  Colors.blue),borderRadius: BorderRadius.circular(50)),
+                          borderSide: BorderSide(color:  Colors.blue,width: 2),borderRadius: BorderRadius.circular(20)
+                          ),
                       border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20)))),
+                          borderRadius: BorderRadius.circular(20)
+                          ),
+                          
+                        
+                          )
+                          ),
                         const SizedBox(height: 20),  
               TextField(
                 obscureText: b,
@@ -74,13 +104,21 @@ class _UserRegisterState extends State<UserRegister> {
                       fillColor: Colors.yellow,
                       filled: true,
                       focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.blue),borderRadius: BorderRadius.circular(50)),
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20)))
+                          borderSide: BorderSide(color:  Colors.blue,width: 2),borderRadius: BorderRadius.circular(20),
                           ),
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20)
+                          ),
+                          
+              )
+              
+              ),
+              // confirmPass=true;
+              
 
                 const SizedBox(height: 20),
                           TextField(
+                            //enabled: confirmPass.value,
                 obscureText: true,
                 obscuringCharacter: "*",
                   decoration: InputDecoration(
@@ -94,9 +132,15 @@ class _UserRegisterState extends State<UserRegister> {
                       fillColor: Colors.yellow,
                       filled: true,
                       focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.blue),borderRadius: BorderRadius.circular(50)),
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20)))),
+                          borderSide: BorderSide(color:  Colors.blue,width: 2),borderRadius: BorderRadius.circular(20)),
+                
+                          border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20)
+                          ),
+                          disabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20)),
+              
+                       )),
 
               const SizedBox(height: 40),
               ElevatedButton(onPressed: () {}, child: Text('Register',style: TextStyle(color: Colors.green),selectionColor: Colors.black),
