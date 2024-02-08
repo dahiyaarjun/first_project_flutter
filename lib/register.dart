@@ -11,60 +11,27 @@ class UserRegister extends StatefulWidget {
 class _UserRegisterState extends State<UserRegister> {
   late TextEditingController controller;
   bool b=true;
-  bool confirmPass=true;
+  bool reg =true;
+  
   TextEditingController nameC = TextEditingController();
   TextEditingController emailC = TextEditingController();
   TextEditingController passwordC = TextEditingController();
   TextEditingController confirmPasswordC = TextEditingController();
-  @override
-  void initState(){
-    super.initState();
-    controller=TextEditingController();
-    controller.addListener(() {
-      final confirmPass=controller.text.isNotEmpty;
-      setState(() {
-        this.confirmPass=confirmPass;
-      });
-     });
-  }
-  @override
-  void dispose() {
+ 
     // TODO: implement dispose
-    controller.dispose();
-    super.dispose();
-  }
+    
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return Container(
+      child: Scaffold(
       
-    //  appBar: AppBar(
-    //     title: const Text('GeeksforGeeks'),
-    //     elevation: 2,
-    //   ), 
+   
           appBar: AppBar(
             centerTitle: true,
         title: const Text("Register Page"),
         backgroundColor: Colors.greenAccent[400],
         elevation: 50.0,
-        //actions: <Widget>[
-          // IconButton(
-          //   icon: const Icon(Icons.comment),
-          //   //tooltip: 'Comment Icon',
-          //   onPressed: () {},
-          // ), //IconButton
-          // IconButton(
-          //   icon: const Icon(Icons.settings),
-          //   tooltip: 'Setting Icon',
-          //   onPressed: () {},
-          // ), //IconButton
-       // ], //<Widget>[]
         
-        // leading: IconButton(
-        //   icon: const Icon(Icons.menu),
-        //   tooltip: 'Menu Icon',
-        //   onPressed: () {},
-        // ),
-        // systemOverlayStyle: SystemUiOverlayStyle.light,
       ), 
       
       body: Column(
@@ -72,15 +39,50 @@ class _UserRegisterState extends State<UserRegister> {
         children: [
           
           const SizedBox(height: 50,),
-          Row(
+          Container(
+            padding: EdgeInsets.only(left: 35),
+          child:Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Text('Welcome\nTo Demo App',
                   style: TextStyle(color: Colors.blue, fontSize: 30)),
             ],
           ),
-            const SizedBox(height: 30),
-              TextField(
+          ),
+          const SizedBox(height:30),
+            Container(
+             
+              width: 2000,
+              padding: EdgeInsets.only(left: 35,right: 35),
+              child:TextField(
+                
+                controller: nameC,
+                
+                
+                  decoration: InputDecoration(
+                    
+                      hintText: 'Name',
+                      
+                      fillColor: Colors.yellow,
+                      filled: true,
+                      prefixIcon: Icon(Icons.text_decrease,color: Colors.redAccent),
+                      focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color:  Colors.blue,width: 2),borderRadius: BorderRadius.circular(20)
+                          ),
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20)
+                          ),
+                          
+                        
+                          )
+                          )),
+                        const SizedBox(height: 20),
+            Container(
+             
+              width: 2000,
+              padding: EdgeInsets.only(left: 35,right: 35),
+              child:TextField(
+                
                 controller: emailC,
                 
                 
@@ -100,9 +102,11 @@ class _UserRegisterState extends State<UserRegister> {
                           
                         
                           )
-                          ),
+                          )),
                         const SizedBox(height: 20),  
-              TextField(
+                        Container(
+                          padding: EdgeInsets.only(left: 35,right: 35),
+              child:TextField(
                 
                 obscureText: b,
                 obscuringCharacter: "*",
@@ -134,11 +138,15 @@ class _UserRegisterState extends State<UserRegister> {
               )
               
               ),
+             ),
               // confirmPass=true;
               
 
                 const SizedBox(height: 20),
-                          TextField(
+
+                        Container(
+                          padding: EdgeInsets.only(left: 35,right: 35),
+                          child:TextField(
                             controller: confirmPasswordC,
                             //enabled: confirmPass.value,
                 obscureText: true,
@@ -163,24 +171,30 @@ class _UserRegisterState extends State<UserRegister> {
                           borderRadius: BorderRadius.circular(20)),
               
                        )
-                      // controller: controller,
+                       
                        ),
+                        ),
 
               const SizedBox(height: 40),
-              TextButton(onPressed: confirmPass?() {
-                String name='demo';
+              ElevatedButton(onPressed: () {
+                String name=nameC.text.toString();
                 String email=emailC.text.toString();
                 String password=passwordC.text.toString();
                 String confirmPassword=confirmPasswordC.text.toString();
                 apiResponse.apiUserRegistration(name,email,password,confirmPassword);
-                setState(() {
-                  confirmPass=false;
-                  controller.clear();
-                });
-
-              }:null, child: Text('Register',style: TextStyle(color: Colors.green),selectionColor: Colors.black),
-              )
+              },
+              child: Text('Register',style: TextStyle(color: Colors.black),),
+              style: ButtonStyle(
+    overlayColor: MaterialStateProperty.resolveWith<Color?>(
+      (Set<MaterialState> states) {
+        if (states.contains(MaterialState.pressed))
+          return Colors.redAccent; //<-- SEE HERE
+        return Colors.green; // Defer to the widget's default.
+      },
+    )),
+              ),
         ],
+      ),
       ),
     );
   }
