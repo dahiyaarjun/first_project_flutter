@@ -9,6 +9,10 @@ class UserRegister extends StatefulWidget {
 
 class _UserRegisterState extends State<UserRegister> {
   bool b=true;
+  TextEditingController nameC = TextEditingController();
+  TextEditingController emailC = TextEditingController();
+  TextEditingController passwordC = TextEditingController();
+  TextEditingController confirmPasswordC = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,6 +44,7 @@ class _UserRegisterState extends State<UserRegister> {
           ),
             const SizedBox(height: 30),
               TextField(
+                controller: emailC,
                   decoration: InputDecoration(
                     
                       hintText: 'Email',
@@ -53,6 +58,7 @@ class _UserRegisterState extends State<UserRegister> {
                           borderRadius: BorderRadius.circular(20)))),
                         const SizedBox(height: 20),  
               TextField(
+                controller: passwordC,
                 obscureText: b,
                 obscuringCharacter: "*",
                   decoration: InputDecoration(
@@ -81,6 +87,7 @@ class _UserRegisterState extends State<UserRegister> {
 
                 const SizedBox(height: 20),
                           TextField(
+                            controller: confirmPasswordC,
                 obscureText: true,
                 obscuringCharacter: "*",
                   decoration: InputDecoration(
