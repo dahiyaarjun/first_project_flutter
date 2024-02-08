@@ -1,3 +1,4 @@
+import 'package:first_project_flutter/backend/laravel.dart';
 import 'package:flutter/material.dart';
 
 class UserRegister extends StatefulWidget {
@@ -106,7 +107,13 @@ class _UserRegisterState extends State<UserRegister> {
                           borderRadius: BorderRadius.circular(20)))),
 
               const SizedBox(height: 40),
-              ElevatedButton(onPressed: () {}, child: Text('Register',style: TextStyle(color: Colors.green),selectionColor: Colors.black),
+              ElevatedButton(onPressed: () {
+                String name='demo';
+                String email=emailC.text.toString();
+                String password=passwordC.text.toString();
+                String confirmPassword=confirmPasswordC.text.toString();
+                apiResponse.apiUserRegistration(name,email,password,confirmPassword);
+              }, child: Text('Register',style: TextStyle(color: Colors.green),selectionColor: Colors.black),
               )
         ],
       ),

@@ -63,6 +63,40 @@ class apiResponse {
     }
   }
 
+  static apiUserRegistration(String name,String email,String password,String password_confirmation) async {
+    
+    // local
+    // String $baseUrl = 'https://127.0.0.1:8000/';
+    
+    // for emulator
+    String $baseUrl = 'http://10.0.2.2:8000/';
+
+    String apiUrl = '${$baseUrl}api/user/register';
+    try {
+      var response = await http.post(Uri.parse(apiUrl),
+      body: {
+        "name": name,
+        "email": email,
+        "password": password,
+        "password_confirmation": password_confirmation,
+      },
+      );
+      // Check if the request was successful (status code 200)
+      if (response.statusCode == 200) {
+        // Parse the JSON response
+        return json.decode(response.body);
+      } else {
+        // Print an error message if the request was not successful
+        return "Server Error";
+      }
+    } catch (e) {
+      print(e);
+      return "Failed";
+    }
+  }
+
+  
+
   // Future<ModelUserLogin> Userlogin(String email,String password) async{
   //   // object
   //   ModelUserLogin? modelUserLogin;

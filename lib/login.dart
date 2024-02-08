@@ -21,19 +21,19 @@ class _UserLoginState extends State<UserLogin> {
         // backgroundColor: Colors.transparent,
         body: Stack(
           children: [
-            Container(
-              padding: EdgeInsets.only(left: 22,top: 100),
-              // child: Text('Welcome\nTo Demo App',
-              child: FutureBuilder<List>(
-                future: data.getResponse('dahiyaarjun343@gmail.com','@Arjun343'), 
-                builder: (context,snapshot){
-                  print(snapshot);
-                  return Text('arjun');
-                }
-              // ),
-                // style: TextStyle(color: Colors.blue,fontSize: 33),
-              ),
-            ),
+            // Container(
+            //   padding: EdgeInsets.only(left: 22,top: 100),
+            //   // child: Text('Welcome\nTo Demo App',
+            //   child: FutureBuilder<List>(
+            //     future: data.getResponse('dahiyaarjun343@gmail.com','@Arjun343'), 
+            //     builder: (context,snapshot){
+            //       print(snapshot);
+            //       return Text('arjun');
+            //     }
+            //   // ),
+            //     // style: TextStyle(color: Colors.blue,fontSize: 33),
+            //   ),
+            // ),
             SingleChildScrollView(
                 child:Container(
                   padding: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.4,left: 35,right: 35),
