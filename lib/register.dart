@@ -8,12 +8,30 @@ class UserRegister extends StatefulWidget {
 }
 
 class _UserRegisterState extends State<UserRegister> {
+  late TextEditingController controller;
   bool b=true;
-  //dynamic confirmPass=false;
-  ValueNotifier<bool> confirmPass = ValueNotifier<bool>(false);
-  
-  
-  
+  bool confirmPass=true;
+  TextEditingController nameC = TextEditingController();
+  TextEditingController emailC = TextEditingController();
+  TextEditingController passwordC = TextEditingController();
+  TextEditingController confirmPasswordC = TextEditingController();
+  @override
+  void initState(){
+    super.initState();
+    controller=TextEditingController();
+    controller.addListener(() {
+      final confirmPass=controller.text.isNotEmpty;
+      setState(() {
+        this.confirmPass=confirmPass;
+      });
+     });
+  }
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    controller.dispose();
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,6 +80,7 @@ class _UserRegisterState extends State<UserRegister> {
           ),
             const SizedBox(height: 30),
               TextField(
+                controller: emailC,
                 
                 
                   decoration: InputDecoration(
@@ -83,6 +102,7 @@ class _UserRegisterState extends State<UserRegister> {
                           ),
                         const SizedBox(height: 20),  
               TextField(
+                
                 obscureText: b,
                 obscuringCharacter: "*",
                   decoration: InputDecoration(
@@ -118,6 +138,7 @@ class _UserRegisterState extends State<UserRegister> {
 
                 const SizedBox(height: 20),
                           TextField(
+                            controller: confirmPasswordC,
                             //enabled: confirmPass.value,
                 obscureText: true,
                 obscuringCharacter: "*",
@@ -140,10 +161,18 @@ class _UserRegisterState extends State<UserRegister> {
                           disabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(20)),
               
-                       )),
+                       )
+                      // controller: controller,
+                       ),
 
               const SizedBox(height: 40),
-              ElevatedButton(onPressed: () {}, child: Text('Register',style: TextStyle(color: Colors.green),selectionColor: Colors.black),
+              TextButton(onPressed: confirmPass?() {
+                setState(() {
+                  confirmPass=false;
+                  controller.clear();
+                });
+
+              }:null, child: Text('Register',style: TextStyle(color: Colors.green),selectionColor: Colors.black),
               )
         ],
       ),
