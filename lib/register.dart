@@ -168,6 +168,11 @@ class _UserRegisterState extends State<UserRegister> {
 
               const SizedBox(height: 40),
               TextButton(onPressed: confirmPass?() {
+                String name='demo';
+                String email=emailC.text.toString();
+                String password=passwordC.text.toString();
+                String confirmPassword=confirmPasswordC.text.toString();
+                apiResponse.apiUserRegistration(name,email,password,confirmPassword);
                 setState(() {
                   confirmPass=false;
                   controller.clear();
