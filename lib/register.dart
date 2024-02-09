@@ -65,7 +65,7 @@ class _UserRegisterState extends State<UserRegister> {
                       
                       fillColor: Colors.yellow,
                       filled: true,
-                      prefixIcon: Icon(Icons.text_decrease,color: Colors.redAccent),
+                      prefixIcon: Icon(Icons.person,color: Colors.redAccent),
                       focusedBorder: OutlineInputBorder(
                           borderSide: BorderSide(color:  Colors.blue,width: 2),borderRadius: BorderRadius.circular(20)
                           ),
@@ -183,7 +183,7 @@ class _UserRegisterState extends State<UserRegister> {
                 String confirmPassword=confirmPasswordC.text.toString();
                 apiResponse.apiUserRegistration(name,email,password,confirmPassword);
               },
-              child: Text('Register',style: TextStyle(color: Colors.black),),
+              child: Text('Register',style: TextStyle(color: Colors.purple,fontSize: 22)),
               style: ButtonStyle(
     overlayColor: MaterialStateProperty.resolveWith<Color?>(
       (Set<MaterialState> states) {
@@ -193,6 +193,40 @@ class _UserRegisterState extends State<UserRegister> {
       },
     )),
               ),
+        const SizedBox(height: 50),
+       Container(
+        padding: EdgeInsets.only(left: 35),
+       child:Row(
+        children: [
+          
+          Text('Already a user?',style: TextStyle(color: Colors.blueGrey),),
+        ],
+       ),
+          
+         
+        ),
+        Container(
+          padding: EdgeInsets.only(left: 35),
+        child:Row(
+          children: [
+            ElevatedButton(onPressed: (){
+            Navigator.pushNamed(context, 'login');
+            
+            },
+            child: Text('login',style: TextStyle(color: Colors.black),),
+            style: ButtonStyle(
+    overlayColor: MaterialStateProperty.resolveWith<Color?>(
+      (Set<MaterialState> states) {
+        if (states.contains(MaterialState.pressed))
+          return Colors.redAccent; //<-- SEE HERE
+        return Colors.green; // Defer to the widget's default.
+      },
+      )),
+            ),
+          ],
+        ),
+        ),
+        
         ],
       ),
       ),
