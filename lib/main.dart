@@ -1,4 +1,4 @@
-import 'package:first_project_flutter/home/home.dart';
+import 'package:first_project_flutter/home/ui/home.dart';
 import 'package:flutter/material.dart';
 
  void main(){
@@ -10,8 +10,11 @@ import 'package:flutter/material.dart';
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        primaryColor: Colors.pink
+      ),
       home: Home(),
     );
   }
