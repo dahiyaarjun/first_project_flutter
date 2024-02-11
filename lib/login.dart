@@ -91,6 +91,10 @@ class _UserLoginState extends State<UserLogin> {
                           ElevatedButton(onPressed: (){
                             Navigator.pushNamed(context, 'practice');
                           }, child: Text('practice')
+                          ),
+                          ElevatedButton(onPressed: (){
+                            Navigator.pushNamed(context, 'ResetPassword');
+                          }, child: Text('Reset')
                           )
                         ],
                       ),
