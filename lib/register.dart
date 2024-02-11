@@ -34,7 +34,8 @@ class _UserRegisterState extends State<UserRegister> {
         
       ), 
       
-      body: Column(
+      body: SingleChildScrollView(
+      child:Column(
         // mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           
@@ -228,6 +229,7 @@ class _UserRegisterState extends State<UserRegister> {
         ),
         
         ],
+      ),
       ),
       ),
     );
