@@ -1,8 +1,10 @@
 import "package:first_project_flutter/backend/laravel.dart";
+import "package:first_project_flutter/model_user_login.dart";
 import "package:flutter/material.dart";
 
 class UserLogin extends StatefulWidget {
   const UserLogin({super.key});
+
 
   @override
   State<UserLogin> createState() => _UserLoginState();
@@ -10,10 +12,14 @@ class UserLogin extends StatefulWidget {
 
 class _UserLoginState extends State<UserLogin> {
   apiResponse data=apiResponse();
+  TextEditingController emailC = TextEditingController();
+  TextEditingController passwordC = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    return 
-    Container(
+    return Scaffold(
+    body: Container(
+
+    child: Container(
       decoration: const BoxDecoration(
         image: DecorationImage(image: AssetImage('assets/images/peakpx 3.jpg'), fit: BoxFit.cover)
       ),
@@ -21,25 +27,20 @@ class _UserLoginState extends State<UserLogin> {
          backgroundColor: Colors.transparent,
         body: Stack(
           children: [
-            // Container(
-            //   padding: EdgeInsets.only(left: 22,top: 100),
-            //   // child: Text('Welcome\nTo Demo App',
-            //   child: FutureBuilder<List>(
-            //     future: data.getResponse('dahiyaarjun343@gmail.com','@Arjun343'), 
-            //     builder: (context,snapshot){
-            //       print(snapshot);
-            //       return Text('arjun');
-            //     }
-            //   // ),
-            //     // style: TextStyle(color: Colors.blue,fontSize: 33),
-            //   ),
-            // ),
+            Container(
+              padding: EdgeInsets.only(left: 22,top: 100),
+              child: Text('Welcome\nTo Demo App',
+              // ),
+                style: TextStyle(color: Colors.blue,fontSize: 33),
+              ),
+            ),
             SingleChildScrollView(
                 child:Container(
                   padding: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.4,left: 35,right: 35),
                   child: Column(
                     children: [
                       TextField(
+                        controller: emailC,
                         decoration: InputDecoration(
                           hintText: 'Email',
                           fillColor: Colors.amber.shade100,
@@ -53,6 +54,7 @@ class _UserLoginState extends State<UserLogin> {
                         height: 25,
                       ),
                       TextField(
+                        controller: passwordC,
                         obscureText: true,
                         decoration: InputDecoration(
                           hintText: 'Password',
@@ -77,7 +79,23 @@ class _UserLoginState extends State<UserLogin> {
                               radius: 30,
                               backgroundColor: Colors.amber,
                               child: IconButton(
-                                onPressed: (){}, 
+                                onPressed: (){
+                                  String email=emailC.text.toString();
+                                  String password=passwordC.text.toString();
+                                        FutureBuilder(future: data.getResponse(email,password), builder: (BuildContext context, AsyncSnapshot<ModelUserLogin>snapshot) {
+                                        if(snapshot.hasData){
+                                          print("success");
+                                          return Container(
+                                            height: 100,
+                                            width: 100,
+                                            color: Colors.blue,
+                                            child: Text("Success")
+                                            );
+                                        }else{
+                                          return Text("error");
+                                        }
+                                      });
+                                }, 
                                 icon: Icon(Icons.arrow_forward)),
                             )
                         ],
@@ -105,9 +123,24 @@ class _UserLoginState extends State<UserLogin> {
           ],
         ),
       ),
+    ),
+    ),
     );
   }
 }
+
+
+
+
+// api call
+      // child: FutureBuilder(future: data.getResponse(emailC,passwordC), builder: (BuildContext context, AsyncSnapshot<ModelUserLogin>snapshot) {
+      //   if(snapshot.hasData){
+      //     return 
+      //   }
+      // })),
+
+
+
 
 // class LoginPage extends StatefulWidget {
 //   const LoginPage({super.key});
