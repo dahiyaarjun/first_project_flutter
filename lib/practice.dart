@@ -13,54 +13,28 @@ class _PracticeState extends State<Practice> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-           // decoration: const BoxDecoration(
-            // image: DecorationImage(image: AssetImage('assets/images/peakpx 3.jpg'), fit: BoxFit.cover)
-           // ),
             
-           body: Center(
-              child: Container(
                 
-                width: 500,
-                height: 500,
-                color: Colors.black,
-                // ElevatedButton(onPressed: (){
-                //             Navigator.pushNamed(context, 'register');
-                //           }, child: Text('SIGNUP')
-                // ),
-                )
-                // child:Row(
-                // mainAxisAlignment: MainAxisAlignment.end,
-                // crossAxisAlignment: CrossAxisAlignment.end,
-                //  children:[Column(
-                 //mainAxisAlignment: MainAxisAlignment.end,
-                 //crossAxisAlignment: ,
-                 
-                  
-                  //children:[
-                  // [Image.asset('assets/images/Screenshot 2023-11-03 215652.png'),
-                //  Text('Jaat',style: TextStyle(fontSize: 50,color:Colors.red)),
-                //  child:InkWell(onTap:() {
-                //   print('dfghj');
-                //   },
-                //   child:Container(
-                  
-                //   color: Colors.blue,height:200,width:200
-                  
-                  
-                //   ),
-                //   ),
+                body:Container(
+                  width: 1000,
+                child:
+                RichText(text: TextSpan(
+                  style: TextStyle(color: Colors.red,fontSize: 20),
+                  children: const<TextSpan>[
+                    TextSpan(
+                      text: 'Akshit\n',style: TextStyle(color: Colors.amber,fontSize: 20),
+                      
+                    ),
+                    TextSpan(
+                      text: 'chaudhary'
+                    )
 
-                //  ElevatedButton(onPressed: (){
-                            
-                //           }, child: Text('practice')
-                //           )]
-                //  )]
-              ),
-              
-               
-              
-            
-          
+                  ]
+
+                ),)
+                ),
+                
+             
     );
   }
 }
