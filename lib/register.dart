@@ -182,7 +182,10 @@ class _UserRegisterState extends State<UserRegister> {
                 String email=emailC.text.toString();
                 String password=passwordC.text.toString();
                 String confirmPassword=confirmPasswordC.text.toString();
-                apiResponse.apiUserRegistration(name,email,password,confirmPassword);
+                print("start");
+                var a=apiResponse.apiUserRegistration(name,email,password,confirmPassword);
+                print("stop");
+                print(a);
               },
               child: Text('Register',style: TextStyle(color: Colors.purple,fontSize: 22)),
               style: ButtonStyle(
