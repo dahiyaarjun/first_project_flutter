@@ -75,27 +75,26 @@ class apiResponse {
     // for emulator
     // String $baseUrl = 'http://10.0.2.2:8000/';
 
-    // String apiUrl = '${$baseUrl}api/user/register';
+    // for live api
+    print(name);
+    print(email);
+    print(password);
+    print(password_confirmation);
+    String $baseUrl = 'https://violent-wall-production.up.railway.app/';
+    String apiUrl = '${$baseUrl}api/user/register';
     try {
-      // var response = await http.post(Uri.parse(apiUrl),
-      // body: {
-      //   "name": name,
-      //   "email": email,
-      //   "password": password,
-      //   "password_confirmation": password_confirmation,
-      // },
-      var response = await http.get(Uri.parse('https://catfact.ninja/fact'),
-      // body: {
-      //   "name": name,
-      //   "email": email,
-      //   "password": password,
-      //   "password_confirmation": password_confirmation,
-      // },
+      var response = await http.post(Uri.parse(apiUrl),
+      body: {
+        "name": name,
+        "email": email,
+        "password": password,
+        "password_confirmation": password_confirmation,
+      },
       );
       // Check if the request was successful (status code 200)
+        print(response.body);
       if (response.statusCode == 200) {
         // Parse the JSON response
-        print(response.body);
         return json.decode(response.body);
       } else {
         // Print an error message if the request was not successful
@@ -139,7 +138,8 @@ class apiResponse {
 
  Future<List<ResponseModel>> fetchData() async {
   // Replace this URL with your API endpoint
-  final response = await http.get(Uri.parse('https://jsonplaceholder.typicode.com/posts'));
+  final response = await http.get(Uri.parse('https://violent-wall-production.up.railway.app/api/user/test'));
+  print(response.body);
   if (response.statusCode == 200) {
     // If the call to the server was successful, parse the JSON
     final data = json.decode(response.body) as List<dynamic>;

@@ -68,7 +68,7 @@ class _PracticeState extends State<Practice> {
             return Text('Error: ${snapshot.error}');
           } else {
             return ListView.builder(
-              itemCount: 10,
+              itemCount: snapshot.data!.length,
               itemBuilder: (context, index) {
                 final post = snapshot.data![index];
                 return Container(
@@ -79,8 +79,8 @@ class _PracticeState extends State<Practice> {
              width: 4.0, 
            )),
                   child: ListTile(
-                    title: Text(post.title!),
-                    subtitle: Text(post.body!),
+                    title: Text(post.name!),
+                    subtitle: Text(post.email!),
                   ),
                 );
               },
