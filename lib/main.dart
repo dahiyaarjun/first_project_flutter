@@ -1,7 +1,7 @@
-import 'package:first_project_flutter/login.dart';
-import 'package:first_project_flutter/model_user_login.dart';
-import 'package:first_project_flutter/practice.dart';
-import 'package:first_project_flutter/register.dart';
+import 'package:first_project_flutter/pages/login.dart';
+import 'package:first_project_flutter/models/model_user_login.dart';
+import 'package:first_project_flutter/pages/practice.dart';
+import 'package:first_project_flutter/pages/register.dart';
 // import 'package:first_project_flutter/reset_pass.dart';
 import 'package:flutter/material.dart';
 

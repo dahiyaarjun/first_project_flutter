@@ -1,10 +1,10 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:first_project_flutter/backend/dummy_model.dart';
+import 'package:first_project_flutter/models/dummy_model.dart';
 import 'package:first_project_flutter/backend/laravel.dart';
-import 'package:first_project_flutter/backend/responsemodel.dart';
-import 'package:first_project_flutter/login.dart';
+import 'package:first_project_flutter/models/responsemodel.dart';
+import 'package:first_project_flutter/pages/login.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
