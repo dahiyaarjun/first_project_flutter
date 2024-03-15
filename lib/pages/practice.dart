@@ -60,7 +60,7 @@ class _PracticeState extends State<Practice> {
       body:
         
         FutureBuilder<List<ResponseModel>>(
-        future: obj.fetchData(),
+        future: apiResponse.fetchData(),
         builder: (BuildContext context, AsyncSnapshot<List<ResponseModel>> snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(child: CircularProgressIndicator());

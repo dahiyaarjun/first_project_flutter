@@ -1,7 +1,10 @@
 import 'package:first_project_flutter/custom_helper/constants.dart';
 import 'package:first_project_flutter/models/dummy_model.dart';
+import 'package:first_project_flutter/models/registermodel.dart';
 import 'package:first_project_flutter/models/responsemodel.dart';
-import 'package:first_project_flutter/models/model_user_login.dart';
+import 'package:first_project_flutter/models/loginmodel.dart';
+import 'package:first_project_flutter/pages/practice.dart';
+import 'package:first_project_flutter/widgets/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -9,27 +12,36 @@ import 'dart:convert';
 // ignore: camel_case_types
 class apiResponse {
   static String baseUrl = AppConstants.baseUrl;
-  Future<ModelUserLogin> getResponse(String email,String password) async {
 
-    String apiUrl = '${baseUrl}api/user/login';
+  Future<void> userLogin({
+    required BuildContext context,
+    required String email,
+    required String password,
+  }) async {
     try {
-      var response = await http.post(Uri.parse(apiUrl),
-      body: {
-        "email": email,
-        "password": password,
-      },
+      String apiUrl = '${baseUrl}api/user/login';
+      http.Response response = await http.post(
+        Uri.parse(apiUrl),
+        body: {'email': email, 'password': password},
       );
       if (response.statusCode == 200) {
-        // Parse the JSON response
-        final data= json.decode(response.body);
-        return ModelUserLogin.fromJson(data);
+        Map<String, dynamic> userData = jsonDecode(response.body);
+        String successful = userData['message'];
+        // String accessToken = userData['token'];
+        // print('Access Token come during Login Time' + accessToken);
+        // await SharedPreferencesHelper.setAccessToken(accessToken);
+        Utils.showSnackBar(context, successful);
+        Navigator.pushNamed(context, 'practice');
       } else {
-        return Future.error("Server Error");
+        Map<String, dynamic> errorMessage = jsonDecode(response.body);
+        String error = errorMessage['message'];
+        Utils.showSnackBar(context, error);
       }
     } catch (e) {
-      return Future.error(e);
+      Utils.showSnackBar(context, e.toString());
     }
   }
+
 
   static apiUserRegistration(String name,String email,String password,String password_confirmation) async {
     
@@ -44,13 +56,13 @@ class apiResponse {
       },
       );
       if (response.statusCode == 200) {
-        return json.decode(response.body);
+        RegisterModel data = RegisterModel.fromJson(json.decode(response.body));
       } else {
-        return "Server Error";
+        return 'Server Error';
       }
     } catch (e) {
       print(e);
-      return "Failed";
+      throw Exception('Failed to load data');
     }
   }
 
@@ -83,7 +95,7 @@ class apiResponse {
  }
 
 
- Future<List<ResponseModel>> fetchData() async {
+ static Future<List<ResponseModel>> fetchData() async {
   // Replace this URL with your API endpoint
   final response = await http.get(Uri.parse('https://violent-wall-production.up.railway.app/api/user/test'));
   print(response.body);
@@ -112,6 +124,40 @@ class apiResponse {
   //   modelUserLogin = ModelUserLogin.fromJson(jsonResponse);
   //   print(modelUserLogin);
   //   return modelUserLogin;
+  // }
+
+  //   Future<void> userLogin({
+  //   required BuildContext context,
+  //   required String email,
+  //   required String password,
+  // }) async {
+  //   try {
+  //     String apiUrl = '${baseUrl}api/user/login';
+  //     http.Response response = await http.post(
+  //       Uri.parse(apiUrl),
+  //       body: {'email': email, 'password': password},
+  //     );
+  //     if (response.statusCode == 200) {
+  //       Map<String, dynamic> userData = jsonDecode(response.body);
+  //       String successful = userData['message'];
+  //       String accessToken = userData['token'];
+  //       print('Access Token come during Login Time' + accessToken);
+  //       // await SharedPreferencesHelper.setAccessToken(accessToken);
+  //       await Utils.showSnackBar(context, successful);
+  //       // Navigator.pushReplacement(
+  //       //   context,
+  //       //   MaterialPageRoute(
+  //       //       builder: (BuildContext context) => const Practice()),
+  //       // );
+  //       Utils.showSnackBar(context, successful);
+  //     } else {
+  //       Map<String, dynamic> errorMessage = jsonDecode(response.body);
+  //       String error = errorMessage['message'];
+  //       Utils.showSnackBar(context, error);
+  //     }
+  //   } catch (e) {
+  //     Utils.showSnackBar(context, e.toString());
+  //   }
   // }
 
 }

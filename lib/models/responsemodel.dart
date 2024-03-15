@@ -27,32 +27,3 @@ class ResponseModel {
     return map;
   }
 }
-// class ResponseModel {
-//     ResponseModel({
-//         required this.id,
-//         required this.name,
-//         required this.email,
-//         required this.emailVerifiedAt,
-//         required this.createdAt,
-//         required this.updatedAt,
-//     });
-
-//     final int? id;
-//     final String? name;
-//     final String? email;
-//     final dynamic emailVerifiedAt;
-//     final DateTime? createdAt;
-//     final DateTime? updatedAt;
-
-//     factory ResponseModel.fromJson(Map<String, dynamic> json){ 
-//         return ResponseModel(
-//             id: json["id"],
-//             name: json["name"],
-//             email: json["email"],
-//             emailVerifiedAt: json["email_verified_at"],
-//             createdAt: DateTime.tryParse(json["created_at"] ?? ""),
-//             updatedAt: DateTime.tryParse(json["updated_at"] ?? ""),
-//         );
-//     }
-
-// }

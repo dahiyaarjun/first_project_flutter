@@ -1,11 +1,11 @@
-class ModelUserLogin {
+class LoginModel {
   String? message;
   String? token;
   String? status;
 
-  ModelUserLogin({this.message, this.token, this.status});
+  LoginModel({this.message, this.token, this.status});
 
-  ModelUserLogin.fromJson(Map<String, dynamic> json) {
+  LoginModel.fromJson(Map<String, dynamic> json) {
     message = json['message'];
     token = json['token'];
     status = json['status'];
