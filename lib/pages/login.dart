@@ -145,6 +145,10 @@ class _UserLoginState extends State<UserLogin> {
                                 Navigator.pushNamed(context, 'register');
                               },
                               child: const Text('SIGNUP')),
+                          ElevatedButton(onPressed: () {
+                                Navigator.pushNamed(context, 'ResetPassword');
+                              },
+                              child: const Text('Forget Password')),
                         ],
                       ),
                     ],
