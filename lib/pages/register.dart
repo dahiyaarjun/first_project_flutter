@@ -1,3 +1,4 @@
+import 'package:first_project_flutter/backend/laravel.dart';
 import 'package:flutter/material.dart';
 
 class UserRegister extends StatefulWidget {
@@ -19,8 +20,8 @@ class _UserRegisterState extends State<UserRegister> {
   TextEditingController confirmPasswordC = TextEditingController();
 
   Future<void> register() async {
-    // await apiResponse().userR(
-    //     context: context, email: emailC.text, password: passwordC.text);
+    await apiResponse().apiUserRegistration(
+        context: context, name: nameC.text, email: emailC.text, password: passwordC.text, password_confirmation:confirmPasswordC.text);
   }
 
   @override
@@ -59,7 +60,7 @@ class _UserRegisterState extends State<UserRegister> {
                     padding: const EdgeInsets.only(left: 35, right: 35),
                     child: TextFormField(
                       keyboardType: TextInputType.name,
-                      controller: emailC,
+                      controller: nameC,
                       validator: (value) {
                         if (value == null || value.isEmpty) {
                           return 'Please Enter Name';
