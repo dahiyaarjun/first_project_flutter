@@ -1,4 +1,5 @@
 import 'package:first_project_flutter/backend/laravel.dart';
+import 'package:first_project_flutter/pages/newpassword.dart';
 import 'package:flutter/material.dart';
 
 class ResetPassword extends StatefulWidget {
@@ -14,6 +15,12 @@ class _ResetPasswordState extends State<ResetPassword> {
     await apiResponse().apiResetPassword(
         context: context, email: emailC.text);
   }
+  final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
+
+  
+
+
+
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
@@ -51,9 +58,22 @@ class _ResetPasswordState extends State<ResetPassword> {
             ],
           ),
           const SizedBox(height: 10),
-          Padding(padding: EdgeInsets.only(left: 35),
-          child:TextField(
+          
+          
+          Form(
+            key: _formkey,
+            child:Column(
+            children: [
+              Padding(padding: EdgeInsets.only(left: 35),
+          
+           child: TextFormField(
             controller: emailC,
+            validator: (value) {
+                                    if (value == null || value.isEmpty) {
+                                      return 'Please enter email';
+                                    }
+                                    return null;
+                                  },
             decoration: InputDecoration(
               hintText: "enter email here",
               fillColor: Colors.yellow,
@@ -65,11 +85,30 @@ class _ResetPasswordState extends State<ResetPassword> {
               ),
             ),
           ),
+          ),
+            ],
+          ),
+            
       ),
           const SizedBox(height: 50),
           Container(
             // color: Colors.blue,
-          child:  ElevatedButton(onPressed: (){resetPassword(); } , child: Text('Reset Password',style:TextStyle(fontSize: 30,color:Colors.blue),),),
+          child:  ElevatedButton(onPressed: (){
+            if (_formkey.currentState!.validate()) {
+                                    resetPassword();
+                                    String email=emailC.text;
+            
+            Navigator.of(
+    context).push(
+    MaterialPageRoute(
+      builder: (context) => NewPassword(email: email),
+    ));
+                                  }
+                    
+            
+            
+            
+             } , child: Text('Reset Password',style:TextStyle(fontSize: 30,color:Colors.blue),),),
       ),],
       )
       

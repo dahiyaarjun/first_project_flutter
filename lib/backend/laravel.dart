@@ -11,7 +11,45 @@ import 'dart:convert';
 
 // ignore: camel_case_types
 class apiResponse {
+
   static String baseUrl = AppConstants.baseUrl;
+
+
+  static Future<void> apiNewPassword({required BuildContext context,
+  required String email,
+  required String password,
+  required String password_confirmation,
+   required String otp}) async{
+    try{
+      String apiUrl='${baseUrl}api/user/reset/by-otp';
+      var Response=await http.post(Uri.parse(apiUrl),
+      body:{
+        'email':email,'password':password,
+        'password_confirmation':password_confirmation,
+        'otp':otp},
+      );
+
+      if(Response.statusCode==200){
+        Map<String,dynamic>userData=jsonDecode(Response.body);
+        String successful = userData['message'];
+        
+        Utils.showSnackBar(context, successful);
+      }
+
+        else {
+        Map<String, dynamic> errorMessage = jsonDecode(Response.body);
+        String error = errorMessage['message'];
+        Utils.showSnackBar(context, error);
+      }
+    } catch (e) {
+      Utils.showSnackBar(context, e.toString());
+    }
+
+
+
+      }
+
+  
 
   Future<void> apiUserLogin({
     required BuildContext context,
@@ -26,12 +64,15 @@ class apiResponse {
       );
       if (response.statusCode == 200) {
         Map<String, dynamic> userData = jsonDecode(response.body);
-        String successful = userData['message'];
+        String msg = userData['message'];
+        String status = userData['status'];
         // String accessToken = userData['token'];
         // print('Access Token come during Login Time' + accessToken);
         // await SharedPreferencesHelper.setAccessToken(accessToken);
-        Utils.showSnackBar(context, successful);
+        Utils.showSnackBar(context, msg);
+        if(status=="Success"){
         Navigator.pushNamed(context, 'practice');
+        }
       } else {
         Map<String, dynamic> errorMessage = jsonDecode(response.body);
         String error = errorMessage['message'];
@@ -62,8 +103,11 @@ class apiResponse {
       if (response.statusCode == 200) {
         Map<String, dynamic> userData = jsonDecode(response.body);
         String message = userData['message'];
+        String status = userData['status'];
         Utils.showSnackBar(context, message);
+        if(status=="Success"){
         Navigator.pushNamed(context, 'practice');
+        }
       } else {
         Map<String, dynamic> userData = jsonDecode(response.body);
         String message = userData['message'];
@@ -91,7 +135,7 @@ class apiResponse {
         int otp = userData['otp'];
         // print('Access Token come during Login Time' + accessToken);
         // await SharedPreferencesHelper.setAccessToken(accessToken);
-        Utils.showSnackBar(context, successful);
+        await Utils.showSnackBar(context, successful);
       } else {
         Map<String, dynamic> errorMessage = jsonDecode(response.body);
         String error = errorMessage['message'];
