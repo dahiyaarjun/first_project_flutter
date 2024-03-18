@@ -19,6 +19,7 @@ class _NewPasswordState extends State<NewPassword> {
         password_confirmation: passconfirmC.text,
         otp: otpC.text);
   }
+
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
   TextEditingController passC = new TextEditingController();
   TextEditingController passconfirmC = new TextEditingController();
@@ -38,85 +39,104 @@ class _NewPasswordState extends State<NewPassword> {
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
           padding: const EdgeInsets.only(left: 22, top: 100),
-          color: Colors.lightBlueAccent,
+          color: Colors.white10,
           child: SingleChildScrollView(
               child: Column(
             children: [
               // SizedBox(height: 100,),
 
-              Row(
-                children: [
-                  Text(
-                    'You are resetting password for:',
-                    style: TextStyle(color: Colors.red, fontSize: 25),
+              Center(
+                child: Container(
+                  height: MediaQuery.of(context).size.height * 0.05,
+                  width: MediaQuery.of(context).size.width / 1.1,
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children: [
+                        Text(
+                          'You are resetting password for:',
+                          style: TextStyle(color: Colors.red, fontSize: 20),
+                        ),
+                        Text(
+                          '${widget.email}',
+                          style: TextStyle(color: Colors.black, fontSize: 20),
+                        ),
+                      ],
+                    ),
                   ),
-                  Text(
-                    '${widget.email}',
-                    style: TextStyle(color: Colors.green, fontSize: 25),
-                  ),
-                ],
+                ),
               ),
+
               SizedBox(height: MediaQuery.of(context).size.height * 0.1),
 
               // Text('You are resetting password for: ${widget.email}'),
               Form(
                 key: _formkey,
-               child: Column(
-                children: [
-                
-              TextFormField(
-                  controller: passC,
-                  validator: (value) {
-                                    if (value == null || value.isEmpty) {
-                                      return 'Please Enter Password';
-                                    }
-                                    return null;
-                                  },
-                  decoration: InputDecoration(
-                    contentPadding: EdgeInsets.symmetric(
-                        horizontal: MediaQuery.of(context).size.width * 0.025,
-                        vertical: MediaQuery.of(context).size.height * 0.018),
-                    hintText: 'newpassword',
-                    
-                  )),
-
-              SizedBox(height: MediaQuery.of(context).size.height * 0.05),
-
-              TextFormField(
-                controller: passconfirmC,
-                 validator: (value) {
-                                    if (value == null || value.isEmpty) {
-                                      return 'Please Enter Confirm Password';
-                                    }
-                                    return null;
-                                  },
-                decoration: InputDecoration(
-                  contentPadding: EdgeInsets.symmetric(
-                      horizontal: MediaQuery.of(context).size.width * 0.025,
-                      vertical: MediaQuery.of(context).size.height * 0.018),
-                  hintText: 'confirmpassword',
+                child: Column(
+                  children: [
+                    TextFormField(
+                        controller: passC,
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please Enter Password';
+                          }
+                          return null;
+                        },
+                        decoration: InputDecoration(
+                          contentPadding: EdgeInsets.symmetric(
+                              horizontal:
+                                  MediaQuery.of(context).size.width * 0.025,
+                              vertical:
+                                  MediaQuery.of(context).size.height * 0.018),
+                          hintText: 'newpassword',
+                          border: const OutlineInputBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(10.0))),
+                        )),
+                    SizedBox(height: MediaQuery.of(context).size.height * 0.05),
+                    TextFormField(
+                      controller: passconfirmC,
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please Enter Confirm Password';
+                        }
+                        return null;
+                      },
+                      decoration: InputDecoration(
+                        contentPadding: EdgeInsets.symmetric(
+                            horizontal:
+                                MediaQuery.of(context).size.width * 0.025,
+                            vertical:
+                                MediaQuery.of(context).size.height * 0.018),
+                        hintText: 'confirmpassword',
+                        border: const OutlineInputBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(10.0))),
+                      ),
+                    ),
+                    SizedBox(height: MediaQuery.of(context).size.height * 0.05),
+                    TextFormField(
+                      controller: otpC,
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please Enter OTP';
+                        }
+                        return null;
+                      },
+                      decoration: InputDecoration(
+                        contentPadding: EdgeInsets.symmetric(
+                            horizontal:
+                                MediaQuery.of(context).size.width * 0.025,
+                            vertical:
+                                MediaQuery.of(context).size.height * 0.018),
+                        hintText: 'OTP',
+                        border: const OutlineInputBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(10.0))),
+                      ),
+                    ),
+                  ],
                 ),
-              ),
-
-              SizedBox(height: MediaQuery.of(context).size.height * 0.05),
-
-              TextFormField(
-                controller: otpC,
-                 validator: (value) {
-                                    if (value == null || value.isEmpty) {
-                                      return 'Please Enter OTP';
-                                    }
-                                    return null;
-                                  },
-                decoration: InputDecoration(
-                  contentPadding: EdgeInsets.symmetric(
-                      horizontal: MediaQuery.of(context).size.width * 0.025,
-                      vertical: MediaQuery.of(context).size.height * 0.018),
-                  hintText: 'OTP',
-                ),
-              ),
-                ],
-               ),
               ),
 
               SizedBox(
@@ -126,9 +146,8 @@ class _NewPasswordState extends State<NewPassword> {
               ElevatedButton(
                   onPressed: () {
                     if (_formkey.currentState!.validate()) {
-                                    NewPassword();
-                                  }
-                    
+                      NewPassword();
+                    }
                   },
                   child: Text('Submit'))
             ],

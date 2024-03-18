@@ -21,7 +21,11 @@ class _UserRegisterState extends State<UserRegister> {
 
   Future<void> register() async {
     await apiResponse().apiUserRegistration(
-        context: context, name: nameC.text, email: emailC.text, password: passwordC.text, password_confirmation:confirmPasswordC.text);
+        context: context,
+        name: nameC.text,
+        email: emailC.text,
+        password: passwordC.text,
+        password_confirmation: confirmPasswordC.text);
   }
 
   @override
@@ -148,15 +152,21 @@ class _UserRegisterState extends State<UserRegister> {
                               child: Icon((b
                                   ? Icons.visibility_off
                                   : Icons.visibility))),
-                          fillColor: Colors.yellow,
-                          filled: true,
+                          // fillColor: Colors.yellow,
+                          // filled: true,
                           focusedBorder: OutlineInputBorder(
-                            borderSide:
-                                const BorderSide(color: Colors.blue, width: 2),
-                            borderRadius: BorderRadius.circular(20),
+                            borderSide: const BorderSide(
+                                color: Colors.blue, width: 1.2),
+                            // borderRadius: BorderRadius.circular(10),
                           ),
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(20)),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          contentPadding: EdgeInsets.symmetric(
+                              horizontal:
+                                  MediaQuery.of(context).size.width * 0.025,
+                              vertical:
+                                  MediaQuery.of(context).size.height * 0.018),
                         )),
                   ),
                   const SizedBox(height: 20),
@@ -181,17 +191,23 @@ class _UserRegisterState extends State<UserRegister> {
 
                           hintText: 'Confirm Password',
 
-                          fillColor: Colors.yellow,
-                          filled: true,
+                          // fillColor: Colors.yellow,
+                          // filled: true,
                           focusedBorder: OutlineInputBorder(
-                              borderSide: const BorderSide(
-                                  color: Colors.blue, width: 2),
-                              borderRadius: BorderRadius.circular(20)),
+                            borderSide: const BorderSide(
+                                color: Colors.blue, width: 1.2),
+                            // borderRadius: BorderRadius.circular(10)
+                          ),
 
                           border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(20)),
+                              borderRadius: BorderRadius.circular(10)),
+                              contentPadding: EdgeInsets.symmetric(
+                              horizontal:
+                                  MediaQuery.of(context).size.width * 0.025,
+                              vertical:
+                                  MediaQuery.of(context).size.height * 0.018),
                           disabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(20)),
+                              borderRadius: BorderRadius.circular(10)),
                         )),
                   ),
                 ],
