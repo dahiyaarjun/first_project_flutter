@@ -30,7 +30,8 @@ class _ResetPasswordState extends State<ResetPassword> {
        
         title: Text('Reset Page'),
       ),
-      body:Column(
+      body:SingleChildScrollView(
+     child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Row(
@@ -88,6 +89,7 @@ class _ResetPasswordState extends State<ResetPassword> {
           ),
             ],
           ),
+          
             
       ),
           const SizedBox(height: 50),
@@ -110,6 +112,7 @@ class _ResetPasswordState extends State<ResetPassword> {
             
              } , child: Text('Reset Password',style:TextStyle(fontSize: 30,color:Colors.blue),),),
       ),],
+     ),
       )
       
 
