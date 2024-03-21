@@ -3,6 +3,7 @@ import 'package:first_project_flutter/models/dummy_model.dart';
 import 'package:first_project_flutter/models/registermodel.dart';
 import 'package:first_project_flutter/models/responsemodel.dart';
 import 'package:first_project_flutter/models/loginmodel.dart';
+import 'package:first_project_flutter/models/search_model.dart';
 import 'package:first_project_flutter/pages/practice.dart';
 import 'package:first_project_flutter/widgets/utils.dart';
 import 'package:flutter/material.dart';
@@ -10,10 +11,39 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 // ignore: camel_case_types
+
 class apiResponse {
 
   static String baseUrl = AppConstants.baseUrl;
 
+  
+static  Future<SearchModel>apiSearch({required BuildContext context,
+  required String message})async{
+    try {
+      String apiUrl="${baseUrl}api/user/open-ai";
+      var Response=await http.post(Uri.parse(apiUrl),
+      body: {
+        'content':message
+      },
+      );
+      if(Response.statusCode==200){
+        // Map<String,dynamic>userData=jsonDecode(Response.body);
+        // String successful = userData['content'];
+        var jsonResponse = json.decode(Response.body);
+      print(jsonResponse);
+      return SearchModel.fromJson(jsonResponse);
+      
+    } 
+    else {
+
+      return Future.error("kuch to gadbad h dya..");
+    
+      }
+    } catch (e) {
+       Utils.showSnackBar(context, e.toString());
+      return Future.error(e.toString());
+    }
+  }
 
   static Future<void> apiNewPassword({required BuildContext context,
   required String email,
@@ -229,4 +259,7 @@ class apiResponse {
   //     Utils.showSnackBar(context, e.toString());
   //   }
   // }
+  
+  
+  
 }
