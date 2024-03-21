@@ -1,5 +1,6 @@
 import 'package:first_project_flutter/backend/laravel.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 
 class UserRegister extends StatefulWidget {
   const UserRegister({super.key});
@@ -41,20 +42,12 @@ class _UserRegisterState extends State<UserRegister> {
         child: Column(
           // mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const SizedBox(
-              height: 50,
-            ),
             Container(
-              padding: const EdgeInsets.only(left: 35),
-              child: const Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Text('Welcome\nTo Demo App',
-                      style: TextStyle(color: Colors.blue, fontSize: 30)),
-                ],
-              ),
-            ),
-            const SizedBox(height: 30),
+                child: Lottie.asset('assets/images/2.json',repeat: true,reverse: true,height: MediaQuery.of(context).size.height*0.14,width: MediaQuery.of(context).size.width),
+      
+                ),
+            const Text("WELCOME",style: TextStyle(fontSize: 40)),
+            const SizedBox(height: 20),
             Form(
               key: _formkey,
               child: Column(
@@ -97,7 +90,7 @@ class _UserRegisterState extends State<UserRegister> {
                     width: 2000,
                     padding: const EdgeInsets.only(left: 35, right: 35),
                     child: TextFormField(
-                      keyboardType: TextInputType.emailAddress,
+                      // keyboardType: TextInputType.emailAddress,
                       controller: emailC,
                       validator: (value) {
                         if (value == null || value.isEmpty) {
@@ -140,34 +133,38 @@ class _UserRegisterState extends State<UserRegister> {
                         obscureText: b,
                         obscuringCharacter: "*",
                         decoration: InputDecoration(
-                          hintText: 'Password',
-                          prefixIcon: const Icon(Icons.password,
-                              color: Colors.redAccent),
-                          suffixIcon: GestureDetector(
-                              onTap: () {
-                                setState(() {
-                                  b = !b;
-                                });
-                              },
-                              child: Icon((b
-                                  ? Icons.visibility_off
-                                  : Icons.visibility))),
-                          // fillColor: Colors.yellow,
-                          // filled: true,
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: const BorderSide(
-                                color: Colors.blue, width: 1.2),
-                            // borderRadius: BorderRadius.circular(10),
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          contentPadding: EdgeInsets.symmetric(
-                              horizontal:
-                                  MediaQuery.of(context).size.width * 0.025,
-                              vertical:
-                                  MediaQuery.of(context).size.height * 0.018),
-                        )),
+                            hintText: 'Password',
+                            prefixIcon: const Icon(Icons.password,
+                                color: Colors.redAccent),
+                            suffixIcon: GestureDetector(
+                                onTap: () {
+                                  setState(() {
+                                    b = !b;
+                                  });
+                                },
+                                child: Icon((b
+                                    ? Icons.visibility_off
+                                    : Icons.visibility))),
+                            filled: true,
+                            fillColor: const Color(0XFFfafbfd),
+                            focusedBorder: const OutlineInputBorder(
+                                borderSide:
+                                    BorderSide(color: Color(0xff1a80e5))),
+                            hintStyle:
+                                const TextStyle(color: Color(0xff788998)),
+                            enabledBorder: const OutlineInputBorder(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10.0)),
+                                borderSide:
+                                    BorderSide(color: Color(0xffe8ecf1))),
+                            contentPadding: EdgeInsets.symmetric(
+                                horizontal:
+                                    MediaQuery.of(context).size.width * 0.025,
+                                vertical:
+                                    MediaQuery.of(context).size.height * 0.018),
+                            border: const OutlineInputBorder(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10.0))))),
                   ),
                   const SizedBox(height: 20),
                   Container(
@@ -184,31 +181,31 @@ class _UserRegisterState extends State<UserRegister> {
                         obscureText: true,
                         obscuringCharacter: "*",
                         decoration: InputDecoration(
-                          //suffixIcon: IconButton(onPressed: (){},icon: Icon),
+                            //suffixIcon: IconButton(onPressed: (){},icon: Icon),
 
-                          prefixIcon: const Icon(Icons.password,
-                              color: Colors.redAccent),
-
-                          hintText: 'Confirm Password',
-
-                          // fillColor: Colors.yellow,
-                          // filled: true,
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: const BorderSide(
-                                color: Colors.blue, width: 1.2),
-                            // borderRadius: BorderRadius.circular(10)
-                          ),
-
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10)),
-                              contentPadding: EdgeInsets.symmetric(
-                              horizontal:
-                                  MediaQuery.of(context).size.width * 0.025,
-                              vertical:
-                                  MediaQuery.of(context).size.height * 0.018),
-                          disabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10)),
-                        )),
+                            prefixIcon: const Icon(Icons.password,
+                                color: Colors.redAccent),
+                            hintText: 'Confirm Password',
+                            filled: true,
+                            fillColor: const Color(0XFFfafbfd),
+                            focusedBorder: const OutlineInputBorder(
+                                borderSide:
+                                    BorderSide(color: Color(0xff1a80e5))),
+                            hintStyle:
+                                const TextStyle(color: Color(0xff788998)),
+                            enabledBorder: const OutlineInputBorder(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10.0)),
+                                borderSide:
+                                    BorderSide(color: Color(0xffe8ecf1))),
+                            contentPadding: EdgeInsets.symmetric(
+                                horizontal:
+                                    MediaQuery.of(context).size.width * 0.025,
+                                vertical:
+                                    MediaQuery.of(context).size.height * 0.018),
+                            border: const OutlineInputBorder(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10.0))))),
                   ),
                 ],
               ),
@@ -230,7 +227,7 @@ class _UserRegisterState extends State<UserRegister> {
                 },
               )),
               child: const Text('Register',
-                  style: TextStyle(color: Colors.purple, fontSize: 22)),
+                  style: TextStyle(color: Colors.black, fontSize: 22)),
             ),
             const SizedBox(height: 50),
             Container(

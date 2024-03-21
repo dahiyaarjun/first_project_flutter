@@ -76,10 +76,10 @@ class apiResponse {
       } else {
         Map<String, dynamic> errorMessage = jsonDecode(response.body);
         String error = errorMessage['message'];
-        Utils.showSnackBar(context, error);
+        Utils.showSnackBar(context, "Invalid User");
       }
     } catch (e) {
-      Utils.showSnackBar(context, e.toString());
+      Utils.showSnackBar(context, "Server Error");
     }
   }
 
