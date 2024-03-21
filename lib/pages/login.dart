@@ -149,6 +149,11 @@ class _UserLoginState extends State<UserLogin> {
                                 Navigator.pushNamed(context, 'ResetPassword');
                               },
                               child: const Text('Forget Password')),
+                              ElevatedButton(onPressed: () {
+                                Navigator.pushNamed(context, 'Search');
+                              },
+                              child: const Text('SearchPage')),
+
                         ],
                       ),
                     ],
