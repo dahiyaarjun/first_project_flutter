@@ -40,7 +40,7 @@ class _MyWidgetState extends State<Search> {
                 
               
                  
-                    FutureBuilder(future: apiResponse.apiSearch(context: context, message: "explain cow essay in 200 lines "),
+                    FutureBuilder(future: apiResponse.apiSearch(context: context, message: _message.text),
                    builder: (BuildContext context,AsyncSnapshot<SearchModel>snapshot){
                     if (snapshot.connectionState == ConnectionState.waiting) {
                         
@@ -51,7 +51,8 @@ class _MyWidgetState extends State<Search> {
                       } else {
                         // If data is successfully loaded, display the fetched data
                         print(snapshot.data?.content);
-                        return Expanded(child:
+                        return 
+                         Expanded(child:
                                SingleChildScrollView(
                                
                                child:Center(
@@ -96,7 +97,7 @@ class _MyWidgetState extends State<Search> {
                     decoration: InputDecoration(
                                     hintText: 'How can I help you?',
                                     filled: true,
-                                    fillColor: Colors.black,
+                                    fillColor: Colors.white,
                                     focusedBorder: const OutlineInputBorder(
                                         borderSide: BorderSide(color: Color(0xff1a80e5))),
                                     hintStyle: const TextStyle(color: Color(0xff788998)),
@@ -130,7 +131,9 @@ class _MyWidgetState extends State<Search> {
                     backgroundColor: Colors.amber[400],
                     
                     child: IconButton(onPressed: (){
-                            
+                            setState(() {
+                              
+                            });
                     },
                     icon: Icon(Icons.send_sharp)),
                     
