@@ -184,6 +184,16 @@ class _UserLoginState extends State<UserLogin> {
                   },
                   child: const Text('Register')),
             ),
+            Container(
+              padding: EdgeInsets.only(
+                  bottom: MediaQuery.of(context).size.height * 0.81,
+                  left: MediaQuery.of(context).size.width * 0.3),
+              child: OutlinedButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, 'Search');
+                  },
+                  child: const Text('Skip->')),
+            ),
           ],
         ),
       ),

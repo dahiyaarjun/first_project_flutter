@@ -36,7 +36,7 @@ static  Future<SearchModel>apiSearch({required BuildContext context,
     } 
     else {
 
-      return Future.error("kuch to gadbad h dya..");
+      return Future.error("");
     
       }
     } catch (e) {
