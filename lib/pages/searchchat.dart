@@ -13,7 +13,7 @@ class Search extends StatefulWidget {
 }
 
 class _MyWidgetState extends State<Search> {
-  TextEditingController _message=TextEditingController();
+  TextEditingController _message=TextEditingController(text: "hello");
   
   @override
   Widget build(BuildContext context) {
