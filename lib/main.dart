@@ -21,7 +21,7 @@ void main() {
       'practice': (context)=>const Practice(),
       'ResetPassword': (context)=>const ResetPassword(),
       'Search': (context)=>const Search(),
-      // 'NewPassword':(context) => const NewPassword(),
+      // 'NewPassword':(context) => const NewPassword(),s
       // 'model_user_login': (context)=>ModelUserLogin(),
     }
   ));
