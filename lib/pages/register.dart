@@ -38,18 +38,36 @@ class _UserRegisterState extends State<UserRegister> {
         backgroundColor: Colors.greenAccent[400],
         elevation: 50.0,
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Container(
-                child: Lottie.asset('assets/images/2.json',repeat: true,reverse: true,height: MediaQuery.of(context).size.height*0.14,width: MediaQuery.of(context).size.width),
-      
-                ),
-            const Text("WELCOME",style: TextStyle(fontSize: 40)),
-            const SizedBox(height: 20),
-            Form(
+      body: Stack(
+        // mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          Container(
+              child: Lottie.asset('assets/images/2.json',repeat: false,reverse: true,height: MediaQuery.of(context).size.height*0.14,width: MediaQuery.of(context).size.width),
+            
+              ),
+           Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+             children:[ Container(
+              
+              margin: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.15),
+              child: Text("WELCOME",style: TextStyle(fontSize: 40))),
+        ]),
+          const SizedBox(height: 20),
+          
+          SingleChildScrollView(
+              child: Container(
+                margin: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.25),
+                // color: Colors.black,
+                // height: MediaQuery.of(context).size.height*0.7,
+                padding: EdgeInsets.only(
+                    top: MediaQuery.of(context).size.height * 0.025,
+                    left: 35,
+                    right: 35),
+                child: Column(
+                  children: [ 
+                    Form(
               key: _formkey,
+            
               child: Column(
                 children: [
                   Container(
@@ -182,7 +200,7 @@ class _UserRegisterState extends State<UserRegister> {
                         obscuringCharacter: "*",
                         decoration: InputDecoration(
                             //suffixIcon: IconButton(onPressed: (){},icon: Icon),
-
+                  
                             prefixIcon: const Icon(Icons.password,
                                 color: Colors.redAccent),
                             hintText: 'Confirm Password',
@@ -210,64 +228,69 @@ class _UserRegisterState extends State<UserRegister> {
                 ],
               ),
             ),
-            const SizedBox(height: 40),
-            ElevatedButton(
-              onPressed: () {
-                if (_formkey.currentState!.validate()) {
-                  register();
+          
+          const SizedBox(height: 40),
+          ElevatedButton(
+            onPressed: () {
+              if (_formkey.currentState!.validate()) {
+                register();
+              }
+            },
+            style: ButtonStyle(
+                overlayColor: MaterialStateProperty.resolveWith<Color?>(
+              (Set<MaterialState> states) {
+                if (states.contains(MaterialState.pressed)) {
+                  return Colors.redAccent; //<-- SEE HERE
                 }
+                return Colors.green; // Defer to the widget's default.
               },
-              style: ButtonStyle(
-                  overlayColor: MaterialStateProperty.resolveWith<Color?>(
-                (Set<MaterialState> states) {
-                  if (states.contains(MaterialState.pressed)) {
-                    return Colors.redAccent; //<-- SEE HERE
-                  }
-                  return Colors.green; // Defer to the widget's default.
-                },
-              )),
-              child: const Text('Register',
-                  style: TextStyle(color: Colors.black, fontSize: 22)),
+            )),
+            child: const Text('Register',
+                style: TextStyle(color: Colors.black, fontSize: 22)),
+          ),
+          const SizedBox(height: 50),
+          Container(
+            padding: const EdgeInsets.only(left: 35),
+            child: const Row(
+              children: [
+                Text(
+                  'Already a user?',
+                  style: TextStyle(color: Colors.blueGrey),
+                ),
+              ],
             ),
-            const SizedBox(height: 50),
-            Container(
-              padding: const EdgeInsets.only(left: 35),
-              child: const Row(
-                children: [
-                  Text(
-                    'Already a user?',
-                    style: TextStyle(color: Colors.blueGrey),
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              padding: const EdgeInsets.only(left: 35),
-              child: Row(
-                children: [
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.pushNamed(context, 'login');
+          ),
+          Container(
+            padding: const EdgeInsets.only(left: 35),
+            child: Row(
+              children: [
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, 'login');
+                  },
+                  style: ButtonStyle(
+                      overlayColor: MaterialStateProperty.resolveWith<Color?>(
+                    (Set<MaterialState> states) {
+                      if (states.contains(MaterialState.pressed)) {
+                        return Colors.redAccent; //<-- SEE HERE
+                      }
+                      return Colors.green; // Defer to the widget's default.
                     },
-                    style: ButtonStyle(
-                        overlayColor: MaterialStateProperty.resolveWith<Color?>(
-                      (Set<MaterialState> states) {
-                        if (states.contains(MaterialState.pressed)) {
-                          return Colors.redAccent; //<-- SEE HERE
-                        }
-                        return Colors.green; // Defer to the widget's default.
-                      },
-                    )),
-                    child: const Text(
-                      'login',
-                      style: TextStyle(color: Colors.black),
-                    ),
+                  )),
+                  child: const Text(
+                    'login',
+                    style: TextStyle(color: Colors.black),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
-          ],
-        ),
+          ),
+                  ],
+                ),
+                )
+                ),
+  
+        ],
       ),
     );
   }
