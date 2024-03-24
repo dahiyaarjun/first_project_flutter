@@ -3,7 +3,7 @@ import 'package:first_project_flutter/models/search_model.dart';
 import 'package:flutter/material.dart';
 import 'dart:ui';
 
-import 'package:lottie/lottie.dart';
+// import 'package:lottie/lottie.dart';
 
 class Search extends StatefulWidget {
   const Search({super.key});
@@ -13,75 +13,88 @@ class Search extends StatefulWidget {
 }
 
 class _MyWidgetState extends State<Search> {
-  TextEditingController _message=TextEditingController(text: "hello");
   
+  
+  
+  final TextEditingController _message = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('ChatGpt'),
+        title: const Text('Search Page'),
         centerTitle: true,
         backgroundColor: Colors.greenAccent,
         // elevation: 100,
-
       ),
       
 
 
-      body:Container(
-      
-          width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height,
-          
-          // height: 500,
-          color: Colors.black,
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                
-              
-                 
-                    FutureBuilder(future: apiResponse.apiSearch(context: context, message: _message.text),
-                   builder: (BuildContext context,AsyncSnapshot<SearchModel>snapshot){
-                    if (snapshot.connectionState == ConnectionState.waiting) {
-                        
-                        return Lottie.asset('assets/images/2.json',height: MediaQuery.of(context).size.height * 0.05,width: MediaQuery.of(context).size.width*0.5,reverse: false,repeat: true,fit: BoxFit.cover);
-                       } else if (snapshot.hasError) {
-                        
-                        return Text('Error: ${snapshot.error}');
-                      } else {
-                        // If data is successfully loaded, display the fetched data
-                        print(snapshot.data?.content);
-                        return 
-                         Expanded(child:
-                               SingleChildScrollView(
-                               
-                               child:Center(
-                               child: Container(
-                                padding: EdgeInsets.only(left: 40,right: 40),
-                                child: Text('${snapshot.data?.content}',style: TextStyle(color: Colors.white,fontSize: 18),)
-                               ),
-                               
-                                       
-                               
-                               ),
-                        ),
+      body: Container(
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
+
+        // height: 500,
+        color: Colors.white,
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              FutureBuilder(
+                future: apiResponse.apiSearch(
+                    context: context, message: _message.text),
+                builder: (BuildContext context,
+                    AsyncSnapshot<SearchModel> snapshot) {
+                  switch (snapshot.connectionState) {
+                    case ConnectionState.waiting:
+                      return CircularProgressIndicator();
+                          // height: MediaQuery.of(context).size.height * 0.05,
+                          // width: MediaQuery.of(context).size.width * 0.4,
+                          // reverse: false,
+                          // repeat: true,
+                    // case ConnectionState.none:
+                    //   // TODO: Handle this case.
+                    //       fit: BoxFit.cover);
+
+                    case ConnectionState.done:
+                      if (snapshot.hasError) {
+                        return Text('${snapshot.error}');
+                      } else if (snapshot.hasData) {
+                        return Expanded(
+                          child: Center(
+                            child: Container(
+                              width: MediaQuery.of(context).size.width,
+                              // color: Colors.white,
+                              padding: EdgeInsets.only(
+                                left: MediaQuery.of(context).size.width * 0.01,
+                                right: MediaQuery.of(context).size.width * 0.01,
+                                top: MediaQuery.of(context).size.height * 0.1,
+                                // bottom:
+                                //     MediaQuery.of(context).size.height *
+                                //         0.1
+                              ),
+                              child: SingleChildScrollView(
+                                  child: Text(
+                                '${snapshot.data?.content}',
+                                style: const TextStyle(
+                                    color: Colors.black, fontSize: 18),
+                              )),
+                            ),
+                          ),
                         );
+                      } else {
+                        return const Text('NO DATA FOUND');
                       }
-                   },
-                   ),
-              
-                 
-              // },
-                
-                
-                    
-                Container(
-                  // color: Colors.green,
-                padding: EdgeInsets.only(left: 20,right: 20),
-                
-                // margin: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.8),
+                    default:
+                      return const Text('NO DATA FOUND');
+                  }
+                },
+              ),
+              Container(
+                padding: EdgeInsets.only(
+                  left: MediaQuery.of(context).size.width * 0.01,
+                  bottom: MediaQuery.of(context).size.height * 0.01,
+                ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children:[
@@ -134,7 +147,7 @@ class _MyWidgetState extends State<Search> {
                     
                     child: IconButton(onPressed: (){
                             setState(() {
-                              
+      
                             });
                     },
                     icon: Icon(Icons.send_sharp)),
@@ -144,29 +157,14 @@ class _MyWidgetState extends State<Search> {
                   ),
                 ),
                 
-                  
-                    
-                // ),
+                
                   ],
                 ),
-                                    ),
-              ],
-            ),
+              ),
+            ],
           ),
-        // ),
-      
-      
-      
-      
-      
-      
-      
-      // ),
-              
-            ),
-
-
-
+        ),
+      ),
     );
   }
 }

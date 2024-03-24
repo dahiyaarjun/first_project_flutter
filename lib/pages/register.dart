@@ -1,5 +1,6 @@
 import 'package:first_project_flutter/backend/laravel.dart';
 import 'package:flutter/material.dart';
+// import 'package:lottie/lottie.dart';
 
 class UserRegister extends StatefulWidget {
   const UserRegister({super.key});
@@ -37,26 +38,36 @@ class _UserRegisterState extends State<UserRegister> {
         backgroundColor: Colors.greenAccent[400],
         elevation: 50.0,
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            const SizedBox(
-              height: 50,
-            ),
-            Container(
-              padding: const EdgeInsets.only(left: 35),
-              child: const Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Text('Welcome\nTo Demo App',
-                      style: TextStyle(color: Colors.blue, fontSize: 30)),
-                ],
-              ),
-            ),
-            const SizedBox(height: 30),
-            Form(
+      body: Stack(
+        // mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          // Container(
+          //     child: Lottie.asset('assets/images/2.json',repeat: false,reverse: true,height: MediaQuery.of(context).size.height*0.14,width: MediaQuery.of(context).size.width),
+            
+          //     ),
+           Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+             children:[ Container(
+              
+              margin: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.15),
+              child: Text("WELCOME",style: TextStyle(fontSize: 40))),
+        ]),
+          const SizedBox(height: 20),
+          
+          SingleChildScrollView(
+              child: Container(
+                margin: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.25),
+                // color: Colors.black,
+                // height: MediaQuery.of(context).size.height*0.7,
+                padding: EdgeInsets.only(
+                    top: MediaQuery.of(context).size.height * 0.025,
+                    left: 35,
+                    right: 35),
+                child: Column(
+                  children: [ 
+                    Form(
               key: _formkey,
+            
               child: Column(
                 children: [
                   Container(
@@ -97,7 +108,7 @@ class _UserRegisterState extends State<UserRegister> {
                     width: 2000,
                     padding: const EdgeInsets.only(left: 35, right: 35),
                     child: TextFormField(
-                      keyboardType: TextInputType.emailAddress,
+                      // keyboardType: TextInputType.emailAddress,
                       controller: emailC,
                       validator: (value) {
                         if (value == null || value.isEmpty) {
@@ -140,34 +151,38 @@ class _UserRegisterState extends State<UserRegister> {
                         obscureText: b,
                         obscuringCharacter: "*",
                         decoration: InputDecoration(
-                          hintText: 'Password',
-                          prefixIcon: const Icon(Icons.password,
-                              color: Colors.redAccent),
-                          suffixIcon: GestureDetector(
-                              onTap: () {
-                                setState(() {
-                                  b = !b;
-                                });
-                              },
-                              child: Icon((b
-                                  ? Icons.visibility_off
-                                  : Icons.visibility))),
-                          // fillColor: Colors.yellow,
-                          // filled: true,
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: const BorderSide(
-                                color: Colors.blue, width: 1.2),
-                            // borderRadius: BorderRadius.circular(10),
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          contentPadding: EdgeInsets.symmetric(
-                              horizontal:
-                                  MediaQuery.of(context).size.width * 0.025,
-                              vertical:
-                                  MediaQuery.of(context).size.height * 0.018),
-                        )),
+                            hintText: 'Password',
+                            prefixIcon: const Icon(Icons.password,
+                                color: Colors.redAccent),
+                            suffixIcon: GestureDetector(
+                                onTap: () {
+                                  setState(() {
+                                    b = !b;
+                                  });
+                                },
+                                child: Icon((b
+                                    ? Icons.visibility_off
+                                    : Icons.visibility))),
+                            filled: true,
+                            fillColor: const Color(0XFFfafbfd),
+                            focusedBorder: const OutlineInputBorder(
+                                borderSide:
+                                    BorderSide(color: Color(0xff1a80e5))),
+                            hintStyle:
+                                const TextStyle(color: Color(0xff788998)),
+                            enabledBorder: const OutlineInputBorder(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10.0)),
+                                borderSide:
+                                    BorderSide(color: Color(0xffe8ecf1))),
+                            contentPadding: EdgeInsets.symmetric(
+                                horizontal:
+                                    MediaQuery.of(context).size.width * 0.025,
+                                vertical:
+                                    MediaQuery.of(context).size.height * 0.018),
+                            border: const OutlineInputBorder(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10.0))))),
                   ),
                   const SizedBox(height: 20),
                   Container(
@@ -184,93 +199,98 @@ class _UserRegisterState extends State<UserRegister> {
                         obscureText: true,
                         obscuringCharacter: "*",
                         decoration: InputDecoration(
-                          //suffixIcon: IconButton(onPressed: (){},icon: Icon),
-
-                          prefixIcon: const Icon(Icons.password,
-                              color: Colors.redAccent),
-
-                          hintText: 'Confirm Password',
-
-                          // fillColor: Colors.yellow,
-                          // filled: true,
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: const BorderSide(
-                                color: Colors.blue, width: 1.2),
-                            // borderRadius: BorderRadius.circular(10)
-                          ),
-
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10)),
-                              contentPadding: EdgeInsets.symmetric(
-                              horizontal:
-                                  MediaQuery.of(context).size.width * 0.025,
-                              vertical:
-                                  MediaQuery.of(context).size.height * 0.018),
-                          disabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10)),
-                        )),
+                            //suffixIcon: IconButton(onPressed: (){},icon: Icon),
+                  
+                            prefixIcon: const Icon(Icons.password,
+                                color: Colors.redAccent),
+                            hintText: 'Confirm Password',
+                            filled: true,
+                            fillColor: const Color(0XFFfafbfd),
+                            focusedBorder: const OutlineInputBorder(
+                                borderSide:
+                                    BorderSide(color: Color(0xff1a80e5))),
+                            hintStyle:
+                                const TextStyle(color: Color(0xff788998)),
+                            enabledBorder: const OutlineInputBorder(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10.0)),
+                                borderSide:
+                                    BorderSide(color: Color(0xffe8ecf1))),
+                            contentPadding: EdgeInsets.symmetric(
+                                horizontal:
+                                    MediaQuery.of(context).size.width * 0.025,
+                                vertical:
+                                    MediaQuery.of(context).size.height * 0.018),
+                            border: const OutlineInputBorder(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10.0))))),
                   ),
                 ],
               ),
             ),
-            const SizedBox(height: 40),
-            ElevatedButton(
-              onPressed: () {
-                if (_formkey.currentState!.validate()) {
-                  register();
+          
+          const SizedBox(height: 40),
+          ElevatedButton(
+            onPressed: () {
+              if (_formkey.currentState!.validate()) {
+                register();
+              }
+            },
+            style: ButtonStyle(
+                overlayColor: MaterialStateProperty.resolveWith<Color?>(
+              (Set<MaterialState> states) {
+                if (states.contains(MaterialState.pressed)) {
+                  return Colors.redAccent; //<-- SEE HERE
                 }
+                return Colors.green; // Defer to the widget's default.
               },
-              style: ButtonStyle(
-                  overlayColor: MaterialStateProperty.resolveWith<Color?>(
-                (Set<MaterialState> states) {
-                  if (states.contains(MaterialState.pressed)) {
-                    return Colors.redAccent; //<-- SEE HERE
-                  }
-                  return Colors.green; // Defer to the widget's default.
-                },
-              )),
-              child: const Text('Register',
-                  style: TextStyle(color: Colors.purple, fontSize: 22)),
+            )),
+            child: const Text('Register',
+                style: TextStyle(color: Colors.black, fontSize: 22)),
+          ),
+          const SizedBox(height: 50),
+          Container(
+            padding: const EdgeInsets.only(left: 35),
+            child: const Row(
+              children: [
+                Text(
+                  'Already a user?',
+                  style: TextStyle(color: Colors.blueGrey),
+                ),
+              ],
             ),
-            const SizedBox(height: 50),
-            Container(
-              padding: const EdgeInsets.only(left: 35),
-              child: const Row(
-                children: [
-                  Text(
-                    'Already a user?',
-                    style: TextStyle(color: Colors.blueGrey),
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              padding: const EdgeInsets.only(left: 35),
-              child: Row(
-                children: [
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.pushNamed(context, 'login');
+          ),
+          Container(
+            padding: const EdgeInsets.only(left: 35),
+            child: Row(
+              children: [
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, 'login');
+                  },
+                  style: ButtonStyle(
+                      overlayColor: MaterialStateProperty.resolveWith<Color?>(
+                    (Set<MaterialState> states) {
+                      if (states.contains(MaterialState.pressed)) {
+                        return Colors.redAccent; //<-- SEE HERE
+                      }
+                      return Colors.green; // Defer to the widget's default.
                     },
-                    style: ButtonStyle(
-                        overlayColor: MaterialStateProperty.resolveWith<Color?>(
-                      (Set<MaterialState> states) {
-                        if (states.contains(MaterialState.pressed)) {
-                          return Colors.redAccent; //<-- SEE HERE
-                        }
-                        return Colors.green; // Defer to the widget's default.
-                      },
-                    )),
-                    child: const Text(
-                      'login',
-                      style: TextStyle(color: Colors.black),
-                    ),
+                  )),
+                  child: const Text(
+                    'login',
+                    style: TextStyle(color: Colors.black),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
-          ],
-        ),
+          ),
+                  ],
+                ),
+                )
+                ),
+  
+        ],
       ),
     );
   }
