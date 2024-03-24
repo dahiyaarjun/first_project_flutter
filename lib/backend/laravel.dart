@@ -19,7 +19,6 @@ class apiResponse {
       {required BuildContext context, required String message}) async {
     try {
       if (message.isEmpty != true) {
-            print("${message}clean");
         String apiUrl = "${baseUrl}api/user/open-ai";
         var Response = await http.post(
           Uri.parse(apiUrl),
