@@ -1,6 +1,10 @@
 import 'package:first_project_flutter/backend/laravel.dart';
 import 'package:flutter/material.dart';
+<<<<<<< HEAD
 // import 'package:lottie/lottie.dart';
+=======
+import 'package:lottie/lottie.dart';
+>>>>>>> e456e1a62c4cc5c4970120b4e4f79f920a54efe2
 
 class UserRegister extends StatefulWidget {
   const UserRegister({super.key});
@@ -41,10 +45,17 @@ class _UserRegisterState extends State<UserRegister> {
       body: Stack(
         // mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
+<<<<<<< HEAD
           // Container(
           //     child: Lottie.asset('assets/images/2.json',repeat: false,reverse: true,height: MediaQuery.of(context).size.height*0.14,width: MediaQuery.of(context).size.width),
             
           //     ),
+=======
+          Container(
+              child: Lottie.asset('assets/images/2.json',repeat: false,reverse: true,height: MediaQuery.of(context).size.height*0.14,width: MediaQuery.of(context).size.width),
+            
+              ),
+>>>>>>> e456e1a62c4cc5c4970120b4e4f79f920a54efe2
            Row(
             mainAxisAlignment: MainAxisAlignment.center,
              children:[ Container(

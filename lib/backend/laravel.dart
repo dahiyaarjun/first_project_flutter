@@ -13,60 +13,56 @@ import 'dart:convert';
 // ignore: camel_case_types
 
 class apiResponse {
-
   static String baseUrl = AppConstants.baseUrl;
 
-  
-static  Future<SearchModel>apiSearch({required BuildContext context,
-  required String message})async{
+  static Future<SearchModel> apiSearch(
+      {required BuildContext context, required String message}) async {
     try {
-      String apiUrl="${baseUrl}api/user/open-ai";
-      var Response=await http.post(Uri.parse(apiUrl),
-      body: {
-        'content':message
-      },
-      );
-      if(Response.statusCode==200){
-        // Map<String,dynamic>userData=jsonDecode(Response.body);
-        // String successful = userData['content'];
-        var jsonResponse = json.decode(Response.body);
-      print(jsonResponse);
-      return SearchModel.fromJson(jsonResponse);
-      
-    } 
-    else {
-
-      return Future.error("kuch to gadbad h dya..");
-    
+      if (message.isEmpty != true) {
+            print("${message}clean");
+        String apiUrl = "${baseUrl}api/user/open-ai";
+        var Response = await http.post(
+          Uri.parse(apiUrl),
+          body: {'content': message},
+        );
+        if (Response.statusCode == 200) {
+          // Map<String,dynamic>userData=jsonDecode(Response.body);
+          // String successful = userData['content'];
+          var jsonResponse = json.decode(Response.body);
+          return SearchModel.fromJson(jsonResponse);
+        }
       }
+      return Future.error("Hii there!");
     } catch (e) {
-       Utils.showSnackBar(context, e.toString());
+      Utils.showSnackBar(context, e.toString());
       return Future.error(e.toString());
     }
   }
 
-  static Future<void> apiNewPassword({required BuildContext context,
-  required String email,
-  required String password,
-  required String password_confirmation,
-   required String otp}) async{
-    try{
-      String apiUrl='${baseUrl}api/user/reset/by-otp';
-      var Response=await http.post(Uri.parse(apiUrl),
-      body:{
-        'email':email,'password':password,
-        'password_confirmation':password_confirmation,
-        'otp':otp},
+  static Future<void> apiNewPassword(
+      {required BuildContext context,
+      required String email,
+      required String password,
+      required String password_confirmation,
+      required String otp}) async {
+    try {
+      String apiUrl = '${baseUrl}api/user/reset/by-otp';
+      var Response = await http.post(
+        Uri.parse(apiUrl),
+        body: {
+          'email': email,
+          'password': password,
+          'password_confirmation': password_confirmation,
+          'otp': otp
+        },
       );
 
-      if(Response.statusCode==200){
-        Map<String,dynamic>userData=jsonDecode(Response.body);
+      if (Response.statusCode == 200) {
+        Map<String, dynamic> userData = jsonDecode(Response.body);
         String successful = userData['message'];
-        
-        Utils.showSnackBar(context, successful);
-      }
 
-        else {
+        Utils.showSnackBar(context, successful);
+      } else {
         Map<String, dynamic> errorMessage = jsonDecode(Response.body);
         String error = errorMessage['message'];
         Utils.showSnackBar(context, error);
@@ -74,12 +70,7 @@ static  Future<SearchModel>apiSearch({required BuildContext context,
     } catch (e) {
       Utils.showSnackBar(context, e.toString());
     }
-
-
-
-      }
-
-  
+  }
 
   Future<void> apiUserLogin({
     required BuildContext context,
@@ -100,8 +91,8 @@ static  Future<SearchModel>apiSearch({required BuildContext context,
         // print('Access Token come during Login Time' + accessToken);
         // await SharedPreferencesHelper.setAccessToken(accessToken);
         Utils.showSnackBar(context, msg);
-        if(status=="Success"){
-        Navigator.pushNamed(context, 'practice');
+        if (status == "Success") {
+          Navigator.pushNamed(context, 'practice');
         }
       } else {
         Map<String, dynamic> errorMessage = jsonDecode(response.body);
@@ -135,8 +126,8 @@ static  Future<SearchModel>apiSearch({required BuildContext context,
         String message = userData['message'];
         String status = userData['status'];
         Utils.showSnackBar(context, message);
-        if(status=="Success"){
-        Navigator.pushNamed(context, 'practice');
+        if (status == "Success") {
+          Navigator.pushNamed(context, 'practice');
         }
       } else {
         Map<String, dynamic> userData = jsonDecode(response.body);
@@ -148,7 +139,7 @@ static  Future<SearchModel>apiSearch({required BuildContext context,
     }
   }
 
-    Future<void> apiResetPassword({
+  Future<void> apiResetPassword({
     required BuildContext context,
     required String email,
   }) async {

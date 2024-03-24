@@ -3,7 +3,7 @@ import 'package:first_project_flutter/models/search_model.dart';
 import 'package:flutter/material.dart';
 import 'dart:ui';
 
-// import 'package:lottie/lottie.dart';
+import 'package:lottie/lottie.dart';
 
 class Search extends StatefulWidget {
   const Search({super.key});
@@ -47,14 +47,12 @@ class _MyWidgetState extends State<Search> {
                     AsyncSnapshot<SearchModel> snapshot) {
                   switch (snapshot.connectionState) {
                     case ConnectionState.waiting:
-                      return CircularProgressIndicator();
-                          // height: MediaQuery.of(context).size.height * 0.05,
-                          // width: MediaQuery.of(context).size.width * 0.4,
-                          // reverse: false,
-                          // repeat: true,
-                    // case ConnectionState.none:
-                    //   // TODO: Handle this case.
-                    //       fit: BoxFit.cover);
+                      return Lottie.asset('assets/images/2.json',
+                          height: MediaQuery.of(context).size.height * 0.05,
+                          width: MediaQuery.of(context).size.width * 0.4,
+                          reverse: false,
+                          repeat: true,
+                          fit: BoxFit.cover);
 
                     case ConnectionState.done:
                       if (snapshot.hasError) {

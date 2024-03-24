@@ -1,6 +1,7 @@
 import 'package:first_project_flutter/backend/laravel.dart';
 import 'package:first_project_flutter/pages/newpassword.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 
 class ResetPassword extends StatefulWidget {
   const ResetPassword({super.key});
@@ -22,7 +23,7 @@ class _ResetPasswordState extends State<ResetPassword> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text('Reset Page'),
+        title: const Text('Reset Page'),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -33,28 +34,30 @@ class _ResetPasswordState extends State<ResetPassword> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Container(
-                  child: Text(
-                    'Reset Password',
-                    style: TextStyle(fontSize: 50),
-                  ),
+                  child: Lottie.asset('assets/videos/email.json',
+                  height: MediaQuery.of(context).size.height * 0.1,
+                  width: MediaQuery.of(context).size.width * 0.7,
+                  reverse: false,
+                  repeat: true,
+                  fit: BoxFit.cover),
                 ),
               ],
             ),
-            const SizedBox(height: 50),
-            Padding(
-              padding: EdgeInsets.all(50),
-              child: Text(
-                'Enter the email address associated with your account and we will send you a link to reset your password.',
-                style: TextStyle(fontSize: 25),
-                maxLines: 3,
-              ),
-            ),
-            const SizedBox(height: 30),
+            const SizedBox(height: 200),
+            // Padding(
+            //   padding: EdgeInsets.all(50),
+            //   child: Text(
+            //     'Enter the email address associated with your account and we will send you a link to reset your password.',
+            //     style: TextStyle(fontSize: 25),
+            //     maxLines: 3,
+            //   ),
+            // ),
+            // const SizedBox(height: 80),
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Padding(
-                  padding: EdgeInsets.only(left: 35),
+                  padding: EdgeInsets.only(left: 20),
                   child: Text(
                     'Email',
                     style: TextStyle(fontSize: 25),
@@ -68,7 +71,7 @@ class _ResetPasswordState extends State<ResetPassword> {
               child: Column(
                 children: [
                   Padding(
-                    padding: EdgeInsets.only(left: 35),
+                    padding: EdgeInsets.only(),
                     child: TextFormField(
                       controller: emailC,
                       validator: (value) {
