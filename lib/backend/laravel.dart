@@ -1,4 +1,5 @@
 import 'package:first_project_flutter/custom_helper/constants.dart';
+import 'package:first_project_flutter/models/LoginDetails_model.dart';
 import 'package:first_project_flutter/models/dummy_model.dart';
 import 'package:first_project_flutter/models/registermodel.dart';
 import 'package:first_project_flutter/models/responsemodel.dart';
@@ -13,7 +14,47 @@ import 'dart:convert';
 // ignore: camel_case_types
 
 class apiResponse {
+  //  LoginDetails obj=LoginDetails();
+  //  List<LoginDetails> list=[];
   static String baseUrl = AppConstants.baseUrl;
+
+  static Future<String> apiUserDetails({required String email}) async{
+
+    try {
+     
+      String apiUrl = '${baseUrl}api/user/details';
+      print('apiHit');
+      var Response = await http.post(
+        Uri.parse(apiUrl),
+        body: {
+          'email':"dahiyaarjun343@gmail.com"
+          
+        },
+      );
+      if(Response.statusCode==200){
+       Map<String, dynamic> userData = jsonDecode(Response.body);
+        
+        print('arjun');
+
+      //  for(var i in userData['userDetails']){
+      //   print(i.name);
+      //   print(i.email);
+      //  }
+        print(userData['userDetails'][0].name);
+        print(userData['userDetails']['name']);
+        print(userData['userDetails'].name);
+        // return Future(userData['userDetails']['name']);
+      }
+      
+      
+    } catch (e) {
+      // Utils.showSnackBar(context, e.toString());
+      return Future.error(e.toString());
+    }
+    return Future.error("error");
+
+
+  }
 
   static Future<SearchModel> apiSearch(
       {required BuildContext context, required String message}) async {
@@ -91,7 +132,9 @@ class apiResponse {
         // await SharedPreferencesHelper.setAccessToken(accessToken);
         Utils.showSnackBar(context, msg);
         if (status == "Success") {
-          Navigator.pushNamed(context, 'practice');
+          // Navigator.pushNamed(context, 'practice');
+         
+         
         }
       } else {
         Map<String, dynamic> errorMessage = jsonDecode(response.body);

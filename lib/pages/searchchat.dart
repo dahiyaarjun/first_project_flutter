@@ -1,4 +1,5 @@
 import 'package:first_project_flutter/backend/laravel.dart';
+import 'package:first_project_flutter/models/LoginDetails_model.dart';
 import 'package:first_project_flutter/models/search_model.dart';
 import 'package:flutter/material.dart';
 import 'dart:ui';
@@ -14,7 +15,13 @@ class Search extends StatefulWidget {
 
 class _MyWidgetState extends State<Search> {
   
+  Future<String> ans= apiResponse.apiUserDetails(email:"dahiyaarjun343@gmail.com");
+
+ 
+
   
+  
+ 
   
   final TextEditingController _message = TextEditingController();
 
@@ -26,7 +33,66 @@ class _MyWidgetState extends State<Search> {
         centerTitle: true,
         backgroundColor: Colors.greenAccent,
         // elevation: 100,
-      ),
+     ),
+  drawer: Drawer(
+    
+    child: ListView(
+      padding: EdgeInsets.zero,
+      children: const <Widget>[
+        SizedBox(
+          height: 250,
+          
+          child: DrawerHeader(
+            
+            decoration: BoxDecoration(
+              color: Colors.blue,
+              
+              
+              
+            ),
+            child: Column(
+              children: [
+             CircleAvatar(
+                        radius: 60.0,
+                        backgroundColor: const Color(0xFF778899),
+                        backgroundImage: AssetImage("assets/images/Screenshot 2023-11-03 215652.png"),
+                       // for Network image
+            
+                      ),
+            
+             Text('Akshit Chaudhary',
+              
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 24,
+              ),
+            ),
+            Text(
+              'Demo@gmail.com',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 12,
+              ),
+            ),
+              ],
+            ),
+            
+          ),
+        ),
+        
+        
+        ListTile(
+          leading: Icon(Icons.account_circle),
+          
+          title: Text('Profile Settings'),
+        ),
+        ListTile(
+          leading: Icon(Icons.logout_rounded),
+          title: Text('Sign Out'),
+        ),
+      ],
+    ),
+  ),
       
 
 
@@ -88,6 +154,8 @@ class _MyWidgetState extends State<Search> {
                   }
                 },
               ),
+
+
               Container(
                 padding: EdgeInsets.only(
                   left: MediaQuery.of(context).size.width * 0.01,
