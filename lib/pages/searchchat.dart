@@ -16,6 +16,17 @@ class Search extends StatefulWidget {
 class _MyWidgetState extends State<Search> {
   
   Future<String> ans= apiResponse.apiUserDetails(email:"dahiyaarjun343@gmail.com");
+  String naam="";
+//    ans.then((String result){
+// setState(() {
+//       naam = result;
+//     });
+// });   
+  
+
+  
+  
+
 
  
 
@@ -60,7 +71,7 @@ class _MyWidgetState extends State<Search> {
             
                       ),
             
-             Text('Akshit Chaudhary',
+             Text('',
               
               style: TextStyle(
                 color: Colors.white,
@@ -84,7 +95,7 @@ class _MyWidgetState extends State<Search> {
         ListTile(
           leading: Icon(Icons.account_circle),
           
-          title: Text('Profile Settings'),
+          title: Text(''),
         ),
         ListTile(
           leading: Icon(Icons.logout_rounded),
@@ -93,7 +104,7 @@ class _MyWidgetState extends State<Search> {
       ],
     ),
   ),
-      
+  
 
 
       body: Container(
@@ -210,6 +221,7 @@ class _MyWidgetState extends State<Search> {
                     backgroundColor: Colors.amber[400],
                     
                     child: IconButton(onPressed: (){
+                      
                             setState(() {
       
                             });

@@ -36,14 +36,10 @@ class apiResponse {
         
         print('arjun');
 
-      //  for(var i in userData['userDetails']){
-      //   print(i.name);
-      //   print(i.email);
-      //  }
-        print(userData['userDetails'][0].name);
-        print(userData['userDetails']['name']);
-        print(userData['userDetails'].name);
-        // return Future(userData['userDetails']['name']);
+        print(userData['User Details'][0]['name']);
+        Future<String> name=userData['User Details'][0]['name'];
+       
+        return name;
       }
       
       
