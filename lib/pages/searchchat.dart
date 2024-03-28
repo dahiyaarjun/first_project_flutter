@@ -107,10 +107,8 @@ class _MyWidgetState extends State<Search> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               FutureBuilder(
-                future: apiResponse.apiSearch(
-                    context: context, message: _message.text),
-                builder: (BuildContext context,
-                    AsyncSnapshot<SearchModel> snapshot) {
+                future: apiResponse.apiSearch( context: context, message: _message.text),
+                builder: (BuildContext context, AsyncSnapshot<SearchModel> snapshot) {
                   switch (snapshot.connectionState) {
                     case ConnectionState.waiting:
                       return Lottie.asset('assets/images/2.json',
