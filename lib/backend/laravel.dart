@@ -1,3 +1,4 @@
+import 'package:first_project_flutter/backend/sharedPreference.dart';
 import 'package:first_project_flutter/custom_helper/constants.dart';
 import 'package:first_project_flutter/models/LoginDetails_model.dart';
 import 'package:first_project_flutter/models/dummy_model.dart';
@@ -127,14 +128,13 @@ class apiResponse {
         Map<String, dynamic> userData = jsonDecode(response.body);
         String msg = userData['message'];
         String status = userData['status'];
-        // String accessToken = userData['token'];
+        String accessToken = userData['token'];
+        await SharedPreferencesHelper.setAccessToken(accessToken);
         // print('Access Token come during Login Time' + accessToken);
         // await SharedPreferencesHelper.setAccessToken(accessToken);
         Utils.showSnackBar(context, msg);
         if (status == "Success") {
-          // Navigator.pushNamed(context, 'practice');
-         
-         
+          Navigator.pushNamed(context, 'Search');
         }
       } else {
         Map<String, dynamic> errorMessage = jsonDecode(response.body);
