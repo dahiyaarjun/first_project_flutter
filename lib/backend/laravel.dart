@@ -38,7 +38,7 @@ class apiResponse {
         print('arjun');
 
         print(userData['User Details'][0]['name']);
-        Future<String> name=userData['User Details'][0]['name'];
+        String name=userData['User Details'][0]['name'];
        
         return name;
       }
