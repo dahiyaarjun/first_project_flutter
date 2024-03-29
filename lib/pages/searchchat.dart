@@ -15,24 +15,10 @@ class Search extends StatefulWidget {
 
 class _MyWidgetState extends State<Search> {
   
-  Future<String> ans= apiResponse.apiUserDetails(email:"dahiyaarjun343@gmail.com");
-  String naam="";
-//    ans.then((String result){
-// setState(() {
-//       naam = result;
-//     });
-// });   
-  
-
+  String ans= apiResponse.apiUserDetails(email:"dahiyaarjun343@gmail.com") as String;
   
   
 
-
- 
-
-  
-  
- 
   
   final TextEditingController _message = TextEditingController();
 
@@ -49,7 +35,7 @@ class _MyWidgetState extends State<Search> {
     
     child: ListView(
       padding: EdgeInsets.zero,
-      children: const <Widget>[
+      children:  <Widget>[
         SizedBox(
           height: 250,
           
@@ -71,7 +57,7 @@ class _MyWidgetState extends State<Search> {
             
                       ),
             
-             Text('',
+             Text(ans,
               
               style: TextStyle(
                 color: Colors.white,
@@ -108,6 +94,7 @@ class _MyWidgetState extends State<Search> {
 
 
       body: Container(
+        
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
 
