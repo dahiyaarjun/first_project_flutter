@@ -22,6 +22,7 @@ class _MyWidgetState extends State<Search> {
 
   
   final TextEditingController _message = TextEditingController();
+  String message="";
 
   @override
   Widget build(BuildContext context) {
@@ -115,7 +116,7 @@ class _MyWidgetState extends State<Search> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               FutureBuilder(
-                future: apiResponse.apiSearch( context: context, message: _message.text),
+                future: apiResponse.apiSearch( context: context, message: message),
                 builder: (BuildContext context, AsyncSnapshot<SearchModel> snapshot) {
                   switch (snapshot.connectionState) {
                     case ConnectionState.waiting:
@@ -218,6 +219,8 @@ class _MyWidgetState extends State<Search> {
                     backgroundColor: Colors.amber[400],
                     
                     child: IconButton(onPressed: (){
+                      message=_message.text;
+                      _message.clear();
                       
                             setState(() {
       
