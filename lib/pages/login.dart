@@ -21,7 +21,9 @@ class _UserLoginState extends State<UserLogin> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Demo App')),
+      appBar: AppBar(title: const Text('Demo App'),
+      automaticallyImplyLeading: false,
+      ),
       body: Scaffold(
         backgroundColor: Colors.transparent,
         body: Stack(

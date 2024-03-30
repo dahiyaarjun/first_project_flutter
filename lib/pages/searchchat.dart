@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'dart:ui';
 
 import 'package:lottie/lottie.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Search extends StatefulWidget {
   const Search({super.key});
@@ -15,7 +16,7 @@ class Search extends StatefulWidget {
 
 class _MyWidgetState extends State<Search> {
   
-  String ans= apiResponse.apiUserDetails(email:"dahiyaarjun343@gmail.com") as String;
+  // String ans= apiResponse.apiUserDetails(email:"dahiyaarjun343@gmail.com") as String;
   
   
 
@@ -57,7 +58,7 @@ class _MyWidgetState extends State<Search> {
             
                       ),
             
-             Text(ans,
+             Text('',
               
               style: TextStyle(
                 color: Colors.white,
@@ -81,11 +82,20 @@ class _MyWidgetState extends State<Search> {
         ListTile(
           leading: Icon(Icons.account_circle),
           
-          title: Text(''),
+          title: Text('Profile Settings'),
         ),
         ListTile(
           leading: Icon(Icons.logout_rounded),
           title: Text('Sign Out'),
+          onTap: () async {
+             SharedPreferences pref = await SharedPreferences.getInstance();
+          // pref.remove('token'); /
+          await pref.clear();
+          Navigator.pushNamed(context, 'login');
+          setState(() {
+            
+          });
+          },
         ),
       ],
     ),
