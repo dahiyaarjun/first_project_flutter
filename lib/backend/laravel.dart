@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:first_project_flutter/backend/sharedPreference.dart';
 import 'package:first_project_flutter/custom_helper/constants.dart';
 import 'package:first_project_flutter/models/LoginDetails_model.dart';
@@ -288,7 +290,29 @@ class apiResponse {
   //     Utils.showSnackBar(context, e.toString());
   //   }
   // }
+
   
-  
+    static Future<String> chatBot(
+      {required BuildContext context, required String message}) async {
+    try {
+      if (message.isEmpty != true) {
+        const apiUrl = "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=AIzaSyDcbzPQ3CIR3hIptwugv1yhE7UYd0iyo5g";
+        final header = {'Content-Type': 'application/json'};
+        var request = {"contents":[{"parts":[{"text":message}]}]};
+        var Response = await http.post(
+          Uri.parse(apiUrl),headers: header,
+          body: jsonEncode(request)
+        );
+        if (Response.statusCode == 200) {
+          var jsonResponse = json.decode(Response.body);
+          print(jsonResponse['candidates'][0]['content']['parts'][0]['text']);
+          return jsonResponse['candidates'][0]['content']['parts'][0]['text'];
+        }
+      }
+      return Future.error("Hii there!");
+    } catch (e) {
+      return Future.error(e.toString());
+    }
+  }
   
 }

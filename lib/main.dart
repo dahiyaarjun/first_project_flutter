@@ -1,6 +1,7 @@
 import 'dart:js';
 
 import 'package:first_project_flutter/backend/sharedPreference.dart';
+import 'package:first_project_flutter/pages/chatBot.dart';
 import 'package:first_project_flutter/pages/login.dart';
 import 'package:first_project_flutter/models/loginmodel.dart';
 import 'package:first_project_flutter/pages/loginGpt.dart';
@@ -48,6 +49,7 @@ void main() async {
       'register': (context) => const UserRegister(),
       'practice': (context) => const Practice(),
       'ResetPassword': (context) => const ResetPassword(),
+      'ChatBot': (context) => const ChatBot(),
       // 'Search': (context) => const Search(),
       
       'Search': (context) => const Search(), // Home screen route
