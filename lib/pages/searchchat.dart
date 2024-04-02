@@ -85,22 +85,44 @@ class _MyWidgetState extends State<Search> {
           
           title: Text('Profile Settings'),
         ),
-        ListTile(
+         ListTile(
           leading: Icon(Icons.logout_rounded),
           title: Text('Sign Out'),
-          onTap: () async {
-             SharedPreferences pref = await SharedPreferences.getInstance();
-          // pref.remove('token'); /
-          await pref.clear();
-          Navigator.pushNamed(context, 'login');
-          setState(() {
+          onTap: () {
+            showDialog(context: context,
+             builder: (_)=>AlertDialog(
+              content: Text("Do you really want to Sign Out?"),
+              actions: [
+                TextButton(onPressed: (){
+                  Navigator.pop(context);
+                }, child: Text('Cancel')),
+                TextButton(onPressed: () async {
+                  SharedPreferences pref = await SharedPreferences.getInstance();
+          
+                await pref.clear();
+                Navigator.pushNamed(context, 'login');
+               setState(() {
+
+               });
+                }, child: Text('OK')),
+              ],
+
+
+
+            ));
             
-          });
-          },
+          
+          
+         },
         ),
+
+          
+          
+          
+        
       ],
-    ),
-  ),
+    )),
+  
   
 
 
