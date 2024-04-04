@@ -2,6 +2,7 @@ import 'package:first_project_flutter/backend/laravel.dart';
 import 'package:first_project_flutter/models/LoginDetails_model.dart';
 import 'package:first_project_flutter/models/search_model.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'dart:ui';
 
 import 'package:lottie/lottie.dart';
@@ -55,11 +56,12 @@ class _MyWidgetState extends State<Search> {
                         radius: 60.0,
                         backgroundColor: const Color(0xFF778899),
                         backgroundImage: AssetImage("assets/images/Screenshot 2023-11-03 215652.png"),
-                       // for Network image
+                       
+                        
             
                       ),
-            
-             Text('',
+                      
+             Text('Akshit',
               
               style: TextStyle(
                 color: Colors.white,
@@ -84,6 +86,7 @@ class _MyWidgetState extends State<Search> {
           leading: Icon(Icons.account_circle),
           
           title: Text('Profile Settings'),
+          onTap: () => Navigator.pushNamed(context, 'Setting'),
         ),
          ListTile(
           leading: Icon(Icons.logout_rounded),
