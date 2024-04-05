@@ -7,8 +7,10 @@ import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:http/http.dart' as http;
 
+// ignore: must_be_immutable
 class Settings extends StatefulWidget {
-  const Settings({super.key});
+  String email;
+  Settings({required this.email});
 
   @override
   State<Settings> createState() => _MyWidgetState();
@@ -142,7 +144,8 @@ class _MyWidgetState extends State<Settings> {
                                   print("image pick");
                                   await _pickImage(ImageSource.gallery);
                                   print("beech ka");
-                                  _uploadImage("dahiyaarjun343@gmail.com");
+                                  print(widget.email);
+                                  _uploadImage(widget.email);
                                   print("image upload hogyA");
                                 },
                                 child: SizedBox (
