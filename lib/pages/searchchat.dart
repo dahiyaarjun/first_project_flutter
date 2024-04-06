@@ -1,24 +1,84 @@
+import 'dart:convert';
+
 import 'package:first_project_flutter/backend/laravel.dart';
+import 'package:first_project_flutter/backend/sharedPreference.dart';
+import 'package:first_project_flutter/custom_helper/constants.dart';
 import 'package:first_project_flutter/models/LoginDetails_model.dart';
 import 'package:first_project_flutter/models/search_model.dart';
+import 'package:first_project_flutter/pages/profileSettings.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'dart:ui';
+import 'package:http/http.dart' as http;
 
 import 'package:lottie/lottie.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+// ignore: must_be_immutable
 class Search extends StatefulWidget {
-  const Search({super.key});
-
+ 
   @override
   State<Search> createState() => _MyWidgetState();
+
+  
 }
 
 class _MyWidgetState extends State<Search> {
-  
-  // String ans= apiResponse.apiUserDetails(email:"dahiyaarjun343@gmail.com") as String;
-  
+
+  UserDetails() async{
+  SharedPreferences pref = await SharedPreferences.getInstance();
+      String token = pref.getString('accessToken').toString();
+      print("token is $token");
+       apiUserDetails(token:token);
+  }
+
+  @override
+  initState() {
+    
+   UserDetails();
+  }
+   String name="";
+   String email="";
+   String img="";
+
+  static String baseUrl = AppConstants.baseUrl;
+ 
+
+
+   Future<void> apiUserDetails({required String token}) async{
+
+    try {
+      
+      String apiUrl = '${baseUrl}api/user/details';
+      print('apiHit');
+      var Response = await http.post(
+        Uri.parse(apiUrl),
+        body: {
+          'token':token
+          
+        },
+      );
+      if(Response.statusCode==200){
+       Map<String, dynamic> userData = jsonDecode(Response.body);
+        
+        print('arjun');
+
+        print(userData['User Details'][0]['name']);
+        setState(() {
+          name=userData['User Details'][0]['name'];
+          email=userData['User Details'][0]['email'];
+          img=userData['url'];
+        });
+          
+          
+        
+      }
+    }
+      catch(e){
+        print(e.toString());
+
+      }
+      }
   
 
   
@@ -55,24 +115,24 @@ class _MyWidgetState extends State<Search> {
              CircleAvatar(
                         radius: 60.0,
                         backgroundColor: const Color(0xFF778899),
-                        backgroundImage: AssetImage("assets/images/Screenshot 2023-11-03 215652.png"),
+                        backgroundImage: NetworkImage(img),
                        
                         
             
                       ),
                       
-             Text('Akshit',
+             Text(name,
               
               style: TextStyle(
                 color: Colors.white,
-                fontSize: 24,
+                fontSize: 20,
               ),
             ),
             Text(
-              'Demo@gmail.com',
+              email,
               style: TextStyle(
                 color: Colors.white,
-                fontSize: 12,
+                fontSize: 15,
               ),
             ),
               ],
@@ -86,7 +146,9 @@ class _MyWidgetState extends State<Search> {
           leading: Icon(Icons.account_circle),
           
           title: Text('Profile Settings'),
-          onTap: () => Navigator.pushNamed(context, 'Setting'),
+          onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => Settings(email: email),
+                    )),
         ),
          ListTile(
           leading: Icon(Icons.logout_rounded),
