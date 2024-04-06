@@ -1,4 +1,4 @@
-import 'dart:js';
+
 
 import 'package:first_project_flutter/backend/sharedPreference.dart';
 import 'package:first_project_flutter/pages/login.dart';
@@ -11,12 +11,12 @@ import 'package:first_project_flutter/pages/register.dart';
 import 'package:first_project_flutter/pages/resetPassword.dart';
 import 'package:first_project_flutter/pages/searchchat.dart';
 import 'package:first_project_flutter/pages/splash.dart';
-// import 'package:first_project_flutter/reset_pass.dart';
+import 'dart:js';
 import 'package:flutter/material.dart';
  
 
 // void main() {
-//   runApp(MaterialApp(
+//   runApp(MaterialApp(      
 //     debugShowCheckedModeBanner: false,
 //     initialRoute: 'login',
 //     routes: {

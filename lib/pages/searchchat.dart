@@ -28,7 +28,7 @@ class _MyWidgetState extends State<Search> {
   UserDetails() async{
   SharedPreferences pref = await SharedPreferences.getInstance();
       String token = pref.getString('accessToken').toString();
-      print("token is $token");
+      // print("token is $token");
        apiUserDetails(token:token);
   }
 
@@ -61,9 +61,9 @@ class _MyWidgetState extends State<Search> {
       if(Response.statusCode==200){
        Map<String, dynamic> userData = jsonDecode(Response.body);
         
-        print('arjun');
+        // print('arjun');
 
-        print(userData['User Details'][0]['name']);
+        // print(userData['User Details'][0]['name']);
         setState(() {
           name=userData['User Details'][0]['name'];
           email=userData['User Details'][0]['email'];

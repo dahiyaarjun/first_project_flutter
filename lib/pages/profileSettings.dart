@@ -15,89 +15,60 @@ class Settings extends StatefulWidget {
   @override
   State<Settings> createState() => _MyWidgetState();
 }
- File? _image;
-
-ImageCropper _cropper=ImageCropper();
 class _MyWidgetState extends State<Settings> {
-  static String baseUrl = AppConstants.baseUrl;
+ File? _image;
+ static String baseUrl = AppConstants.baseUrl;
 
-  Future<void> _uploadImage(String email) async {
-    
+Future<void> _pickImage(ImageSource source) async {
+    final pickedImage = await ImagePicker().pickImage(source: source);
+    setState(() {
+      if (pickedImage != null) {
+        _image = File(pickedImage.path);
+        print('$_image select hogyi');
+      } else {
+        print('No image selected.');
+      }
+    });
+  }
+Future<void> _uploadImage() async {
     if (_image == null) {
-      print("Na hui image selected");
+      print('No image selected.');
       return;
     }
 
-    final url = Uri.parse('${baseUrl}api/user/upload-img');
-    final request = http.MultipartRequest('POST', url);
+    // Replace 'YOUR_UPLOAD_URL' with your server endpoint URL
+    var uploadUrl = Uri.parse('${baseUrl}api/user/upload-img');
+    
+    // Create a multipart request
+    var request = http.MultipartRequest('POST', uploadUrl);
+    
+    // Add image file to multipart request
+    request.files.add(await http.MultipartFile.fromPath('image', _image!.path));
 
-    // Attach the image file to the request
-    request.files.add(
-      await http.MultipartFile.fromPath('image', _image!.path),
-    );
-
-    // You can add headers if needed
-    // request.headers['Authorization'] = 'Bearer YOUR_API_TOKEN';
-
-    final response = await http.Response.fromStream(await request.send());
-
+    // Optional: add additional data to the request
+    // request.fields['description'] = 'Image description';
+    
+    // Send the request
+    request.fields['email'] = widget.email;
+    
+    // Send the request
+    var response = await request.send();
+    
+    
+    // Check if the request was successful
     if (response.statusCode == 200) {
-      print("Image uploaded successfully");
-      print("Response: ${response.body}");
+      print('Image uploaded successfully');
+      // Optionally, you can handle the response from the server here
     } else {
-      print("Failed to upload image. Status code: ${response.statusCode}");
-      print("Error message: ${response.body}");
+      print('Image upload failed');
     }
   }
-
-//  Future<File?> _cropImage(String path) async {
-//     File? croppedFile = await _cropper.cropImage(
-//       sourcePath: path,
-//       aspectRatio: CropAspectRatio(ratioX: 1.0, ratioY: 1.0),
-//       compressQuality: 100,
-//       maxWidth: 700,
-//       maxHeight: 700,
-//       androidUiSettings: AndroidUiSettings(
-//         toolbarTitle: 'Crop Image',
-//         toolbarColor: Colors.deepOrange,
-//         toolbarWidgetColor: Colors.white,
-//         activeControlsWidgetColor: Colors.white,
-//         initAspectRatio: CropAspectRatioPreset.square,
-//         lockAspectRatio: true,
-//       ),
-//     );
-
-//     return croppedFile;
-//   }
-
-
-  // final ImagePicker _picker = ImagePicker();
- 
-
-   Future<void> _pickImage(ImageSource source) async {
-    // ImagePicker picker = ImagePicker();
-    // final pickedFile = await picker.pickImage(source: source);
-    
-    
-      
-        final ImagePicker picker = ImagePicker();
-        final XFile? img = await picker.pickImage(
-          source: source, // alternatively, use ImageSource.gallery
-          // maxWidth: 400,
-        );
-        if (img != null) {
-        setState(() {
-          _image = File(img.path); // convert it to a Dart:io file
-        });
-        }
-      }
-      
-        
   
   
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
+    
     return Scaffold(
       appBar: AppBar(
         title: Text('Profile Settings'),
@@ -109,9 +80,7 @@ class _MyWidgetState extends State<Settings> {
         ),
       ),
       
-// getImage(){
 
-// }
       body:
         Container(
           color: Colors.blue,
@@ -125,6 +94,7 @@ class _MyWidgetState extends State<Settings> {
                     
                     backgroundImage: _image != null ? FileImage(_image!) : null,
                    child: _image == null ? Icon(Icons.person, size: 70) : null,
+                  
                    
                     
                   ),
@@ -144,8 +114,8 @@ class _MyWidgetState extends State<Settings> {
                                   print("image pick");
                                   await _pickImage(ImageSource.gallery);
                                   print("beech ka");
-                                  print(widget.email);
-                                  _uploadImage(widget.email);
+                                  // print(widget.email);
+                                  _uploadImage();
                                   print("image upload hogyA");
                                 },
                                 child: SizedBox (
@@ -158,8 +128,8 @@ class _MyWidgetState extends State<Settings> {
                               
                               Expanded(child: 
                               InkWell(
-                                onTap: () {
-                                  _pickImage(ImageSource.camera);
+                                onTap: () async {
+                                  await _pickImage(ImageSource.camera);
                                 },
                                 child: SizedBox (
                                   child:Column(children: [
@@ -220,7 +190,6 @@ class _MyWidgetState extends State<Settings> {
   }
   
 
-
-  
-  
 }
+  
+  
