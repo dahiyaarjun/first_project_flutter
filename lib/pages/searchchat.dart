@@ -67,7 +67,7 @@ class _MyWidgetState extends State<Search> {
         setState(() {
           name=userData['User Details'][0]['name'];
           email=userData['User Details'][0]['email'];
-          img=userData['url'];
+          if(userData['url']!=null)img=userData['url'];
         });
           
           
