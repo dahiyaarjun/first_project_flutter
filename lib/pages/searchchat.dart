@@ -116,7 +116,8 @@ class _MyWidgetState extends State<Search> {
              CircleAvatar(
                         radius: 60.0,
                         backgroundColor: const Color(0xFF778899),
-                        backgroundImage: NetworkImage(img),
+                        
+                        backgroundImage: (img!=null)?NetworkImage(img):null,
                        
                         
             
