@@ -42,6 +42,7 @@ UserDetails() async{
 
 String name="";
 String img="";
+String email="";
 static String baseUrl = AppConstants.baseUrl;
 
 
@@ -61,24 +62,30 @@ static String baseUrl = AppConstants.baseUrl;
       if(Response.statusCode==200){
        Map<String, dynamic> userData = jsonDecode(Response.body);
         
-        // print('arjun');
-
-        // print(userData['User Details'][0]['name']);
+    
         setState(() {
+          email=userData['User Details'][0]['email'];
           name=userData['User Details'][0]['name'];
           _name.text=name;
-          // email=userData['User Details'][0]['email'];
           if(userData['url']!=null)img=userData['url'];
+          print(img);
+          
         });
           
           
-        
+        print("user details called");
       }
     }
       catch(e){
         print(e.toString());
 
       }
+      }
+
+      Future<void> removeImage() async {
+       await apiResponse.removeImage(email);
+       print("image removed");
+       
       }
 
        
@@ -101,6 +108,7 @@ static String baseUrl = AppConstants.baseUrl;
        setState(() {showSpinner = false;});
        
      }
+     print("saved");
   }
 
   @override
@@ -128,9 +136,9 @@ static String baseUrl = AppConstants.baseUrl;
                     child: CircleAvatar(
                       radius: 70,
                       backgroundImage:
-                          image != null ? NetworkImage(img) : null,
+                          img != null ? NetworkImage(img) : null,
                       child:
-                          image == null ? const Icon(Icons.person, size: 70) : null,
+                          img == null ? const Icon(Icons.person, size: 70) : null,
                     ),
                     onTap: () => {
                           showModalBottomSheet(
@@ -159,6 +167,7 @@ static String baseUrl = AppConstants.baseUrl;
                                                     ],
                                                   ),
                                                 ))),
+
                                         Expanded(
                                             child: InkWell(
                                                 onTap: () async {
@@ -181,6 +190,10 @@ static String baseUrl = AppConstants.baseUrl;
                               })
                         }),
               ),
+              SizedBox(height: MediaQuery.of(context).size.height*0.02,),
+              ElevatedButton(onPressed: (){
+                removeImage();
+              }, child: Text('Remove Picture')),
               Container(
                 padding: const EdgeInsets.all(40),
                 child: TextFormField(
@@ -203,10 +216,17 @@ static String baseUrl = AppConstants.baseUrl;
                   width: 200,
                   height: 30,
                   child: ElevatedButton(
-                      onPressed: () {
-                        save(_name.text);
-                        setState(() {});
+                      onPressed: () async {
+                       
+                       if(image!=null) save(_name.text);
+                        UserDetails();
+                        setState(() {
+                        });
+                        print("save button");
+                        
+                        
                       },
+                      
                       child: const Text('Save')))
             ],
           ),

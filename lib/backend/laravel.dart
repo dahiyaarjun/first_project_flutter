@@ -256,5 +256,36 @@ class apiResponse {
       return null;
     }
   }
+
+  static Future<void> removeImage(String email) async{
+    
+    try {
+  String apiUrl='{$baseUrl}api/user/remove-img';
+    
+    var Response = await http.post(
+      Uri.parse(apiUrl),
+      body: {
+        email:email
+      },
+    );
   
+    if (Response.statusCode == 200) {
+      Map<String, dynamic> userData = jsonDecode(Response.body);
+      String successful = userData['message'];
+  
+      
+    } else {
+      Map<String, dynamic> errorMessage = jsonDecode(Response.body);
+      String error = errorMessage['message'];
+      // Utils.showSnackBar(context, error);
+    }
+} on Exception catch (e) {
+  print(e.toString());
+  // TODO
 }
+    
+    
+    }
+  }
+  
+
