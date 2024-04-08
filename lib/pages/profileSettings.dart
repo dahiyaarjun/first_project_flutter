@@ -1,24 +1,107 @@
+import 'dart:convert';
 import 'dart:io';
-
+import 'package:first_project_flutter/custom_helper/constants.dart';
+import 'package:flutter/widgets.dart';
+import 'package:http/http.dart' as http;
 import 'package:first_project_flutter/backend/laravel.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 // import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 // ignore: must_be_immutable
 class Settings extends StatefulWidget {
   String email;
   Settings({super.key, required this.email});
 
+  
+
   @override
   State<Settings> createState() => _MyWidgetState();
+
+  
 }
 
 class _MyWidgetState extends State<Settings> {
+
+TextEditingController _name=TextEditingController();
+UserDetails() async{
+  SharedPreferences pref = await SharedPreferences.getInstance();
+      String token = pref.getString('accessToken').toString();
+      // print("token is $token");
+       apiUserDetails(token:token);
+  }
+
+  @override
+  initState() {
+    
+   UserDetails();
+  }
+
+String name="";
+String img="";
+static String baseUrl = AppConstants.baseUrl;
+
+
+  Future<void> apiUserDetails({required String token}) async{
+
+    try {
+      
+      String apiUrl = '${baseUrl}api/user/details';
+      print('apiHit');
+      var Response = await http.post(
+        Uri.parse(apiUrl),
+        body: {
+          'token':token
+          
+        },
+      );
+      if(Response.statusCode==200){
+       Map<String, dynamic> userData = jsonDecode(Response.body);
+        
+        // print('arjun');
+
+        // print(userData['User Details'][0]['name']);
+        setState(() {
+          name=userData['User Details'][0]['name'];
+          _name.text=name;
+          // email=userData['User Details'][0]['email'];
+          if(userData['url']!=null)img=userData['url'];
+        });
+          
+          
+        
+      }
+    }
+      catch(e){
+        print(e.toString());
+
+      }
+      }
+
+       
+  
+  
   bool showSpinner = false;
   XFile? image;
+
+  Future<void> save(String name) async{
+  if (image != null) {
+  setState(() {showSpinner = true;});
+   Uint8List bytes =await image!.readAsBytes();
+  await apiResponse().uploadImage(bytes,widget.email,image!.name,name).then((value) {
+           setState(() {
+           });
+       print(value.toString());
+       }).onError((error,stackTrace) {
+       print(error.toString());
+       });
+       setState(() {showSpinner = false;});
+       
+     }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +128,7 @@ class _MyWidgetState extends State<Settings> {
                     child: CircleAvatar(
                       radius: 70,
                       backgroundImage:
-                          image != null ? FileImage(image! as File) : null,
+                          image != null ? NetworkImage(img) : null,
                       child:
                           image == null ? const Icon(Icons.person, size: 70) : null,
                     ),
@@ -64,19 +147,8 @@ class _MyWidgetState extends State<Settings> {
                                             child: InkWell(
                                                 onTap: () async {
                                                   final ImagePicker picker = ImagePicker();
-                                                  final image = await picker.pickImage(source: ImageSource.gallery);
-                                                  if (image != null) {
-                                                    setState(() {showSpinner = true;});
-                                                    Uint8List bytes =await image.readAsBytes();
-                                                    await apiResponse().uploadImage(bytes,widget.email,image.name).then((value) {
-                                                      setState(() {
-                                                      });
-                                                      print(value.toString());
-                                                    }).onError((error,stackTrace) {
-                                                      print(error.toString());
-                                                    });
-                                                    setState(() {showSpinner = false;});
-                                                  }
+                                                   image = await picker.pickImage(source: ImageSource.gallery);
+                                                  
                                                 },
                                                 child: const SizedBox(
                                                   child: Column(
@@ -91,7 +163,7 @@ class _MyWidgetState extends State<Settings> {
                                             child: InkWell(
                                                 onTap: () async {
                                                   final ImagePicker picker = ImagePicker();
-                                                  final XFile? image = await picker.pickImage(source: ImageSource.gallery);
+                                                   image = await picker.pickImage(source: ImageSource.camera);
                                                 },
                                                 child: const SizedBox(
                                                   child: Column(
@@ -112,6 +184,8 @@ class _MyWidgetState extends State<Settings> {
               Container(
                 padding: const EdgeInsets.all(40),
                 child: TextFormField(
+                  controller: _name,
+                  
                   decoration: InputDecoration(
                     contentPadding: EdgeInsets.symmetric(
                         horizontal: MediaQuery.of(context).size.width * 0.030,
@@ -130,6 +204,7 @@ class _MyWidgetState extends State<Settings> {
                   height: 30,
                   child: ElevatedButton(
                       onPressed: () {
+                        save(_name.text);
                         setState(() {});
                       },
                       child: const Text('Save')))

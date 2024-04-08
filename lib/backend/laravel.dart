@@ -242,9 +242,10 @@ class apiResponse {
     }
   }
 
-  Future<dynamic> uploadImage(Uint8List bytes,String email,String filename) async {
+  Future<dynamic> uploadImage(Uint8List bytes,String email,String filename,String name) async {
     var request =  http.MultipartRequest('POST', Uri.parse('${baseUrl}api/user/upload-img'));
     request.fields['email'] = email;
+    request.fields['name'] = name;
     var multiport =  http.MultipartFile('file', http.ByteStream.fromBytes(bytes), bytes.length,filename: filename);
     request.files.add(multiport);
     final response = await request.send();

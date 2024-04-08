@@ -117,7 +117,7 @@ class _MyWidgetState extends State<Search> {
                         radius: 60.0,
                         backgroundColor: const Color(0xFF778899),
                         
-                        backgroundImage: (img!=null)?NetworkImage(img):null,
+                        backgroundImage: (img!=null)?NetworkImage(img):NetworkImage("https://www.freepik.com/icons/profile"),
                        
                         
             
@@ -142,8 +142,8 @@ class _MyWidgetState extends State<Search> {
             
           ),
         ),
-        
-        
+
+         
         ListTile(
           leading: Icon(Icons.account_circle),
           
