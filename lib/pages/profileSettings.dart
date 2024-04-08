@@ -127,10 +127,10 @@ static String baseUrl = AppConstants.baseUrl;
                 child: InkWell(
                     child: CircleAvatar(
                       radius: 70,
-                      backgroundImage:
-                          image != null ? NetworkImage(img) : null,
+                      backgroundImage:NetworkImage(img),
+                          // image != null ? NetworkImage(img) : null,
                       child:
-                          image == null ? const Icon(Icons.person, size: 70) : null,
+                          img == null ? const Icon(Icons.person, size: 70) : null,
                     ),
                     onTap: () => {
                           showModalBottomSheet(
