@@ -231,7 +231,7 @@ class apiResponse {
   static Future<List<ResponseModel>> fetchData() async {
     // Replace this URL with your API endpoint
     final response = await http.get(Uri.parse(
-        'https://violent-wall-production.up.railway.app/api/user/test'));
+        'https://violent-wall-production.up.railway.app/api/user/all'));
     if (response.statusCode == 200) {
       // If the call to the server was successful, parse the JSON
       final data = json.decode(response.body) as List<dynamic>;
@@ -260,18 +260,21 @@ class apiResponse {
   static Future<void> removeImage(String email) async{
     
     try {
-  String apiUrl='{$baseUrl}api/user/remove-img';
+  String apiUrl='${baseUrl}api/user/remove-img';
     
     var Response = await http.post(
       Uri.parse(apiUrl),
       body: {
-        email:email
+        "email":email
       },
     );
   
     if (Response.statusCode == 200) {
       Map<String, dynamic> userData = jsonDecode(Response.body);
-      String successful = userData['message'];
+      String message= userData['message'];
+      if(message=="successful"){
+        print("remove kr dia");
+      }
   
       
     } else {

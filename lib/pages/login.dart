@@ -192,7 +192,7 @@ class _UserLoginState extends State<UserLogin> {
                   left: MediaQuery.of(context).size.width * 0.3),
               child: OutlinedButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, 'Search');
+                    Navigator.pushNamed(context, 'practice');
                   },
                   child: const Text('Skip->')),
             ),

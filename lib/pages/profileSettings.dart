@@ -67,7 +67,7 @@ static String baseUrl = AppConstants.baseUrl;
           email=userData['User Details'][0]['email'];
           name=userData['User Details'][0]['name'];
           _name.text=name;
-          if(userData['url']!=null)img=userData['url'];
+          img=userData['url'];
           print(img);
           
         });
@@ -82,7 +82,7 @@ static String baseUrl = AppConstants.baseUrl;
       }
       }
 
-      Future<void> removeImage() async {
+      Future<void> remove() async {
        await apiResponse.removeImage(email);
        print("image removed");
        
@@ -191,8 +191,16 @@ static String baseUrl = AppConstants.baseUrl;
                         }),
               ),
               SizedBox(height: MediaQuery.of(context).size.height*0.02,),
-              ElevatedButton(onPressed: (){
-                removeImage();
+              ElevatedButton(onPressed: () async {
+               
+                await remove();
+                print("before user details");
+                  await UserDetails();
+                setState(() async {
+                  
+                 print("inside state");
+                });
+                print("out of state");
               }, child: Text('Remove Picture')),
               Container(
                 padding: const EdgeInsets.all(40),
@@ -218,9 +226,12 @@ static String baseUrl = AppConstants.baseUrl;
                   child: ElevatedButton(
                       onPressed: () async {
                        
-                       if(image!=null) save(_name.text);
+                        if(image!=null){ await save(_name.text);
+                         image=null;
+                         }
                         UserDetails();
-                        setState(() {
+                        setState(() async {
+                         
                         });
                         print("save button");
                         
