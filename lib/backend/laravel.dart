@@ -6,6 +6,7 @@ import 'package:first_project_flutter/models/registermodel.dart';
 import 'package:first_project_flutter/models/responsemodel.dart';
 import 'package:first_project_flutter/models/loginmodel.dart';
 import 'package:first_project_flutter/models/search_model.dart';
+import 'package:first_project_flutter/models/subjectmodel.dart';
 import 'package:first_project_flutter/pages/practice.dart';
 import 'package:first_project_flutter/pages/searchchat.dart';
 import 'package:first_project_flutter/widgets/utils.dart';

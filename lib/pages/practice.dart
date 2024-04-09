@@ -56,9 +56,7 @@ class _PracticeState extends State<Practice> {
 
 
     Scaffold(
-
       body:
-        
         FutureBuilder<List<ResponseModel>>(
         future: apiResponse.fetchData(),
         builder: (BuildContext context, AsyncSnapshot<List<ResponseModel>> snapshot) {
