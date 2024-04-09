@@ -6,6 +6,7 @@ import 'package:first_project_flutter/models/registermodel.dart';
 import 'package:first_project_flutter/models/responsemodel.dart';
 import 'package:first_project_flutter/models/loginmodel.dart';
 import 'package:first_project_flutter/models/search_model.dart';
+import 'package:first_project_flutter/models/subjectmodel.dart';
 import 'package:first_project_flutter/pages/practice.dart';
 import 'package:first_project_flutter/pages/searchchat.dart';
 import 'package:first_project_flutter/widgets/utils.dart';
@@ -257,4 +258,23 @@ class apiResponse {
     }
   }
   
+
+static Future<List<subjectmodel>> getSubject() async {
+    // Replace this URL with your API endpoint
+    final response = await http.post(Uri.parse(
+        'https://violent-wall-production.up.railway.app/api/user/get-subjects'),
+        body: { "class":"12th"
+              //  "branch":null
+               },
+        );
+        
+    if (response.statusCode == 200) {
+      // If the call to the server was successful, parse the JSON
+      final data = json.decode(response.body) as List<dynamic>;
+      return data.map((json) => subjectmodel.fromJson(json)).toList();
+    } else {
+      // If that call was not successful, throw an error.
+      throw Exception('Failed to load data');
+    }
+  }
 }
