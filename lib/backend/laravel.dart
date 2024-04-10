@@ -232,7 +232,7 @@ class apiResponse {
   static Future<List<ResponseModel>> fetchData() async {
     // Replace this URL with your API endpoint
     final response = await http.get(Uri.parse(
-        'https://violent-wall-production.up.railway.app/api/user/test'));
+        'https://violent-wall-production.up.railway.app/api/user/all'));
     if (response.statusCode == 200) {
       // If the call to the server was successful, parse the JSON
       final data = json.decode(response.body) as List<dynamic>;
@@ -257,17 +257,50 @@ class apiResponse {
       return null;
     }
   }
-  
 
-static Future<List<subjectmodel>> getSubject() async {
+  static Future<void> removeImage(String email) async{
+    
+    try {
+  String apiUrl='${baseUrl}api/user/remove-img';
+    
+    var Response = await http.post(
+      Uri.parse(apiUrl),
+      body: {
+        "email":email
+      },
+    );
+  
+    if (Response.statusCode == 200) {
+      Map<String, dynamic> userData = jsonDecode(Response.body);
+      String message= userData['message'];
+      if(message=="successful"){
+        print("remove kr dia");
+      }
+  
+      
+    } else {
+      Map<String, dynamic> errorMessage = jsonDecode(Response.body);
+      String error = errorMessage['message'];
+      // Utils.showSnackBar(context, error);
+    }
+} on Exception catch (e) {
+  print(e.toString());
+  // TODO
+}
+    
+    
+    }
+
+    static Future<List<subjectmodel>> getSubject(String Class) async {
     // Replace this URL with your API endpoint
+    String Url='${baseUrl}api/user/get-subjects';
     final response = await http.post(Uri.parse(
-        'https://violent-wall-production.up.railway.app/api/user/get-subjects'),
-        body: { "class":"12th"
+        Url),
+         body: { "class":Class
               //  "branch":null
                },
         );
-        
+         
     if (response.statusCode == 200) {
       // If the call to the server was successful, parse the JSON
       final data = json.decode(response.body) as List<dynamic>;
@@ -277,4 +310,6 @@ static Future<List<subjectmodel>> getSubject() async {
       throw Exception('Failed to load data');
     }
   }
-}
+  }
+  
+
