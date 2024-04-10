@@ -67,7 +67,7 @@ static String baseUrl = AppConstants.baseUrl;
           email=userData['User Details'][0]['email'];
           name=userData['User Details'][0]['name'];
           _name.text=name;
-          img=userData['url'];
+          userData['url']==null?img="null":img=userData['url'];
           print(img);
           
         });
@@ -136,9 +136,9 @@ static String baseUrl = AppConstants.baseUrl;
                     child: CircleAvatar(
                       radius: 70,
                       backgroundImage:
-                          img != null ? NetworkImage(img) : null,
+                          img != "null" ? NetworkImage(img) : null,
                       child:
-                          img == null ? const Icon(Icons.person, size: 70) : null,
+                          img == "null" ? const Icon(Icons.person, size: 70) : null,
                     ),
                     onTap: () => {
                           showModalBottomSheet(
