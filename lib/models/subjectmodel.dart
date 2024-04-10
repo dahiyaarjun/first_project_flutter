@@ -2,7 +2,7 @@ class subjectmodel {
   int id;
   String className;
   String subjectName;
-  String branch;
+  String? branch;
   DateTime? createdAt;
   DateTime? updatedAt;
 
@@ -11,7 +11,7 @@ class subjectmodel {
     required this.id,
     required this.className,
     required this.subjectName,
-    required this.branch,
+    this.branch,
     this.createdAt,
     this.updatedAt,
   });
@@ -22,7 +22,7 @@ class subjectmodel {
        id: json['id'] as int,
       className: json['class'] as String,
       subjectName: json['subject'] as String,
-      branch: json['branch'] as String,
+      branch: json['branch'] as String?,
       createdAt: json['created_at'] as DateTime?, 
       updatedAt: json['updated_at'] as DateTime?,
     );
