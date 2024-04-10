@@ -83,7 +83,9 @@ static String baseUrl = AppConstants.baseUrl;
       }
 
       Future<void> remove() async {
+        setState(() {showSpinner = true;});
        await apiResponse.removeImage(email);
+       setState(() {showSpinner = false;});
        print("image removed");
        
       }
