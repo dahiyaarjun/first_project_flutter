@@ -10,6 +10,8 @@ import 'package:first_project_flutter/pages/register.dart';
 import 'package:first_project_flutter/pages/resetPassword.dart';
 import 'package:first_project_flutter/pages/searchchat.dart';
 import 'package:first_project_flutter/pages/splash.dart';
+import 'package:first_project_flutter/pages/standard.dart';
+import 'package:first_project_flutter/pages/subject.dart';
 import 'package:flutter/material.dart';
  
 
@@ -47,8 +49,8 @@ void main() async {
       'register': (context) => const UserRegister(),
       'practice': (context) => const Practice(),
       'ResetPassword': (context) => const ResetPassword(),
-      'Search': (context) =>  Search(), // Home screen route
-      
+      'Search': (context) =>  Search(), 
+      'standard':(token)=> standard(),
       
       // Add more routes as needed
     },
