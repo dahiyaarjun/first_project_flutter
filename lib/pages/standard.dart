@@ -5,7 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class standard extends StatelessWidget {
-  const standard({super.key});
+   standard({super.key});
+String Class="";
 
   @override
   Widget build(BuildContext context) {
@@ -41,8 +42,9 @@ class standard extends StatelessWidget {
                      fit: BoxFit.cover),
                      ),
                      onTap:() {
+                      Class="10th";
                         Navigator.push(context,
-              MaterialPageRoute(builder: (context) => subject()),);
+              MaterialPageRoute(builder: (context) => subject(Class)),);
                      },
                      ),
                      const SizedBox(width: 100),
@@ -59,9 +61,10 @@ class standard extends StatelessWidget {
                       fit: BoxFit.cover), 
                       ),
                        onTap:() {
+                        Class="12th";
                         Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => subject()),);
+              MaterialPageRoute(builder: (context) => subject(Class)),);
                      },
                      )
                      ],

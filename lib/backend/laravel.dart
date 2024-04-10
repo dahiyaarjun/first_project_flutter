@@ -290,6 +290,26 @@ class apiResponse {
     
     
     }
+
+    static Future<List<subjectmodel>> getSubject(String Class) async {
+    // Replace this URL with your API endpoint
+    String Url='${baseUrl}api/user/get-subjects';
+    final response = await http.post(Uri.parse(
+        Url),
+         body: { "class":Class
+              //  "branch":null
+               },
+        );
+         
+    if (response.statusCode == 200) {
+      // If the call to the server was successful, parse the JSON
+      final data = json.decode(response.body) as List<dynamic>;
+      return data.map((json) => subjectmodel.fromJson(json)).toList();
+    } else {
+     
+      throw Exception('Failed to load data');
+    }
+  }
   }
   
 
