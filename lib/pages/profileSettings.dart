@@ -110,6 +110,11 @@ static String baseUrl = AppConstants.baseUrl;
        setState(() {showSpinner = false;});
        
      }
+     else{
+      setState(() {showSpinner = true;});
+      await apiResponse.updateName(widget.email, name);
+      setState(() {showSpinner = false;});
+     }
      print("saved");
   }
 
@@ -228,9 +233,8 @@ static String baseUrl = AppConstants.baseUrl;
                   child: ElevatedButton(
                       onPressed: () async {
                        
-                        if(image!=null){ await save(_name.text);
-                         image=null;
-                         }
+                         await save(_name.text);
+                         
                         UserDetails();
                         setState(() async {
                          

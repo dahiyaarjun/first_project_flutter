@@ -113,19 +113,21 @@ class _MyWidgetState extends State<Search> {
             ),
             child: Column(
               children: [
-             CircleAvatar(
-                        radius: 60.0,
-                        backgroundColor: const Color(0xFF778899),
-                        
-
-                        backgroundImage: (img!=null)?NetworkImage(img):NetworkImage("https://www.freepik.com/icons/profile"),
-
-                        // backgroundImage: (img!=null)?NetworkImage(img):NetworkImage("https://res.cloudinary.com/dlpxw0zdc/image/upload/v1712511305/CommonPhotos/cgeckounfa7toooq0wkm.png"),
-
-                       
-                        
-            
-                      ),
+             InkWell(
+               child: CircleAvatar(
+                          radius: 60.0,
+                          backgroundColor: const Color(0xFF778899),
+                          
+               
+                          backgroundImage: (img!=null)?NetworkImage(img):NetworkImage("https://www.freepik.com/icons/profile"),
+               
+                          // backgroundImage: (img!=null)?NetworkImage(img):NetworkImage("https://res.cloudinary.com/dlpxw0zdc/image/upload/v1712511305/CommonPhotos/cgeckounfa7toooq0wkm.png"),
+               
+                        ),
+                        onTap: () {
+                          
+                        }
+             ),
                       
              Text(name,
               

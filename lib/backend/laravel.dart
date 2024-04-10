@@ -310,6 +310,40 @@ class apiResponse {
       throw Exception('Failed to load data');
     }
   }
+
+  static Future<void> updateName(String email,String name) async{
+    
+    try {
+  String apiUrl='${baseUrl}api/user/update-name';
+    
+    var Response = await http.post(
+      Uri.parse(apiUrl),
+     body:  {
+    "email":email,
+     "name":name
+    },
+    );
+  
+    if (Response.statusCode == 200) {
+      Map<String, dynamic> userData = jsonDecode(Response.body);
+      String message= userData['message'];
+      if(message=="successful"){
+        print("name updated");
+      }
+  
+      
+    } else {
+      Map<String, dynamic> errorMessage = jsonDecode(Response.body);
+      String error = errorMessage['message'];
+      // Utils.showSnackBar(context, error);
+    }
+} on Exception catch (e) {
+  print(e.toString());
+  // TODO
+}
+    
+    
+    }
   }
   
 
