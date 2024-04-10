@@ -273,7 +273,7 @@ static Future<List<subjectmodel>> getSubject() async {
       final data = json.decode(response.body) as List<dynamic>;
       return data.map((json) => subjectmodel.fromJson(json)).toList();
     } else {
-      // If that call was not successful, throw an error.
+     
       throw Exception('Failed to load data');
     }
   }
