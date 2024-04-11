@@ -7,6 +7,7 @@ import 'package:first_project_flutter/models/LoginDetails_model.dart';
 import 'package:first_project_flutter/models/search_model.dart';
 import 'package:first_project_flutter/pages/profileSettings.dart';
 import 'package:flutter/material.dart';
+import 'package:insta_image_viewer/insta_image_viewer.dart';
 import 'package:get/get.dart';
 import 'dart:ui';
 import 'package:http/http.dart' as http;
@@ -24,6 +25,8 @@ class Search extends StatefulWidget {
 }
 
 class _MyWidgetState extends State<Search> {
+
+  
 
   UserDetails() async{
   SharedPreferences pref = await SharedPreferences.getInstance();
@@ -113,20 +116,17 @@ class _MyWidgetState extends State<Search> {
             ),
             child: Column(
               children: [
-             InkWell(
+             InstaImageViewer(
                child: CircleAvatar(
                           radius: 60.0,
                           backgroundColor: const Color(0xFF778899),
                           
                
                           backgroundImage: (img!=null)?NetworkImage(img):NetworkImage("https://www.freepik.com/icons/profile"),
-               
-                          // backgroundImage: (img!=null)?NetworkImage(img):NetworkImage("https://res.cloudinary.com/dlpxw0zdc/image/upload/v1712511305/CommonPhotos/cgeckounfa7toooq0wkm.png"),
-               
-                        ),
-                        onTap: () {
                           
-                        }
+                        ),
+                       
+                        
              ),
                       
              Text(name,
