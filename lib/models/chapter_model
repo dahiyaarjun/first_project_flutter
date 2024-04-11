@@ -1,30 +1,54 @@
-import 'package:json_annotation/json_annotation.dart';
-
-part 'chapter.g.dart';
-
-@JsonSerializable()
-class Chapter {
+class chapterModel {
   int id;
-  @JsonKey(name: 'class') 
   String className;
-  String subject;
+  String subjectName;
   String chapter;
-  @JsonKey(name: 'chapter_name')
   String chapterName;
   String url;
   String? branch;
+  DateTime? createdAt;
+  DateTime? updatedAt;
 
-  Chapter({
+  // Constructor
+  chapterModel({
     required this.id,
     required this.className,
-    required this.subject,
+    required this.subjectName,
     required this.chapter,
     required this.chapterName,
     required this.url,
-    this.branch,
+    required this.branch,
+    this.createdAt,
+    this.updatedAt,
   });
 
-  factory Chapter.fromJson(Map<String, dynamic> json) => _$ChapterFromJson(json);
+  // Factory constructor to create a chapterModel instance from JSON
+  factory chapterModel.fromJson(Map<String, dynamic> json) {
+    return chapterModel(
+       id: json['id'] as int,
+      className: json['class'] as String,
+      subjectName: json['subject'] as String,
+      chapter: json['chapter'] as String,
+      chapterName: json['chapter_name'] as String,
+      url: json['url'] as String,
+      branch: json['branch'] as String?,
+      createdAt: json['created_at'] as DateTime?, 
+      updatedAt: json['updated_at'] as DateTime?,
+    );
+  }
 
-  Map<String, dynamic> toJson() => _$ChapterToJson(this);
+  // Method to convert subjectmodel instance to JSON map
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'class': className,
+      'subject': subjectName,
+      'chapter': chapter,
+      'chapterName': chapterName,
+      'url': url,
+      'branch': branch,
+      'created_at': createdAt,
+      'updated_at': updatedAt,
+    };
+  }
 }

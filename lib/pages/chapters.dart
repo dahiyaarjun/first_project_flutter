@@ -1,41 +1,39 @@
 import 'dart:convert';
 // import 'dart:html';
 import 'package:first_project_flutter/backend/laravel.dart';
+import 'package:first_project_flutter/models/chapter_model';
 import 'package:first_project_flutter/models/subjectmodel.dart';
-import 'package:first_project_flutter/pages/chapters.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 // import 'package';
 import 'package:flutter/material.dart';
 
-class subject extends StatefulWidget {
+class chapter extends StatefulWidget {
   String _class;
-  
-   subject(this._class);
+  String _branch;
+  String _subject;
+  chapter(this._class,this._branch,this._subject);
 
   @override
-  State<subject> createState() => _streamState();
+  State<chapter> createState() => _streamState();
 }
 
-class _streamState extends State<subject> {
+class _streamState extends State<chapter> {
 
-  String _subject="";
-  String _branch="";
  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('${widget._class} subjects',style:TextStyle(
+      appBar: AppBar(title: Text('Class ${widget._class} ${widget._subject} Chapters',style:TextStyle(
               fontWeight: FontWeight.bold, 
               fontSize: 30.0,
               color: Colors.white )),
               centerTitle: true,
         backgroundColor: Colors.blueGrey,),
   
-        body:FutureBuilder<List<subjectmodel>>(
-        future: apiResponse.getSubject(widget._class),
-        builder: (BuildContext context, AsyncSnapshot<List<subjectmodel>> snapshot) {
+        body:FutureBuilder<List<chapterModel>>(
+        future: apiResponse.getChapters(widget._class,widget._branch,widget._subject),
+        builder: (BuildContext context, AsyncSnapshot<List<chapterModel>> snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(child: CircularProgressIndicator());
           } else if (snapshot.hasError) {
@@ -53,14 +51,8 @@ class _streamState extends State<subject> {
              width: 4.0, 
            )),
                   child: ListTile(
-                    title: Text(post.subjectName),
-                    subtitle: (post.branch!=null)?Text(post.branch!):Text(''),
-                    onTap: () {
-                      _subject=post.subjectName; 
-                      (widget._class=="10th")?_branch="":_branch=post.branch!;
-                      Navigator.push(context,
-              MaterialPageRoute(builder: (context) => chapter(widget._class,_branch,_subject)));
-                    }
+                    title: Text(post.chapter),
+                    subtitle: Text(post.chapterName!),
                   ),
                 );
               },

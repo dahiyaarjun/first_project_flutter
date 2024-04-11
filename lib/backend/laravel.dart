@@ -1,6 +1,7 @@
 import 'package:first_project_flutter/backend/sharedPreference.dart';
 import 'package:first_project_flutter/custom_helper/constants.dart';
 import 'package:first_project_flutter/models/LoginDetails_model.dart';
+import 'package:first_project_flutter/models/chapter_model';
 import 'package:first_project_flutter/models/dummy_model.dart';
 import 'package:first_project_flutter/models/registermodel.dart';
 import 'package:first_project_flutter/models/responsemodel.dart';
@@ -309,21 +310,22 @@ class apiResponse {
     }
   }
 
-  static Future<List<Chapter>> getChapter(String sub) async {
+  static Future<List<chapterModel>> getChapters(String _class,String _branch,String _subject) async {
     String Url='${baseUrl}api/user/get-chapters';
     final response = await http.post(Uri.parse(
         Url),
-         body: { "chapter":"sub",
-                  "class": "10th",
-                  "subject": "Mathematics",
-              //  "branch":nullhmb 
+         body: { 
+                  "class": _class,
+                  "subject": _subject,
+                  "branch": _branch
+              
                },
         );
          
     if (response.statusCode == 200) {
       // If the call to the server was successful, parse the JSON
       final data = json.decode(response.body) as List<dynamic>;
-      return data.map((json) => Chapter.fromJson(json)).toList();
+      return data.map((json) => chapterModel.fromJson(json)).toList();
     } else {
       throw Exception('Failed to load data');
     }

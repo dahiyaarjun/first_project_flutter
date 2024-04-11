@@ -64,7 +64,7 @@ String Class="";
                         Class="12th";
                         Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => subject(Class)),);
+              MaterialPageRoute(builder: (context) => subject(Class)));
                      },
                      )
                      ],

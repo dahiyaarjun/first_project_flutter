@@ -131,7 +131,7 @@ class _MyWidgetState extends State<Search> {
                 height: MediaQuery.of(context).size.height*0.18,
                 width: MediaQuery.of(context).size.height*0.18,
                   decoration: BoxDecoration(
-                    image: DecorationImage(image: NetworkImage(img),fit: BoxFit.fitHeight),
+                    image: DecorationImage(image: (img!=null)?NetworkImage(img):NetworkImage("https://www.freepik.com/icons/profile"),fit: BoxFit.fitHeight),
                   ),
                 ),       
                         
