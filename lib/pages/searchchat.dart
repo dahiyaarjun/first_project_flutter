@@ -7,6 +7,7 @@ import 'package:first_project_flutter/models/LoginDetails_model.dart';
 import 'package:first_project_flutter/models/search_model.dart';
 import 'package:first_project_flutter/pages/profileSettings.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:insta_image_viewer/insta_image_viewer.dart';
 import 'package:get/get.dart';
 import 'dart:ui';
@@ -117,15 +118,22 @@ class _MyWidgetState extends State<Search> {
             child: Column(
               children: [
              InstaImageViewer(
-               child: CircleAvatar(
-                          radius: 60.0,
-                          backgroundColor: const Color(0xFF778899),
+              //  child: CircleAvatar(
+              //             radius: 60.0,
+              //             backgroundColor: const Color(0xFF778899),
                           
                
-                          backgroundImage: (img!=null)?NetworkImage(img):NetworkImage("https://www.freepik.com/icons/profile"),
-                          
-                        ),
-                       
+              //             backgroundImage: (img!=null)?NetworkImage(img):NetworkImage("https://www.freepik.com/icons/profile"),
+              //             // child: InstaImageViewer(child: Image(image: NetworkImage(img))),
+              //           ),
+                child: Container(
+
+                height: MediaQuery.of(context).size.height*0.18,
+                width: MediaQuery.of(context).size.height*0.18,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(image: NetworkImage(img),fit: BoxFit.fitHeight),
+                  ),
+                ),       
                         
              ),
                       
