@@ -5,15 +5,14 @@ part 'chapter.g.dart';
 @JsonSerializable()
 class Chapter {
   int id;
-  @JsonKey(name: 'class') // Use @JsonKey for reserved words like 'class'
+  @JsonKey(name: 'class') 
   String className;
   String subject;
   String chapter;
   @JsonKey(name: 'chapter_name')
   String chapterName;
   String url;
-  String? branch; // Assuming 'branch' can be nullable
-  // You can add other fields like createdAt, updatedAt if needed
+  String? branch;
 
   Chapter({
     required this.id,

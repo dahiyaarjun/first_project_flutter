@@ -309,25 +309,25 @@ class apiResponse {
     }
   }
 
-  // static Future<List<Chapter>> getChapter(String sub) async {
-  //   String Url='${baseUrl}api/user/get-chapters';
-  //   final response = await http.post(Uri.parse(
-  //       Url),
-  //        body: { "chapter":"sub",
-  //                 "class": "10th",
-  //                 "subject": "Mathematics",
-  //             //  "branch":nullhmb 
-  //              },
-  //       );
+  static Future<List<Chapter>> getChapter(String sub) async {
+    String Url='${baseUrl}api/user/get-chapters';
+    final response = await http.post(Uri.parse(
+        Url),
+         body: { "chapter":"sub",
+                  "class": "10th",
+                  "subject": "Mathematics",
+              //  "branch":nullhmb 
+               },
+        );
          
-  //   if (response.statusCode == 200) {
-  //     // If the call to the server was successful, parse the JSON
-  //     final data = json.decode(response.body) as List<dynamic>;
-  //     return data.map((json) => Chapter.fromJson(json)).toList();
-  //   } else {
-  //     throw Exception('Failed to load data');
-  //   }
-  // }
+    if (response.statusCode == 200) {
+      // If the call to the server was successful, parse the JSON
+      final data = json.decode(response.body) as List<dynamic>;
+      return data.map((json) => Chapter.fromJson(json)).toList();
+    } else {
+      throw Exception('Failed to load data');
+    }
+  }
 
   static Future<void> updateName(String email,String name) async{
     
