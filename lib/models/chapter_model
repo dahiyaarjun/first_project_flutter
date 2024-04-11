@@ -1,0 +1,31 @@
+import 'package:json_annotation/json_annotation.dart';
+
+part 'chapter.g.dart';
+
+@JsonSerializable()
+class Chapter {
+  int id;
+  @JsonKey(name: 'class') // Use @JsonKey for reserved words like 'class'
+  String className;
+  String subject;
+  String chapter;
+  @JsonKey(name: 'chapter_name')
+  String chapterName;
+  String url;
+  String? branch; // Assuming 'branch' can be nullable
+  // You can add other fields like createdAt, updatedAt if needed
+
+  Chapter({
+    required this.id,
+    required this.className,
+    required this.subject,
+    required this.chapter,
+    required this.chapterName,
+    required this.url,
+    this.branch,
+  });
+
+  factory Chapter.fromJson(Map<String, dynamic> json) => _$ChapterFromJson(json);
+
+  Map<String, dynamic> toJson() => _$ChapterToJson(this);
+}
