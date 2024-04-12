@@ -43,7 +43,7 @@ class standard extends StatelessWidget {
                           //  borderRadius: BorderRadius.circular(20),
                         ),
                         child: Image.network(
-                            "https://res.cloudinary.com/dlpxw0zdc/image/upload/v1712924656/CommonPhotos/vqjncndykpdyamzibtlr.png",
+                            "https://res.cloudinary.com/dlpxw0zdc/image/upload/v1712926813/CommonPhotos/xkgmsofihairtf0j4idm.png",
                             fit: BoxFit.cover),
                       ),
                       onTap: () {
@@ -71,7 +71,7 @@ class standard extends StatelessWidget {
                           ),
                         ),
                         child: Image.network(
-                            "https://res.cloudinary.com/dlpxw0zdc/image/upload/v1712924673/CommonPhotos/ija2dydzcnvsoxnkqzfm.png",
+                            "https://res.cloudinary.com/dlpxw0zdc/image/upload/v1712926843/CommonPhotos/blf64af2hfexvs7pyovg.png",
                             fit: BoxFit.cover),
                       ),
                       onTap: () {
@@ -103,7 +103,7 @@ class standard extends StatelessWidget {
                           //  borderRadius: BorderRadius.circular(20),
                         ),
                         child: Image.network(
-                            "https://res.cloudinary.com/dlpxw0zdc/image/upload/v1712924656/CommonPhotos/vqjncndykpdyamzibtlr.png",
+                            "https://res.cloudinary.com/dlpxw0zdc/image/upload/v1712926823/CommonPhotos/oziaadja2tj7igksdi0h.png",
                             fit: BoxFit.cover),
                       ),
                       onTap: () {
@@ -131,7 +131,7 @@ class standard extends StatelessWidget {
                           //  borderRadius: BorderRadius.circular(20),
                         ),
                         child: Image.network(
-                            "https://res.cloudinary.com/dlpxw0zdc/image/upload/v1712924673/CommonPhotos/ija2dydzcnvsoxnkqzfm.png",
+                            "https://res.cloudinary.com/dlpxw0zdc/image/upload/v1712926857/CommonPhotos/xkstzpsqspntwob1shcm.png",
                             fit: BoxFit.cover),
                       ),
                       onTap: () {
