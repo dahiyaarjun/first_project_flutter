@@ -19,7 +19,14 @@ class chapter extends StatefulWidget {
 }
 
 class _streamState extends State<chapter> {
-
+ 
+ Future<void>?post;
+  String _Class="";
+ String _subject="";
+  String _chapter="";
+  
+    
+  
  
   @override
   Widget build(BuildContext context) {
@@ -53,6 +60,26 @@ class _streamState extends State<chapter> {
                   child: ListTile(
                     title: Text(post.chapter),
                     subtitle: Text(post.chapterName!),
+                  trailing: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          IconButton(
+            icon: Icon(Icons.remove_red_eye),
+            onPressed: () {
+              _chapter=post.chapter;
+            },
+          ),
+          IconButton(
+            icon: Icon(Icons.download),
+            onPressed: () {
+             setState(() {
+      _chapter=post.chapter;
+          apiResponse.downloadPdf();
+    });
+            },
+          ),
+        ],
+      ),
                   ),
                 );
               },
