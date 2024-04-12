@@ -92,13 +92,14 @@ class _MyWidgetState extends State<Search> {
               child: Column(
                 children: [
                   SizedBox(
-                    height: MediaQuery.of(context).size.height*0.2,
-                    width: MediaQuery.of(context).size.width*0.2,
+                    height: MediaQuery.of(context).size.height*0.18,
+                    width: MediaQuery.of(context).size.width*0.18,
                     child: InstaImageViewer(
                     
                       child: ClipOval(
-                        child: (img!=null)?Image.network(img, fit: BoxFit.fitHeight):Image.network("https://www.freepik.com/icons/profile", fit: BoxFit.fitHeight)),
-                      
+                        child: (img!="")?Image.network(img, fit: BoxFit.fitHeight):Image.asset("assets/images/accountIcon.png", fit: BoxFit.fill)),
+                
+
                     ),
                   ),
                   Text(
