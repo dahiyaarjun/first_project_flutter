@@ -21,7 +21,7 @@ class _UserLoginState extends State<UserLogin> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Demo App'),
+      appBar: AppBar(title: const Text('Demo App'),backgroundColor: Colors.blueAccent,
       automaticallyImplyLeading: false,
       ),
       body: Scaffold(
@@ -30,10 +30,10 @@ class _UserLoginState extends State<UserLogin> {
           children: [
             Container(
               // padding: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0,left: MediaQuery.of(context).size.width *0.0),
-              child: Lottie.asset('assets/videos/LoginAnimation.json',
-                  height: MediaQuery.of(context).size.height * 0.47,
+              child: Lottie.asset('assets/videos/Login.json',
+                  height: MediaQuery.of(context).size.height * 0.4,
                   width: MediaQuery.of(context).size.width,
-                  reverse: false,
+                  reverse: true,
                   repeat: true,
                   fit: BoxFit.cover),
             ),
@@ -62,7 +62,10 @@ class _UserLoginState extends State<UserLogin> {
                                 controller: emailC,
                                 validator: (value) {
                                   if (value == null || value.isEmpty) {
-                                    return 'Please Enter Email';
+                                    final emailRegex = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
+                                    if (!emailRegex.hasMatch(value!)) {
+                                      return 'Please Enter valid email';
+                                    }
                                   }
                                   return null;
                                 },
@@ -142,14 +145,14 @@ class _UserLoginState extends State<UserLogin> {
                         const Text(
                           'Sign In',
                           style: TextStyle(
-                            color: Colors.black,
+                            color: Colors.blueAccent,
                             fontSize: 30,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
                         CircleAvatar(
                           radius: 25,
-                          backgroundColor: Colors.black,
+                          backgroundColor: Colors.blueAccent,
                           child: IconButton(
                               onPressed: () {
                                 if (_formkey.currentState!.validate()) {
@@ -202,9 +205,3 @@ class _UserLoginState extends State<UserLogin> {
     );
   }
 }
-
-// final emailRegex =
-//     RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
-// if (!emailRegex.hasMatch(value)) {
-//   return 'Please Enter valid email';
-// }
