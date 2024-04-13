@@ -81,7 +81,7 @@ class apiResponse {
         // await SharedPreferencesHelper.setAccessToken(accessToken);
         Utils.showSnackBar(context, msg);
         if (status == "Success") {
-          Navigator.pushNamed(context,'Search');
+          Navigator.pushNamed(context,'standard');
         }
       } else {
         Map<String, dynamic> errorMessage = jsonDecode(response.body);

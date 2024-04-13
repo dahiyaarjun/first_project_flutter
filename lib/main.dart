@@ -11,7 +11,7 @@ void main() async {
   String? token = await SharedPreferencesHelper.getAccessToken();
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
-    initialRoute: token != null ? 'Search' : 'login',
+    initialRoute: token != null ? 'standard' : 'login',
     // initialRoute:'/',
     routes: {
       // '/':(context)=>const splashScreen(),

@@ -67,7 +67,7 @@ class _MyWidgetState extends State<Search> {
       appBar: AppBar(
         title: const Text('Search Page'),
         centerTitle: true,
-        backgroundColor: Colors.greenAccent,
+        backgroundColor: Colors.blueAccent,
         // elevation: 100,
       ),
       drawer: Drawer(
