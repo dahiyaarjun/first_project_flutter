@@ -46,9 +46,7 @@ class _MyWidgetState extends State<Search> {
       if (Response.statusCode == 200) {
         Map<String, dynamic> userData = jsonDecode(Response.body);
 
-        // print('arjun');
-
-        // print(userData['User Details'][0]['name']);
+        
         setState(() {
           name = userData['User Details'][0]['name'];
           email = userData['User Details'][0]['email'];
