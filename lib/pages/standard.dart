@@ -114,17 +114,17 @@ class standard extends StatefulWidget {
             ),
           ),
           ListTile(
+            leading: Icon(Icons.search_off),
+            title: Text('ChatGpt'),
+            onTap: () => Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => Search(),
+            )),
+          ),
+          ListTile(
             leading: Icon(Icons.account_circle),
             title: Text('Profile Settings'),
             onTap: () => Navigator.of(context).push(MaterialPageRoute(
               builder: (context) => Settings(email: email),
-            )),
-          ),
-          ListTile(
-            leading: Icon(Icons.search_off_outlined),
-            title: Text('ChatGpt'),
-            onTap: () => Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => Search(),
             )),
           ),
           ListTile(
