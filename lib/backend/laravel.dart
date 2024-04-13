@@ -219,63 +219,6 @@ class apiResponse {
     print(e.toString());
     }
   }
-
-      static Future<void> downloadChapters(String _class,String _subject,String _chapter) async {
-      try{
-    String Url='${baseUrl}api/user/download-pdf';
-
-    final response = await http.post(Uri.parse(
-        Url),
-         body: { 
-                     "class":"10th",
-                    "subject":"Mathematics",
-                    "chapter":"Chapter 1",
-                    "branch":""
-              
-               },
-        );  
-    if (response.statusCode == 200) {
-      // If the call to the server was successful, parse the JSON
-      Map<String, dynamic> userData = jsonDecode(response.body);
-      print(userData);
-    }
-      // String message= userData['message'];
-     else {
-       Map<String, dynamic> errorMessage = jsonDecode(response.body);
-      String error = errorMessage['message'];
-    } 
-    
-      }
-    on Exception catch (e) {
-  print(e.toString());
-  // TODO
-}
-
-  }
-
- static Future<void>downloadPdf()async{
-  final task = DownloadTask(
-        url: '${baseUrl}api/user/download-pdf',
-        urlQueryParameters: { "class":"10th",
-                              "subject":"Mathematics",
-                              "chapter":"Chapter 1",
-                              "branch":""},
-        // filename: 'results.html',
-        // headers: {'myHeader': 'value'},
-        directory: 'my_sub_directory',
-        updates: Updates.statusAndProgress, // request status and progress updates
-        requiresWiFi: true,
-        retries: 5,
-        allowPause: true,
-        metaData: 'data for me');
-
-// Start download, and wait for result. Show progress and status changes
-// while downloading
-final result = await FileDownloader().download(task,
-    onProgress: (progress) => print('Progress: ${progress * 100}%'),
-    onStatus: (status) => print('Status: $status')
-);
-  }
 }
   
 
