@@ -2,6 +2,7 @@ import 'package:first_project_flutter/backend/laravel.dart';
 import 'package:first_project_flutter/models/chapter_model';
 import 'package:flutter_media_downloader/flutter_media_downloader.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_pdfview/flutter_pdfview.dart';
 
 class chapter extends StatefulWidget {
   final String _class;
@@ -14,8 +15,11 @@ class chapter extends StatefulWidget {
 }
 
 class _streamState extends State<chapter> {
-  Future<void>? post;
+  
   final _flutterDownloader = MediaDownload();
+  // final String pdfUrl;
+  // const PdfViewer({required this.pdfUrl});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,7 +61,16 @@ class _streamState extends State<chapter> {
                       children: [
                         IconButton(
                           icon: const Icon(Icons.remove_red_eye),
-                          onPressed: () {},
+                          onPressed: () {
+                            print('view');
+                             PDFView(
+                              filePath: post.url,
+                              enableSwipe: true, // Allow swipe gestures to change pages
+                              swipeHorizontal: true, // Swipe horizontally
+                               
+                            );
+                            print('view ho gya');
+                          },
                         ),
                         IconButton(
                           icon: const Icon(Icons.download),
