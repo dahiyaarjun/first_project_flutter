@@ -77,7 +77,7 @@ class _MyWidgetState extends State<Search> {
         padding: EdgeInsets.zero,
         children: <Widget>[
           SizedBox(
-            height: 250,
+            height: MediaQuery.of(context).size.height*0.35,
             child: DrawerHeader(
               decoration: BoxDecoration(
                 color: Colors.blue,
