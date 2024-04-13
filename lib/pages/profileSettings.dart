@@ -62,68 +62,75 @@ static String baseUrl = AppConstants.baseUrl;
           ),
         ),
         body: Container(
+          height: MediaQuery.of(context).size.height,
           color: Colors.blue,
-          child: Column(
-            children: [
-              Container(
-                padding: const EdgeInsets.all(30),
-                child: InkWell(
-                    child: CircleAvatar(
-                      radius: 70,
-                      backgroundImage:
-                          img != "null" ? NetworkImage(img) : null,
-                      child:
-                          img == "null" ? const Icon(Icons.person, size: 70) : null,
-                    ),
-                    onTap: () => {
-                          editProfile(),
-                        }),
-              ),
-
-              SizedBox(height: MediaQuery.of(context).size.height*0.02,),
-              ElevatedButton(onPressed: () async {
-               editProfile();
-                
-              }, child: Text('Edit Image')),
-              Container(
-                padding: const EdgeInsets.all(40),
-                child: TextFormField(
-                  controller: _name,
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                Container(
+                  padding: const EdgeInsets.all(30),
+                  child: InkWell(
+                      child: CircleAvatar(
+                        radius: 70,
+                        backgroundImage:
+                            img != "null" ? NetworkImage(img) : null,
+                        child:
+                            img == "null" ? const Icon(Icons.person, size: 70) : null,
+                      ),
+                      onTap: () => {
+                            editProfile(),
+                          }),
+                ),
+                    
+                SizedBox(height: MediaQuery.of(context).size.height*0.02,),
+                ElevatedButton(onPressed: () async {
+                 editProfile();
                   
-                  decoration: InputDecoration(
-                    contentPadding: EdgeInsets.symmetric(
-                        horizontal: MediaQuery.of(context).size.width * 0.030,
-                        vertical: MediaQuery.of(context).size.height * 0.018),
-                    hintText: 'Name',
-                    border: const OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(10.0))),
+                }, child: Text('Edit Image')),
+                Container(
+                  padding: const EdgeInsets.all(40),
+                  child: TextFormField(
+                    controller: _name,
+                    
+                    decoration: InputDecoration(
+                      contentPadding: EdgeInsets.symmetric(
+                          horizontal: MediaQuery.of(context).size.width * 0.030,
+                          vertical: MediaQuery.of(context).size.height * 0.018),
+                      hintText: 'Name',
+                      border: const OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(10.0))),
+                    ),
                   ),
                 ),
-              ),
-
-              const SizedBox(
-                height: 150,
-              ),
-              SizedBox(
-                  width: 200,
-                  height: 30,
-                  child: ElevatedButton(
-                      onPressed: () async {
-                       
-                         await save(_name.text);
+                    
+                SizedBox(
+                  height: MediaQuery.of(context).size.height*0.10
+                ),
+                SizedBox(
+                    width: 190,
+                    height: 40,
+                    child: ElevatedButton(
+                        onPressed: () async {
                          
-                        UserDetails();
-                        setState(() async {
-                         
-                        });
-                        print("save button");
+                           await save(_name.text);
+                           
+                          UserDetails();
+                          setState(() async {
+                           
+                          });
+                          print("save button");
+                          
+                          
+                        },
                         
-                        
-                      },
-                      
-                      child: const Text('Save')))
-            ],
+                        child: const Text('Save'))),
+                    SizedBox(
+                  height: MediaQuery.of(context).size.height*0.10
+                ),
+              ],
+            ),
           ),
+          
         ),
       ),
     );
