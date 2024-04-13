@@ -138,7 +138,7 @@ class apiResponse {
 
   static Future<List<ResponseModel>> fetchData() async {
     final response = await http.get(Uri.parse(
-        'https://violent-wall-production.up.railway.app/api/user/all'));
+        '${baseUrl}api/user/all'));
     if (response.statusCode == 200) {
       final data = json.decode(response.body) as List<dynamic>;
       return data.map((json) => ResponseModel.fromJson(json)).toList();

@@ -4,9 +4,9 @@ import 'package:flutter_media_downloader/flutter_media_downloader.dart';
 import 'package:flutter/material.dart';
 
 class chapter extends StatefulWidget {
-  String _class;
-  String _branch;
-  String _subject;
+  final String _class;
+  final String _branch;
+  final String _subject;
   chapter(this._class, this._branch, this._subject);
 
   @override
