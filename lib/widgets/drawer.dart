@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:first_project_flutter/custom_helper/constants.dart';
 import 'package:first_project_flutter/pages/login.dart';
 import 'package:first_project_flutter/pages/profileSettings.dart';
+import 'package:first_project_flutter/pages/searchchat.dart';
 import 'package:flutter/material.dart';
 import 'package:insta_image_viewer/insta_image_viewer.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -109,6 +110,13 @@ class _MyDrawerState extends State<MyDrawer> {
                 ],
               ),
             ),
+          ),
+                    ListTile(
+            leading: Icon(Icons.search_off),
+            title: Text('ChatGpt'),
+            onTap: () => Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => Search(),
+            )),
           ),
           ListTile(
             leading: Icon(Icons.account_circle),
