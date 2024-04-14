@@ -1,5 +1,6 @@
 import 'package:first_project_flutter/backend/laravel.dart';
 import 'package:first_project_flutter/models/chapter_model';
+import 'package:first_project_flutter/pages/pdfScreen.dart';
 import 'package:flutter_media_downloader/flutter_media_downloader.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_pdfview/flutter_pdfview.dart';
@@ -62,14 +63,16 @@ class _streamState extends State<chapter> {
                         IconButton(
                           icon: const Icon(Icons.remove_red_eye),
                           onPressed: () {
-                            print('view');
-                             PDFView(
-                              filePath: post.url,
-                              enableSwipe: true, // Allow swipe gestures to change pages
-                              swipeHorizontal: true, // Swipe horizontally
+                            // print('view');
+                            //  PDFView(
+                            //   filePath: post.url,
+                            //   enableSwipe: true, // Allow swipe gestures to change pages
+                            //   swipeHorizontal: true, // Swipe horizontally
                                
-                            );
-                            print('view ho gya');
+                            // );
+                            // print('view ho gya');
+                            Navigator.push(context,MaterialPageRoute(
+                              builder: (context)=>pdfScreen(pdfurl: post.url)));
                           },
                         ),
                         IconButton(
