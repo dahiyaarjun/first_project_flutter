@@ -21,47 +21,14 @@ class standard extends StatefulWidget {
 }
 
   class _MyWidgetState extends State<standard> {
-  UserDetails() async {
-    SharedPreferences pref = await SharedPreferences.getInstance();
-    String token = pref.getString('accessToken').toString();
-    // print("token is $token");
-    apiUserDetails(token: token);
-  }
-
+  
   @override
   initState() {
-    UserDetails();
+    MyDrawer();
   }
 
-  String name = "";
-  String email = "";
-  String img = "";
   String Class = "";
 
-  static String baseUrl = AppConstants.baseUrl;
-
-  Future<void> apiUserDetails({required String token}) async {
-    try {
-      String apiUrl = '${baseUrl}api/user/details';
-      print('apiHit');
-      var Response = await http.post(
-        Uri.parse(apiUrl),
-        body: {'token': token},
-      );
-      if (Response.statusCode == 200) {
-        Map<String, dynamic> userData = jsonDecode(Response.body);
-
-        
-        setState(() {
-          name = userData['User Details'][0]['name'];
-          email = userData['User Details'][0]['email'];
-          if (userData['url'] != null) img = userData['url'];
-        });
-      }
-    } catch (e) {
-      print(e.toString());
-    }
-  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
