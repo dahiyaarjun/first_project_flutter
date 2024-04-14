@@ -223,6 +223,7 @@ static String baseUrl = AppConstants.baseUrl;
                                             child: InkWell(
                                                 onTap: () async {
                                                   final ImagePicker picker = ImagePicker();
+                                                   Navigator.pop(context);
                                                    image = await picker.pickImage(source: ImageSource.gallery);
                                                   
                                                   
@@ -241,6 +242,7 @@ static String baseUrl = AppConstants.baseUrl;
                                             child: InkWell(
                                                 onTap: () async {
                                                   final ImagePicker picker = ImagePicker();
+                                                  Navigator.pop(context);
                                                    image = await picker.pickImage(source: ImageSource.camera);
                                                 },
                                                 child: const SizedBox(
@@ -256,6 +258,7 @@ static String baseUrl = AppConstants.baseUrl;
                                                Expanded(
                                             child: InkWell(
                                                 onTap: () async {
+                                                  Navigator.pop(context);
                                                  await remove();
                                                   UserDetails();
                                                 },
