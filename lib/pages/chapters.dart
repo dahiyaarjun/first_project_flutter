@@ -28,7 +28,7 @@ class _streamState extends State<chapter> {
         title: Text('Class ${widget._class} ${widget._subject} Chapters',
             style: const TextStyle(
                 fontWeight: FontWeight.bold,
-                fontSize: 30.0,
+                fontSize: 19.0,
                 color: Colors.white)),
         centerTitle: true,
         backgroundColor: Colors.blueGrey,

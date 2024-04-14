@@ -4,6 +4,7 @@ import 'package:first_project_flutter/models/chapter_model';
 import 'package:first_project_flutter/models/responsemodel.dart';
 import 'package:first_project_flutter/models/search_model.dart';
 import 'package:first_project_flutter/models/subjectmodel.dart';
+import 'package:first_project_flutter/pages/standard.dart';
 import 'package:first_project_flutter/widgets/utils.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -81,7 +82,10 @@ class apiResponse {
         // await SharedPreferencesHelper.setAccessToken(accessToken);
         Utils.showSnackBar(context, msg);
         if (status == "Success") {
-          Navigator.pushNamed(context,'Search');
+            // ignore: use_build_context_synchronously
+            Navigator.pushAndRemoveUntil(context,MaterialPageRoute(builder: (BuildContext context){
+              return standard();
+              },),(route) => false,);
         }
       } else {
         Map<String, dynamic> errorMessage = jsonDecode(response.body);

@@ -28,7 +28,7 @@ class _streamState extends State<subject> {
     return Scaffold(
       appBar: AppBar(title: Text('${widget._class} subjects',style:TextStyle(
               fontWeight: FontWeight.bold, 
-              fontSize: 30.0,
+              fontSize: 22.0,
               color: Colors.white )),
               centerTitle: true,
         backgroundColor: Colors.blueGrey,),

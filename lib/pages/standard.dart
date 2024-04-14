@@ -1,9 +1,32 @@
-import 'package:first_project_flutter/pages/resetPassword.dart';
-import 'package:first_project_flutter/pages/subject.dart';
-import 'package:flutter/material.dart';
+import 'dart:convert';
 
-class standard extends StatelessWidget {
+import 'package:first_project_flutter/custom_helper/constants.dart';
+import 'package:first_project_flutter/pages/profileSettings.dart';
+import 'package:first_project_flutter/pages/resetPassword.dart';
+import 'package:first_project_flutter/pages/searchchat.dart';
+import 'package:first_project_flutter/pages/subject.dart';
+import 'package:first_project_flutter/widgets/drawer.dart';
+import 'package:flutter/material.dart';
+import 'package:insta_image_viewer/insta_image_viewer.dart';
+import 'package:http/http.dart' as http;
+import 'package:lottie/lottie.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+class standard extends StatefulWidget {
+  @override
+  State<standard> createState() => _MyWidgetState();
+
   standard({super.key});
+  
+}
+
+  class _MyWidgetState extends State<standard> {
+  
+  @override
+  initState() {
+    MyDrawer();
+  }
+
   String Class = "";
 
   @override
@@ -20,6 +43,7 @@ class standard extends StatelessWidget {
           centerTitle: true,
           backgroundColor: Colors.blueAccent,
         ),
+        drawer: MyDrawer(),
         body: Container(
           decoration: const BoxDecoration(color: Colors.white),
           child: Center(
@@ -150,4 +174,5 @@ class standard extends StatelessWidget {
           )),
         ));
   }
-}
+  }
+  
