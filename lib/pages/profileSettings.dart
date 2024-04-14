@@ -1,7 +1,5 @@
 import 'dart:convert';
-import 'dart:io';
 import 'package:first_project_flutter/custom_helper/constants.dart';
-import 'package:flutter/widgets.dart';
 import 'package:http/http.dart' as http;
 import 'package:first_project_flutter/backend/laravel.dart';
 import 'package:flutter/foundation.dart';
@@ -56,10 +54,10 @@ static String baseUrl = AppConstants.baseUrl;
           title: const Text('Profile Settings'),
           centerTitle: true,
           backgroundColor: Colors.green,
-          leading: BackButton(
-            onPressed: () => Navigator.pushNamed(context, 'Search'),
-            color: Colors.black,
-          ),
+          // leading: BackButton(
+          //   onPressed: () => Navigator.pushNamed(context, 'Search'),
+          //   color: Colors.black,
+          // ),
         ),
         body: Container(
           height: MediaQuery.of(context).size.height,

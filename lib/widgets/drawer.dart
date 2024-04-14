@@ -137,8 +137,10 @@ class _MyDrawerState extends State<MyDrawer> {
                                     await SharedPreferences.getInstance();
 
                                 await pref.clear();
-                                Navigator.pushNamed(context, 'login');
-                                setState(() {});
+                                    Navigator.pushAndRemoveUntil(context,MaterialPageRoute(builder: (BuildContext context){
+                                    return const UserLogin();
+                                    },),(route) => false,);
+                                // setState(() {});
                               },
                               child: Text('OK')),
                         ],
