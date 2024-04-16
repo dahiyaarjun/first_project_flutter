@@ -31,7 +31,7 @@ class _streamState extends State<chapter> {
                 fontSize: 19.0,
                 color: Colors.white)),
         centerTitle: true,
-        backgroundColor: Colors.blueGrey,
+        backgroundColor: Colors.blueAccent,
       ),
       body: FutureBuilder<List<chapterModel>>(
         future: apiResponse.getChapters(
@@ -49,7 +49,7 @@ class _streamState extends State<chapter> {
                 final post = snapshot.data![index];
                 return Container(
                   decoration: BoxDecoration(
-                      color: Colors.blueAccent,
+                      color: Colors.orange[200],
                       border: Border.all(
                         color: Colors.white,
                         width: 4.0,
@@ -63,14 +63,7 @@ class _streamState extends State<chapter> {
                         IconButton(
                           icon: const Icon(Icons.remove_red_eye),
                           onPressed: () {
-                            // print('view');
-                            //  PDFView(
-                            //   filePath: post.url,
-                            //   enableSwipe: true, // Allow swipe gestures to change pages
-                            //   swipeHorizontal: true, // Swipe horizontally
-                               
-                            // );
-                            // print('view ho gya');
+                           
                             Navigator.push(context,MaterialPageRoute(
                               builder: (context)=>pdfScreen(pdfurl: post.url)));
                           },

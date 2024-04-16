@@ -53,7 +53,7 @@ static String baseUrl = AppConstants.baseUrl;
         appBar: AppBar(
           title: const Text('Profile Settings'),
           centerTitle: true,
-          backgroundColor: Colors.green,
+          backgroundColor: Colors.blueAccent,
           // leading: BackButton(
           //   onPressed: () => Navigator.pushNamed(context, 'Search'),
           //   color: Colors.black,
@@ -61,7 +61,7 @@ static String baseUrl = AppConstants.baseUrl;
         ),
         body: Container(
           height: MediaQuery.of(context).size.height,
-          color: Colors.blue,
+          color: Colors.white,
           child: SingleChildScrollView(
             child: Column(
               children: [

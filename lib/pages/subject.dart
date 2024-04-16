@@ -31,7 +31,7 @@ class _streamState extends State<subject> {
               fontSize: 22.0,
               color: Colors.white )),
               centerTitle: true,
-        backgroundColor: Colors.blueGrey,),
+        backgroundColor: Colors.blueAccent,),
   
         body:FutureBuilder<List<subjectmodel>>(
         future: apiResponse.getSubject(widget._class),
@@ -46,8 +46,8 @@ class _streamState extends State<subject> {
               itemBuilder: (context, index) {
                 final post = snapshot.data![index];
                 return Container(
-                            decoration: BoxDecoration(   
-           color: Colors.blueAccent, 
+                   decoration: BoxDecoration(   
+           color: Colors.orange[200], 
            border: Border.all( 
              color: Colors.white, 
              width: 4.0, 
