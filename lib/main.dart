@@ -12,7 +12,6 @@ void main() async {
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
     initialRoute: token != null ? 'standard' : 'login',
-    // initialRoute:'/',
     routes: {
       // '/':(context)=>const splashScreen(),
       'login': (context) => const UserLogin(),

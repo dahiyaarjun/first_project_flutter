@@ -54,6 +54,9 @@ class apiResponse {
         Map<String, dynamic> userData = jsonDecode(Response.body);
         String successful = userData['message'];
         Utils.showSnackBar(context, successful);
+        if (successful == "Password Reset Successfully") {
+          Navigator.pushNamed(context, 'login');
+        }
       } else {
         Map<String, dynamic> errorMessage = jsonDecode(Response.body);
         String error = errorMessage['message'];
@@ -71,6 +74,7 @@ class apiResponse {
   }) async {
     try {
       String apiUrl = '${baseUrl}api/user/login';
+          print(apiUrl);
       http.Response response = await http.post(Uri.parse(apiUrl),body: {'email': email, 'password': password},);
       if (response.statusCode == 200) {
         Map<String, dynamic> userData = jsonDecode(response.body);

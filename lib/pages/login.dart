@@ -62,10 +62,11 @@ class _UserLoginState extends State<UserLogin> {
                                 controller: emailC,
                                 validator: (value) {
                                   if (value == null || value.isEmpty) {
-                                    final emailRegex = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
-                                    if (!emailRegex.hasMatch(value!)) {
-                                      return 'Please Enter valid email';
-                                    }
+                                    return 'Please Enter email';
+                                  }
+                                  final emailRegex = RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(value);
+                                  if (!emailRegex) {
+                                    return 'Please Enter valid email';
                                   }
                                   return null;
                                 },
@@ -104,6 +105,10 @@ class _UserLoginState extends State<UserLogin> {
                                 validator: (value) {
                                   if (value == null || value.isEmpty) {
                                     return 'Please Enter Password';
+                                  }
+                                  final regex = RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$').hasMatch(value);
+                                  if (!regex) {
+                                    return 'Please Enter valid password';
                                   }
                                   return null;
                                 },

@@ -78,6 +78,10 @@ class _ResetPasswordState extends State<ResetPassword> {
                         if (value == null || value.isEmpty) {
                           return 'Please enter email';
                         }
+                        final emailRegex = RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(value);
+                        if (!emailRegex) {
+                          return 'Please Enter valid email';
+                        }
                         return null;
                       },
                       decoration: InputDecoration(

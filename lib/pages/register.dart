@@ -80,6 +80,10 @@ class _UserRegisterState extends State<UserRegister> {
                         if (value == null || value.isEmpty) {
                           return 'Please Enter Name';
                         }
+                        final nameRegex = RegExp('[a-zA-Z]').hasMatch(value);
+                        if (!nameRegex) {
+                          return 'Please Enter valid name';
+                        }
                         return null;
                       },
                       decoration: InputDecoration(
@@ -108,11 +112,14 @@ class _UserRegisterState extends State<UserRegister> {
                     width: 2000,
                     padding: const EdgeInsets.only(left: 35, right: 35),
                     child: TextFormField(
-                      // keyboardType: TextInputType.emailAddress,
                       controller: emailC,
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return 'Please Enter Email';
+                          return 'Please Enter email';
+                        }
+                        final emailRegex = RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(value);
+                        if (!emailRegex) {
+                          return 'Please Enter valid email';
                         }
                         return null;
                       },
@@ -145,6 +152,10 @@ class _UserRegisterState extends State<UserRegister> {
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return 'Please Enter Password';
+                          }
+                          final regex = RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$').hasMatch(value);
+                          if (!regex) {
+                            return 'Please Enter valid password';
                           }
                           return null;
                         },
@@ -249,42 +260,6 @@ class _UserRegisterState extends State<UserRegister> {
                 style: TextStyle(color: Colors.black, fontSize: 22)),
           ),
           const SizedBox(height: 50),
-          Container(
-            padding: const EdgeInsets.only(left: 35),
-            child: const Row(
-              children: [
-                Text(
-                  'Already a user?',
-                  style: TextStyle(color: Colors.blueGrey),
-                ),
-              ],
-            ),
-          ),
-          Container(
-            padding: const EdgeInsets.only(left: 35),
-            child: Row(
-              children: [
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, 'login');
-                  },
-                  style: ButtonStyle(
-                      overlayColor: MaterialStateProperty.resolveWith<Color?>(
-                    (Set<MaterialState> states) {
-                      if (states.contains(MaterialState.pressed)) {
-                        return Colors.redAccent; //<-- SEE HERE
-                      }
-                      return Colors.green; // Defer to the widget's default.
-                    },
-                  )),
-                  child: const Text(
-                    'login',
-                    style: TextStyle(color: Colors.black),
-                  ),
-                ),
-              ],
-            ),
-          ),
                   ],
                 ),
                 )
