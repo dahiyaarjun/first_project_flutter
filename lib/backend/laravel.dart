@@ -109,9 +109,13 @@ class apiResponse {
         Map<String, dynamic> userData = jsonDecode(response.body);
         String message = userData['message'];
         String status = userData['status'];
+        String accessToken = userData['token'];
+        await SharedPreferencesHelper.setAccessToken(accessToken);
         Utils.showSnackBar(context, message);
         if (status == "Success") {
-          Navigator.pushNamed(context, 'practice');
+          Navigator.pushAndRemoveUntil(context,MaterialPageRoute(builder: (BuildContext context){
+            return standard();
+          },),(route) => false,);
         }
       } else {
         Map<String, dynamic> userData = jsonDecode(response.body);
