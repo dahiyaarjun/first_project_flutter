@@ -1,16 +1,7 @@
-import 'dart:convert';
-
-import 'package:first_project_flutter/custom_helper/constants.dart';
-import 'package:first_project_flutter/pages/profileSettings.dart';
 import 'package:first_project_flutter/pages/resetPassword.dart';
-import 'package:first_project_flutter/pages/searchchat.dart';
 import 'package:first_project_flutter/pages/subject.dart';
 import 'package:first_project_flutter/widgets/drawer.dart';
 import 'package:flutter/material.dart';
-import 'package:insta_image_viewer/insta_image_viewer.dart';
-import 'package:http/http.dart' as http;
-import 'package:lottie/lottie.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class standard extends StatefulWidget {
   @override
@@ -32,6 +23,7 @@ class standard extends StatefulWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Colors.white,
         appBar: AppBar(
           title: const Text(
             "Library",
@@ -45,9 +37,38 @@ class standard extends StatefulWidget {
         ),
         drawer: MyDrawer(),
         body: Container(
-          decoration: const BoxDecoration(color: Colors.white),
+          margin: EdgeInsets.only(
+          top: MediaQuery.of(context).size.height * 0.18,
+          bottom: MediaQuery.of(context).size.height * 0.1,
+          left: MediaQuery.of(context).size.width * 0.01,
+          right: MediaQuery.of(context).size.width * 0.01),
+          width: MediaQuery.of(context).size.width * 0.99,
+          height: MediaQuery.of(context).size.height * 0.9,
+          decoration: BoxDecoration(   
+           color: Colors.blueAccent, 
+           border: Border.all( 
+             color: Colors.lightBlueAccent, 
+             width: 2.0, 
+           ), 
+           borderRadius: BorderRadius.circular(10.0), 
+           gradient: LinearGradient( 
+             colors: [ 
+              Colors.white, 
+              Colors.white 
+             ] 
+           ), 
+          boxShadow: [ 
+            BoxShadow( 
+              color: Colors.grey , 
+              blurRadius: 2.0, 
+              offset: Offset(4.0,4.0) 
+            ) 
+          ],
+          ) ,
+          // decoration: const BoxDecoration(color: Colors.white),
           child: Center(
               child: Column(
+                
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Row(
