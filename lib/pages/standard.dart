@@ -48,7 +48,7 @@ class standard extends StatefulWidget {
                   height: MediaQuery.of(context).size.height * 0.4,
                   width: MediaQuery.of(context).size.width,
                   // reverse: true,
-                  // repeat: true,
+                  repeat: false,
                   fit: BoxFit.cover),
             ),
             // SizedBox(height: 1,),
@@ -93,8 +93,13 @@ class standard extends StatefulWidget {
                       Column(children: [
                         GestureDetector(
                           child: Container(
-                            width: MediaQuery.of(context).size.width * 0.3,
-                            height: MediaQuery.of(context).size.height * 0.15,
+                            padding: EdgeInsets.only(
+                            top: 2,
+                            bottom: 2,
+                            left: 2,
+                            right: 2),
+                            width: MediaQuery.of(context).size.width * 0.31,
+                            height: MediaQuery.of(context).size.height * 0.155,
                             decoration: BoxDecoration(
                               color: Colors.white,
                               border: Border.all(
@@ -122,8 +127,13 @@ class standard extends StatefulWidget {
                       Column(children: [
                         GestureDetector(
                           child: Container(
-                            width: MediaQuery.of(context).size.width * 0.3,
-                            height: MediaQuery.of(context).size.height * 0.15,
+                                                        padding: EdgeInsets.only(
+                            top: 2,
+                            bottom: 2,
+                            left: 2,
+                            right: 2),
+                            width: MediaQuery.of(context).size.width * 0.31,
+                            height: MediaQuery.of(context).size.height * 0.155,
                             decoration: BoxDecoration(
                               color: Colors.white,
                               border: Border.all(
@@ -153,8 +163,13 @@ class standard extends StatefulWidget {
                       Column(children: [
                         GestureDetector(
                           child: Container(
-                            width: MediaQuery.of(context).size.width * 0.3,
-                            height: MediaQuery.of(context).size.height * 0.15,
+                                                        padding: EdgeInsets.only(
+                            top: 2,
+                            bottom: 2,
+                            left: 2,
+                            right: 2),
+                            width: MediaQuery.of(context).size.width * 0.31,
+                            height: MediaQuery.of(context).size.height * 0.155,
                             decoration: BoxDecoration(
                               color: Colors.white,
                               border: Border.all(
@@ -182,8 +197,13 @@ class standard extends StatefulWidget {
                       Column(children: [
                         GestureDetector(
                           child: Container(
-                            width: MediaQuery.of(context).size.width * 0.3,
-                            height: MediaQuery.of(context).size.height * 0.15,
+                                                        padding: EdgeInsets.only(
+                            top: 2,
+                            bottom: 2,
+                            left: 2,
+                            right: 2),
+                            width: MediaQuery.of(context).size.width * 0.31,
+                            height: MediaQuery.of(context).size.height * 0.155,
                             decoration: BoxDecoration(
                               color: Colors.white,
                               border: Border.all(
