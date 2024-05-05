@@ -235,13 +235,13 @@ class _UserLoginState extends State<UserLogin> {
                   bottom: MediaQuery.of(context).size.height * 0.7,
                   left: MediaQuery.of(context).size.width * 0.7),
               child: SizedBox(
-                height: 38,
-                width: 101,
+                height: MediaQuery.of(context).size.height * 0.05,
+                width: MediaQuery.of(context).size.width * 0.27,
                 child: OutlinedButton(
                     onPressed: () {
                       Navigator.pushNamed(context, 'register');
                     },
-                    child: const Text('Register')),
+                    child: Text('Register',style: TextStyle(fontSize: 13, color: AppColors.DarkPurple),)),
               ),
             ),
             // Container(
