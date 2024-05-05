@@ -1,17 +1,9 @@
-import 'dart:convert';
-
 import 'package:first_project_flutter/backend/laravel.dart';
 import 'package:first_project_flutter/custom_helper/colors.dart';
-import 'package:first_project_flutter/custom_helper/constants.dart';
 import 'package:first_project_flutter/models/search_model.dart';
-import 'package:first_project_flutter/pages/login.dart';
-import 'package:first_project_flutter/pages/profileSettings.dart';
 import 'package:first_project_flutter/widgets/drawer.dart';
 import 'package:flutter/material.dart';
-import 'package:insta_image_viewer/insta_image_viewer.dart';
-import 'package:http/http.dart' as http;
 import 'package:lottie/lottie.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 // ignore: must_be_immutable
 class Search extends StatefulWidget {
@@ -33,6 +25,7 @@ class _MyWidgetState extends State<Search> {
                 color: Colors.white)),
         centerTitle: true,
         backgroundColor: AppColors.DarkPurple,
+        iconTheme: IconThemeData(color: Colors.white),
         // elevation: 100,
       ),
       drawer: MyDrawer(),
@@ -113,7 +106,7 @@ class _MyWidgetState extends State<Search> {
                               fillColor: Colors.white,
                               focusedBorder: const OutlineInputBorder(
                                   borderSide:
-                                      BorderSide(color: Color(0xff1a80e5))),
+                                      BorderSide(color: Colors.purple)),
                               hintStyle:
                                   const TextStyle(color: Color(0xff788998)),
                               enabledBorder: const OutlineInputBorder(
@@ -136,7 +129,7 @@ class _MyWidgetState extends State<Search> {
                       margin: EdgeInsets.symmetric(horizontal: 2.0),
                       child: CircleAvatar(
                         radius: 20,
-                        backgroundColor: Colors.amber[400],
+                        backgroundColor: AppColors.DarkPurple,
                         child: IconButton(
                             onPressed: () {
                               message = _message.text;
@@ -144,7 +137,7 @@ class _MyWidgetState extends State<Search> {
 
                               setState(() {});
                             },
-                            icon: Icon(Icons.send_sharp)),
+                            icon: Icon(Icons.send_sharp,color: Colors.white,)),
                       ),
                     ),
                   ],

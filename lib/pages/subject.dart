@@ -28,11 +28,12 @@ class _streamState extends State<subject> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('${widget._class} subjects',style:TextStyle(
-              fontWeight: FontWeight.bold, 
+              // fontWeight: FontWeight.bold, 
               fontSize: 22.0,
               color: Colors.white )),
               centerTitle: true,
-        backgroundColor: AppColors.DarkPurple,),
+        backgroundColor: AppColors.DarkPurple,
+        iconTheme: IconThemeData(color: Colors.white),),
   
         body:FutureBuilder<List<subjectmodel>>(
         future: apiResponse.getSubject(widget._class),

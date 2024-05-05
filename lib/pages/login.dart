@@ -45,10 +45,38 @@ class _UserLoginState extends State<UserLogin> {
             ),
             SingleChildScrollView(
               child: Container(
-                padding: EdgeInsets.only(
-                    top: MediaQuery.of(context).size.height * 0.45,
-                    left: 35,
-                    right: 35),
+                // padding: EdgeInsets.only(
+                //     top: MediaQuery.of(context).size.height * 0.45,
+                //     left: 35,
+                //     right: 35),
+                              margin: EdgeInsets.only(
+              top: MediaQuery.of(context).size.height * 0.48,
+              // bottom: MediaQuery.of(context).size.height * 0.01,
+              left: MediaQuery.of(context).size.width * 0.015,
+              right: MediaQuery.of(context).size.width * 0.015),
+                     width: MediaQuery.of(context).size.width,
+                            height: MediaQuery.of(context).size.height * 0.42,
+                            decoration: BoxDecoration(   
+                            color: Colors.blueAccent, 
+                            border: Border.all( 
+                              color: Colors.white, 
+                              width: 2.0, 
+                            ), 
+                            borderRadius: BorderRadius.circular(10.0), 
+                            gradient: LinearGradient( 
+                              colors: [ 
+                                Colors.white, 
+                                Colors.white 
+                              ] 
+                            ), 
+                            boxShadow: [ 
+                              BoxShadow( 
+                                color: Colors.grey , 
+                                blurRadius: 2.0, 
+                                // offset: Offset(4.0,4.0) 
+                              ) 
+                            ],
+                            ) ,
                 child: Column(
                   children: [
                     Form(
@@ -82,7 +110,7 @@ class _UserLoginState extends State<UserLogin> {
                                     fillColor: const Color(0XFFfafbfd),
                                     focusedBorder: const OutlineInputBorder(
                                         borderSide: BorderSide(
-                                            color: Color(0xff1a80e5))),
+                                            color: Colors.purple)),
                                     hintStyle: const TextStyle(
                                         color: Color(0xff788998)),
                                     enabledBorder: const OutlineInputBorder(
@@ -122,7 +150,7 @@ class _UserLoginState extends State<UserLogin> {
                                     hintText: 'Password',
                                     focusedBorder: const OutlineInputBorder(
                                         borderSide: BorderSide(
-                                            color: Color(0xff1a80e5))),
+                                            color: Colors.purple)),
                                     filled: true,
                                     fillColor: const Color(0XFFfafbfd),
                                     hintStyle: const TextStyle(
@@ -150,68 +178,82 @@ class _UserLoginState extends State<UserLogin> {
                     const SizedBox(
                       height: 20,
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          'Sign In',
-                          style: TextStyle(
-                            color: AppColors.DarkPurple,
-                            fontSize: 30,
-                            fontWeight: FontWeight.bold,
+                    Container(
+                                      padding: EdgeInsets.only(
+                    // top: MediaQuery.of(context).size.height * 0.45,
+                    left: 25,
+                    right: 25),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            'Sign In',
+                            style: TextStyle(
+                              color: AppColors.DarkPurple,
+                              fontSize: 30,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
-                        ),
-                        CircleAvatar(
-                          radius: 25,
-                          backgroundColor: AppColors.DarkPurple,
-                          child: IconButton(
-                              onPressed: () {
-                                if (_formkey.currentState!.validate()) {
-                                  login();
-                                }
-                              },
-                              icon: const Icon(
-                                Icons.arrow_forward,
-                                color: Colors.white,
-                              )),
-                        )
-                      ],
+                          CircleAvatar(
+                            radius: 25,
+                            backgroundColor: AppColors.DarkPurple,
+                            child: IconButton(
+                                onPressed: () {
+                                  if (_formkey.currentState!.validate()) {
+                                    login();
+                                  }
+                                },
+                                icon: const Icon(
+                                  Icons.arrow_forward,
+                                  color: Colors.white,
+                                )),
+                          )
+                        ],
+                      ),
                     ),
-                    Row(
-                      children: [
-                        TextButton(
-                            onPressed: () {
-                              Navigator.pushNamed(context, 'ResetPassword');
-                            },
-                            child: const Text('Forgot Password?')),
-                      ],
+                    Container(
+                                                            padding: EdgeInsets.only(
+                    // top: MediaQuery.of(context).size.height * 0.45,
+                    left: 10),
+                      child: Row(
+                        children: [
+                          TextButton(
+                              onPressed: () {
+                                Navigator.pushNamed(context, 'ResetPassword');
+                              },
+                              child: const Text('forgot password?')),
+                        ],
+                      ),
                     ),
                   ],
                 ),
               ),
             ),
             Container(
-                  //               height: 20,
-                  // width: 40,
               padding: EdgeInsets.only(
-                  bottom: MediaQuery.of(context).size.height * 0.79,
+                  top: MediaQuery.of(context).size.height * 0.01,
+                  bottom: MediaQuery.of(context).size.height * 0.7,
                   left: MediaQuery.of(context).size.width * 0.7),
-              child: OutlinedButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, 'register');
-                  },
-                  child: const Text('Register')),
+              child: SizedBox(
+                height: 38,
+                width: 101,
+                child: OutlinedButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, 'register');
+                    },
+                    child: const Text('Register')),
+              ),
             ),
-            Container(
-              padding: EdgeInsets.only(
-                  bottom: MediaQuery.of(context).size.height * 0.81,
-                  left: MediaQuery.of(context).size.width * 0.3),
-              child: OutlinedButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, 'standard');
-                  },
-                  child: const Text('Skip->')),
-            ),
+            // Container(
+            //   padding: EdgeInsets.only(
+            //       bottom: MediaQuery.of(context).size.height * 0.81,
+            //       left: MediaQuery.of(context).size.width * 0.3),
+            //   child: OutlinedButton(
+            //       onPressed: () {
+            //         Navigator.pushNamed(context, 'standard');
+            //       },
+            //       child: const Text('Skip->')),
+            // ),
           ],
         ),
       ),

@@ -34,6 +34,7 @@ class _streamState extends State<chapter> {
                 color: Colors.white)),
         centerTitle: true,
         backgroundColor: AppColors.DarkPurple,
+        iconTheme: IconThemeData(color: Colors.white),
       ),
       body: FutureBuilder<List<chapterModel>>(
         future: apiResponse.getChapters(

@@ -84,20 +84,20 @@ class apiResponse {
         await SharedPreferencesHelper.setAccessToken(accessToken);
         // print('Access Token come during Login Time' + accessToken);
         // await SharedPreferencesHelper.setAccessToken(accessToken);
-        Utils.showSnackBar(context, msg);
         if (status == "Success") {
+            Utils.showSnackBar(context, msg);
             // ignore: use_build_context_synchronously
             Navigator.pushAndRemoveUntil(context,MaterialPageRoute(builder: (BuildContext context){
               return standard();
               },),(route) => false,);
-        }
+        }else{String error = 'Invalid User/Password';
+        Utils.showSnackBar(context, error);}
       } else {
-        Map<String, dynamic> errorMessage = jsonDecode(response.body);
-        String error = errorMessage['message'];
+        String error = 'Invalid User/Password';
         Utils.showSnackBar(context, error);
       }
     } catch (e) {
-      Utils.showSnackBar(context, e.toString());
+      Utils.showSnackBar(context, 'Invalid User/Password');
     }
   }
 
@@ -144,7 +144,7 @@ class apiResponse {
         Utils.showSnackBar(context, error);
       }
     } catch (e) {
-      Utils.showSnackBar(context, e.toString());
+      Utils.showSnackBar(context, 'Failed to send otp');
     }
   }
 

@@ -58,6 +58,7 @@ static String baseUrl = AppConstants.baseUrl;
                 color: Colors.white)),
           centerTitle: true,
           backgroundColor: AppColors.DarkPurple,
+          iconTheme: IconThemeData(color: Colors.white),
           // leading: BackButton(
           //   onPressed: () => Navigator.pushNamed(context, 'Search'),
           //   color: Colors.black,

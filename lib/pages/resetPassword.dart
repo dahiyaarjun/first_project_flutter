@@ -1,4 +1,5 @@
 import 'package:first_project_flutter/backend/laravel.dart';
+import 'package:first_project_flutter/custom_helper/colors.dart';
 import 'package:first_project_flutter/pages/newpassword.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
@@ -22,8 +23,14 @@ class _ResetPasswordState extends State<ResetPassword> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: const Text('Reset Page'),
+        // backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        backgroundColor: AppColors.DarkPurple,
+        iconTheme: IconThemeData(color: Colors.white),
+        centerTitle: true,
+        title: const Text('Reset Page',style: const TextStyle(
+                // fontWeight: FontWeight.bold,
+                fontSize: 24.0,
+                color: Colors.white)),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -71,7 +78,7 @@ class _ResetPasswordState extends State<ResetPassword> {
               child: Column(
                 children: [
                   Padding(
-                    padding: EdgeInsets.only(),
+                    padding: EdgeInsets.only(left: 5,right: 5),
                     child: TextFormField(
                       controller: emailC,
                       validator: (value) {
@@ -85,14 +92,14 @@ class _ResetPasswordState extends State<ResetPassword> {
                         return null;
                       },
                       decoration: InputDecoration(
-                        hintText: "enter email here",
+                        hintText: "Enter email here",
                         fillColor: Colors.yellow,
                         // filled: true,
                         prefixIcon: Icon(Icons.email, color: Colors.black),
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(11),
                           borderSide:
-                              BorderSide(color: Colors.deepOrange, width: 2),
+                              BorderSide(color: AppColors.DarkPurple, width: 2),
                         ),
                       ),
                     ),
@@ -116,8 +123,8 @@ class _ResetPasswordState extends State<ResetPassword> {
                   }
                 },
                 child: Text(
-                  'Reset Password',
-                  style: TextStyle(fontSize: 30, color: Colors.blue),
+                  'Send OTP',
+                  style: TextStyle(fontSize: 20, color: AppColors.DarkPurple),
                 ),
               ),
             ),

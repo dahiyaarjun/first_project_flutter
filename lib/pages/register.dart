@@ -41,6 +41,7 @@ class _UserRegisterState extends State<UserRegister> {
                 color: Colors.white)),
         backgroundColor: AppColors.DarkPurple,
         elevation: 50.0,
+        iconTheme: IconThemeData(color: Colors.white),
       ),
       body: Stack(
         // mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -260,8 +261,8 @@ class _UserRegisterState extends State<UserRegister> {
                 return AppColors.DarkPurple; // Defer to the widget's default.
               },
             )),
-            child: const Text('Register',
-                style: TextStyle(color: Colors.black, fontSize: 22)),
+            child: Text('Register',
+                style: TextStyle(color: Colors.purple, fontSize: 22)),
           ),
           const SizedBox(height: 50),
                   ],
