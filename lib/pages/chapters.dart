@@ -1,9 +1,11 @@
 import 'package:first_project_flutter/backend/laravel.dart';
+import 'package:first_project_flutter/custom_helper/colors.dart';
 import 'package:first_project_flutter/models/chapter_model';
 import 'package:first_project_flutter/pages/pdfScreen.dart';
 import 'package:flutter_media_downloader/flutter_media_downloader.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_pdfview/flutter_pdfview.dart';
+import 'package:lottie/lottie.dart';
 
 class chapter extends StatefulWidget {
   final String _class;
@@ -27,11 +29,11 @@ class _streamState extends State<chapter> {
       appBar: AppBar(
         title: Text('Class ${widget._class} ${widget._subject} Chapters',
             style: const TextStyle(
-                fontWeight: FontWeight.bold,
+                // fontWeight: FontWeight.bold,
                 fontSize: 19.0,
                 color: Colors.white)),
         centerTitle: true,
-        backgroundColor: Colors.blueAccent,
+        backgroundColor: AppColors.DarkPurple,
       ),
       body: FutureBuilder<List<chapterModel>>(
         future: apiResponse.getChapters(
@@ -48,12 +50,32 @@ class _streamState extends State<chapter> {
               itemBuilder: (context, index) {
                 final post = snapshot.data![index];
                 return Container(
-                  decoration: BoxDecoration(
-                      color: Colors.orange[200],
-                      border: Border.all(
-                        color: Colors.white,
-                        width: 4.0,
-                      )),
+ margin: EdgeInsets.only(
+          top: MediaQuery.of(context).size.height * 0.01,
+          // bottom: MediaQuery.of(context).size.height * 0.01,
+          left: MediaQuery.of(context).size.width * 0.01,
+          right: MediaQuery.of(context).size.width * 0.01),
+                        decoration: BoxDecoration(   
+           color: AppColors.DarkPurple, 
+           border: Border.all( 
+             color: AppColors.DarkPurple, 
+             width: 2.0, 
+           ), 
+           borderRadius: BorderRadius.circular(10.0), 
+           gradient: LinearGradient( 
+             colors: [ 
+              Colors.white, 
+              Colors.white 
+             ] 
+           ), 
+          boxShadow: [ 
+            BoxShadow( 
+              color: Colors.grey , 
+              blurRadius: 2.0, 
+              offset: Offset(4.0,4.0) 
+            ) 
+          ],
+          ) ,
                   child: ListTile(
                     title: Text(post.chapter),
                     subtitle: Text(post.chapterName!),
@@ -62,14 +84,29 @@ class _streamState extends State<chapter> {
                       children: [
                         IconButton(
                           icon: const Icon(Icons.remove_red_eye),
+                          color: AppColors.Blue,
                           onPressed: () {
                            
                             Navigator.push(context,MaterialPageRoute(
                               builder: (context)=>pdfScreen(pdfurl: post.url)));
                           },
                         ),
+                  //       new GestureDetector(
+                  //       onTap: (){
+                  //         _flutterDownloader.downloadMedia(context, post.url);
+                  //       },
+                  //       child:Container(
+                  //                       child: Lottie.asset('assets/videos/download.json',
+                  // // height: MediaQuery.of(context).size.height * 0.4,
+                  // // width: MediaQuery.of(context).size.width,
+                  // // reverse: true,
+                  // repeat: true,
+                  // fit: BoxFit.cover),
+                  //       ),),
                         IconButton(
                           icon: const Icon(Icons.download),
+                          color: AppColors.Green,
+                          focusColor: Colors.white,
                           onPressed: () async {
                             _flutterDownloader.downloadMedia(context, post.url);
                           },

@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:first_project_flutter/custom_helper/colors.dart';
 import 'package:first_project_flutter/custom_helper/constants.dart';
 import 'package:http/http.dart' as http;
 import 'package:first_project_flutter/backend/laravel.dart';
@@ -51,9 +52,12 @@ static String baseUrl = AppConstants.baseUrl;
       inAsyncCall: showSpinner,
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('Profile Settings'),
+          title: const Text('Profile Settings',style: const TextStyle(
+                // fontWeight: FontWeight.bold,
+                fontSize: 25.0,
+                color: Colors.white)),
           centerTitle: true,
-          backgroundColor: Colors.blueAccent,
+          backgroundColor: AppColors.DarkPurple,
           // leading: BackButton(
           //   onPressed: () => Navigator.pushNamed(context, 'Search'),
           //   color: Colors.black,

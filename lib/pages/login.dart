@@ -1,4 +1,5 @@
 import 'package:first_project_flutter/backend/laravel.dart';
+import 'package:first_project_flutter/custom_helper/colors.dart';
 import "package:flutter/material.dart";
 import 'package:lottie/lottie.dart';
 
@@ -21,7 +22,12 @@ class _UserLoginState extends State<UserLogin> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Demo App'),backgroundColor: Colors.blueAccent,
+      appBar: AppBar(title: const Text('Learning App',            style: TextStyle(
+                // fontWeight: FontWeight.bold,
+                fontSize: 25.0,
+                color: Colors.white),
+          ),backgroundColor: AppColors.DarkPurple,
+                centerTitle: true,
       automaticallyImplyLeading: false,
       ),
       body: Scaffold(
@@ -30,7 +36,7 @@ class _UserLoginState extends State<UserLogin> {
           children: [
             Container(
               // padding: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0,left: MediaQuery.of(context).size.width *0.0),
-              child: Lottie.asset('assets/videos/Login.json',
+              child: Lottie.asset('assets/videos/LoginBulb.json',
                   height: MediaQuery.of(context).size.height * 0.4,
                   width: MediaQuery.of(context).size.width,
                   reverse: true,
@@ -147,17 +153,17 @@ class _UserLoginState extends State<UserLogin> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const Text(
+                        Text(
                           'Sign In',
                           style: TextStyle(
-                            color: Colors.blueAccent,
+                            color: AppColors.DarkPurple,
                             fontSize: 30,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
                         CircleAvatar(
                           radius: 25,
-                          backgroundColor: Colors.blueAccent,
+                          backgroundColor: AppColors.DarkPurple,
                           child: IconButton(
                               onPressed: () {
                                 if (_formkey.currentState!.validate()) {
@@ -185,9 +191,11 @@ class _UserLoginState extends State<UserLogin> {
               ),
             ),
             Container(
+                  //               height: 20,
+                  // width: 40,
               padding: EdgeInsets.only(
-                  bottom: MediaQuery.of(context).size.height * 0.81,
-                  left: MediaQuery.of(context).size.width * 0.6),
+                  bottom: MediaQuery.of(context).size.height * 0.79,
+                  left: MediaQuery.of(context).size.width * 0.7),
               child: OutlinedButton(
                   onPressed: () {
                     Navigator.pushNamed(context, 'register');

@@ -1,3 +1,4 @@
+import 'package:first_project_flutter/custom_helper/colors.dart';
 import 'package:first_project_flutter/pages/resetPassword.dart';
 import 'package:first_project_flutter/pages/subject.dart';
 import 'package:first_project_flutter/widgets/drawer.dart';
@@ -29,11 +30,11 @@ class standard extends StatefulWidget {
             "Library",
             style: TextStyle(
                 fontWeight: FontWeight.bold,
-                fontSize: 30.0,
+                fontSize: 28.0,
                 color: Colors.white),
           ),
           centerTitle: true,
-          backgroundColor: Colors.blueAccent,
+          backgroundColor: AppColors.DarkPurple,
         ),
         drawer: MyDrawer(),
         body: Container(
@@ -47,7 +48,7 @@ class standard extends StatefulWidget {
           decoration: BoxDecoration(   
            color: Colors.blueAccent, 
            border: Border.all( 
-             color: Colors.lightBlueAccent, 
+             color: AppColors.DarkPurple, 
              width: 2.0, 
            ), 
            borderRadius: BorderRadius.circular(10.0), 

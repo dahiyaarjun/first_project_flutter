@@ -1,4 +1,5 @@
 import 'package:first_project_flutter/backend/laravel.dart';
+import 'package:first_project_flutter/custom_helper/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
@@ -34,8 +35,11 @@ class _UserRegisterState extends State<UserRegister> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Text("Register Page"),
-        backgroundColor: Colors.greenAccent[400],
+        title: const Text("Register Page",            style: const TextStyle(
+                // fontWeight: FontWeight.bold,
+                fontSize: 25.0,
+                color: Colors.white)),
+        backgroundColor: AppColors.DarkPurple,
         elevation: 50.0,
       ),
       body: Stack(
@@ -253,7 +257,7 @@ class _UserRegisterState extends State<UserRegister> {
                 if (states.contains(MaterialState.pressed)) {
                   return Colors.redAccent; //<-- SEE HERE
                 }
-                return Colors.green; // Defer to the widget's default.
+                return AppColors.DarkPurple; // Defer to the widget's default.
               },
             )),
             child: const Text('Register',

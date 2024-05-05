@@ -1,6 +1,7 @@
 import 'dart:convert';
 // import 'dart:html';
 import 'package:first_project_flutter/backend/laravel.dart';
+import 'package:first_project_flutter/custom_helper/colors.dart';
 import 'package:first_project_flutter/models/subjectmodel.dart';
 import 'package:first_project_flutter/pages/chapters.dart';
 import 'package:flutter/widgets.dart';
@@ -31,7 +32,7 @@ class _streamState extends State<subject> {
               fontSize: 22.0,
               color: Colors.white )),
               centerTitle: true,
-        backgroundColor: Colors.blueAccent,),
+        backgroundColor: AppColors.DarkPurple,),
   
         body:FutureBuilder<List<subjectmodel>>(
         future: apiResponse.getSubject(widget._class),
@@ -46,15 +47,35 @@ class _streamState extends State<subject> {
               itemBuilder: (context, index) {
                 final post = snapshot.data![index];
                 return Container(
-                   decoration: BoxDecoration(   
-           color: Colors.orange[200], 
+                   margin: EdgeInsets.only(
+          top: MediaQuery.of(context).size.height * 0.01,
+          // bottom: MediaQuery.of(context).size.height * 0.01,
+          left: MediaQuery.of(context).size.width * 0.01,
+          right: MediaQuery.of(context).size.width * 0.01),
+                        decoration: BoxDecoration(   
+           color: Colors.blueAccent, 
            border: Border.all( 
-             color: Colors.white, 
-             width: 4.0, 
-           )),
+             color: AppColors.DarkPurple, 
+             width: 2.0, 
+           ), 
+           borderRadius: BorderRadius.circular(10.0), 
+           gradient: LinearGradient( 
+             colors: [ 
+              Colors.white, 
+              Colors.white 
+             ] 
+           ), 
+          boxShadow: [ 
+            BoxShadow( 
+              color: Colors.grey , 
+              blurRadius: 2.0, 
+              offset: Offset(4.0,4.0) 
+            ) 
+          ],
+          ) ,
                   child: ListTile(
                     title: Text(post.subjectName),
-                    subtitle: (post.branch!=null)?Text(post.branch!):Text(''),
+                    // subtitle: (post.branch!=null)?Text(post.branch!):Text(''),
                     onTap: () {
                       _subject=post.subjectName; 
                       (widget._class=="10th")?_branch="":_branch=post.branch!;

@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:first_project_flutter/custom_helper/colors.dart';
 import 'package:first_project_flutter/custom_helper/constants.dart';
 import 'package:first_project_flutter/pages/login.dart';
 import 'package:first_project_flutter/pages/profileSettings.dart';
@@ -72,7 +73,7 @@ class _MyDrawerState extends State<MyDrawer> {
             height: MediaQuery.of(context).size.height*0.35,
             child: DrawerHeader(
               decoration: BoxDecoration(
-                color: Colors.blue,
+                color: AppColors.DarkPurple,
               ),
               child: Column(
                 children: [
@@ -81,7 +82,7 @@ class _MyDrawerState extends State<MyDrawer> {
                     width: MediaQuery.of(context).size.width*0.36,
                         decoration: BoxDecoration(
                         shape: BoxShape.circle,
-                        color: Colors.blue,
+                        color: AppColors.DarkPurple,
                       ),
                      child:InstaImageViewer(
                       // child: Container(

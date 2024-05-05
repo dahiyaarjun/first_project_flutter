@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:first_project_flutter/backend/laravel.dart';
+import 'package:first_project_flutter/custom_helper/colors.dart';
 import 'package:first_project_flutter/custom_helper/constants.dart';
 import 'package:first_project_flutter/models/search_model.dart';
 import 'package:first_project_flutter/pages/login.dart';
@@ -26,9 +27,12 @@ class _MyWidgetState extends State<Search> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Search Page'),
+        title: const Text('Search Page',style: const TextStyle(
+                // fontWeight: FontWeight.bold,
+                fontSize: 25.0,
+                color: Colors.white)),
         centerTitle: true,
-        backgroundColor: Colors.blueAccent,
+        backgroundColor: AppColors.DarkPurple,
         // elevation: 100,
       ),
       drawer: MyDrawer(),
